@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { calculateEmi } from "../../utils/calculateEmi";
+import LoanInput from "@/components/form/LoanInput";
 
 export default function EmiForm({ setEmiData }: { setEmiData: Function }) {
     const [loanAmount, setLoanAmount] = useState(500000);
@@ -24,37 +25,15 @@ export default function EmiForm({ setEmiData }: { setEmiData: Function }) {
             <h2 className="text-2xl font-bold text-gray-800 text-center">EMI Calculator</h2>
 
             {/* Loan Amount */}
-            <div>
-                <label className="block text-gray-700 font-medium">Loan Amount (₹):</label>
-                <input
-                    type="number"
-                    value={loanAmount}
-                    onChange={(e) => setLoanAmount(Number(e.target.value))}
-                    className="w-full mt-1 px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none transition"
-                />
-            </div>
+            <LoanInput label="Loan Amount" value={loanAmount} setValue={setLoanAmount} min={0} max={10000000} step={1000} unit="₹" />
 
             {/* Interest Rate */}
-            <div>
-                <label className="block text-gray-700 font-medium">Interest Rate (%):</label>
-                <input
-                    type="number"
-                    value={interestRate}
-                    onChange={(e) => setInterestRate(Number(e.target.value))}
-                    className="w-full mt-1 px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none transition"
-                />
-            </div>
+            <LoanInput label="Interest Rate" value={interestRate} setValue={setInterestRate} min={0} max={100} step={0.1} unit="%" />
 
             {/* Tenure */}
             <div className="flex gap-4">
                 <div className="flex-1">
-                    <label className="block text-gray-700 font-medium">Tenure:</label>
-                    <input
-                        type="number"
-                        value={tenure}
-                        onChange={(e) => setTenure(Number(e.target.value))}
-                        className="w-full mt-1 px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none transition"
-                    />
+                    <LoanInput label="Tenure" value={tenure} setValue={setTenure} min={1} max={100} step={1} unit={tenureType === "years" ? "Yr" : "Mo"} />
                 </div>
                 <div className="flex-1">
                     <label className="block text-gray-700 font-medium">Tenure Type:</label>
