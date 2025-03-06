@@ -1,26 +1,69 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+    --background: #f8f9fa;
+    --foreground: #212529;
+    --primary: #007bff;
+    --secondary: #6c757d;
+    --border: #dee2e6;
+    --hover: #e9ecef;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+    background: var(--background);
+    color: var(--foreground);
+    font-family: "Inter", sans-serif;
+    line-height: 1.6;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background: white;
+}
+
+/* Table Header */
+thead {
+    background-color: var(--primary);
+    color: white;
+    font-weight: 400;
+}
+
+th {
+    padding: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Table Rows */
+tbody tr {
+    transition: background 0.3s ease;
+}
+
+tbody tr:nth-child(even) {
+    background-color: var(--hover);
+}
+
+tbody tr:hover {
+    background-color: rgba(0, 123, 255, 0.1);
+}
+
+/* Table Cells */
+td {
+    padding: 10px;
+    border-bottom: 1px solid var(--border);
+}
+
+/* Responsive Table */
+@media (max-width: 768px) {
+    table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
 }
