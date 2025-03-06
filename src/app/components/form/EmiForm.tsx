@@ -21,7 +21,7 @@ export default function EmiForm({ setEmiData }: { setEmiData: Function }) {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-lg space-y-6">
+        <form onSubmit={handleSubmit} className="max-w-4xl mx-auto bg-white m-5 p-6 rounded-lg">
             <h2 className="text-2xl font-bold text-gray-800 text-center">EMI Calculator</h2>
 
             {/* Loan Amount */}

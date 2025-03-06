@@ -58,12 +58,12 @@ td {
     border-bottom: 1px solid var(--border);
 }
 
-/* Responsive Table */
-@media (max-width: 768px) {
-    table {
-        display: block;
-        width: 100%;
-        overflow-x: auto;
-        white-space: nowrap;
-    }
-}
+/*!* Responsive Table *!*/
+/*@media (max-width: 768px) {*/
+/*    table {*/
+/*        display: block;*/
+/*        width: 100%;*/
+/*        overflow-x: auto;*/
+/*        white-space: nowrap;*/
+/*    }*/
+/*}*/
