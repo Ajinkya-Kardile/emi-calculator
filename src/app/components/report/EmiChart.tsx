@@ -2,12 +2,15 @@
 import React from "react";
 import ReactECharts from "echarts-for-react";
 import { EmiResult } from "@/types/emiTypes";
+import { EChartsOption } from "echarts";
 
 export default function EmiChart({ data }: { data: EmiResult }) {
-    const pieOption = {
+    const pieOption: EChartsOption  = {
         tooltip: {
-            trigger: "item",
-            formatter: "{b}: {c} ({d}%)",
+            trigger: "item" as const,
+            formatter: (params: any) => {
+                return `${params.name}: ₹${params.value.toLocaleString()} (${params.percent}%)`;
+            },
         },
         legend: {
             bottom: 0,
@@ -46,7 +49,7 @@ export default function EmiChart({ data }: { data: EmiResult }) {
         ],
     };
 
-    const barOption = {
+    const barOption: EChartsOption  = {
         tooltip: {
             trigger: "axis",
             axisPointer: {
@@ -147,6 +150,7 @@ export default function EmiChart({ data }: { data: EmiResult }) {
                     width: 2,
                 },
                 smooth: true, // Makes the line smoother
+
             },
         ],
     };
