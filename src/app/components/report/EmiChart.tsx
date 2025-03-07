@@ -154,13 +154,15 @@ export default function EmiChart({data}: { data: EmiResult }) {
     };
 
     return (
-        <div className="w-full bg-white p-6 shadow-lg rounded-lg">
-            <h2 className="text-xl font-bold text-gray-800 mb-4 text-center">EMI Analysis</h2>
+        <div className="w-full bg-white/70 backdrop-blur-lg p-8 shadow-xl rounded-2xl">
+            <h2 className="text-2xl font-extrabold text-gray-900 mb-6 text-center">
+                EMI Analysis
+            </h2>
 
             {/* Result Overview + Pie Chart Section */}
-            <div className="flex flex-wrap items-center justify-center md:justify-between gap-6 mb-6">
-                {/* EMI Result Overview (Now on the Left Side on larger screens) */}
-                <div className="flex flex-col space-y-4 min-w-[300px]">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                {/* EMI Result Overview */}
+                <div className="space-y-6">
                     {[
                         {label: "Loan EMI", value: `₹${data.emi.toLocaleString()}`},
                         {label: "Total Interest Payable", value: `₹${data.totalInterest.toLocaleString()}`},
@@ -169,27 +171,31 @@ export default function EmiChart({data}: { data: EmiResult }) {
                             value: `₹${data.totalPayment.toLocaleString()}`
                         },
                     ].map((item, index) => (
-                        <div key={index} className="bg-gray-100 px-6 py-4 rounded-lg shadow-md text-center">
-                            <p className="text-sm font-medium text-gray-600">{item.label}</p>
-                            <p className="text-lg font-bold text-gray-900">{item.value}</p>
+                        <div
+                            key={index}
+                            className="border-2 border-blue-800 border-solid bg-gray-50 p-6 rounded-xl shadow-md text-center transition-transform transform hover:scale-105">
+                            <p className="text-md font-medium text-gray-700">{item.label}</p>
+                            <p className="text-2xl font-extrabold text-blue-700">{item.value}</p>
                         </div>
                     ))}
                 </div>
 
-                {/* Pie Chart (Now on the Right Side for Desktop, Below for Mobile) */}
-                <div className="w-[300px] max-w-full flex flex-col items-center">
-                    <h3 className="text-lg font-semibold text-gray-700 text-center mb-2">Principal vs Interest</h3>
-                    <ReactECharts option={pieOption} style={{height: "300px", width: "100%"}}/>
+                {/* Pie Chart */}
+                <div className="flex flex-col items-center">
+                <h3 className="text-lg font-semibold text-gray-700 text-center mb-3">
+                        Principal vs Interest
+                    </h3>
+                    <ReactECharts option={pieOption} style={{height: "320px", width: "100%"}}/>
                 </div>
             </div>
 
             {/* Area Chart Section */}
-            <div className="w-full">
-                <h3 className="text-lg font-semibold text-gray-700 text-center mb-2">EMI Breakdown per Period</h3>
-                <ReactECharts option={areaOption} style={{height: "400px", width: "100%"}}/>
+            <div className="w-full mt-8">
+                <h3 className="text-lg font-semibold text-gray-700 text-center mb-3">
+                    EMI Breakdown per Period
+                </h3>
+                <ReactECharts option={areaOption} style={{height: "420px", width: "100%"}}/>
             </div>
         </div>
-
-
     );
 }
