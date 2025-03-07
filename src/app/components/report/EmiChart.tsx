@@ -11,36 +11,36 @@ export default function EmiChart({ data }: { data: EmiResult }) {
         },
         legend: {
             bottom: 0,
-            left: 'center'
+            left: "center",
         },
         series: [
             {
                 name: "EMI Breakdown",
                 type: "pie",
-                radius: ['40%', '70%'],
+                radius: ["40%", "70%"],
                 avoidLabelOverlap: false,
                 itemStyle: {
                     borderRadius: 10,
-                    borderColor: '#fff',
-                    borderWidth: 2
+                    borderColor: "#fff",
+                    borderWidth: 2,
                 },
                 label: {
                     show: false,
-                    position: 'center'
+                    position: "center",
                 },
                 emphasis: {
                     label: {
                         show: true,
                         fontSize: 15,
-                        fontWeight: 'bold'
-                    }
+                        fontWeight: "bold",
+                    },
                 },
                 labelLine: {
-                    show: false
+                    show: false,
                 },
                 data: [
-                    { name: "Total Principal", value: data.totalPayment - data.totalInterest },
-                    { name: "Total Interest", value: data.totalInterest },
+                    { name: "Total Principal", value: data.totalPayment - data.totalInterest, itemStyle: { color: "#42A5F5" } }, // Blue
+                    { name: "Total Interest", value: data.totalInterest, itemStyle: { color: "#EF5350" } }, // Red
                 ],
             },
         ],
@@ -49,29 +49,104 @@ export default function EmiChart({ data }: { data: EmiResult }) {
     const barOption = {
         tooltip: {
             trigger: "axis",
+            axisPointer: {
+                type: "cross",
+            },
+        },
+        grid: {
+            right: "20%",
         },
         legend: {
             bottom: 0,
+            data: ["Principal", "Interest", "Balance"],
         },
         xAxis: {
             type: "category",
             data: data.schedule.map((item) => item.period),
+            axisLine: {
+                lineStyle: {
+                    color: "#424242",
+                },
+            },
         },
-        yAxis: {
-            type: "value",
-        },
+        yAxis: [
+            {
+                type: "value",
+                name: "Principal",
+                position: "right",
+                alignTicks: true,
+                axisLine: {
+                    show: true,
+                    lineStyle: {
+                        color: "#4CAF50",
+                    },
+                },
+                axisLabel: {
+                    formatter: "₹{value}",
+                },
+            },
+            {
+                type: "value",
+                name: "Interest",
+                position: "right",
+                alignTicks: true,
+                offset: 60,
+                axisLine: {
+                    show: true,
+                    lineStyle: {
+                        color: "#FF9800",
+                    },
+                },
+                axisLabel: {
+                    formatter: "₹{value}",
+                },
+            },
+            {
+                type: "value",
+                name: "Balance",
+                position: "left",
+                alignTicks: false,
+                axisLine: {
+                    show: true,
+                    lineStyle: {
+                        color: "#03A9F4",
+                    },
+                },
+                axisLabel: {
+                    formatter: "₹{value}",
+                },
+            },
+        ],
         series: [
             {
                 name: "Principal",
                 type: "bar",
                 data: data.schedule.map((item) => item.principal),
-                itemStyle: { color: "#4CAF50" },
+                itemStyle: {
+                    color: "rgba(76, 175, 80, 0.8)", // Green with transparency
+                },
             },
             {
                 name: "Interest",
                 type: "bar",
+                yAxisIndex: 1,
                 data: data.schedule.map((item) => item.interest),
-                itemStyle: { color: "#FF9800" },
+                itemStyle: {
+                    color: "rgba(255, 152, 0, 0.8)", // Orange with transparency
+                },
+            },
+            {
+                name: "Balance",
+                type: "line",
+                yAxisIndex: 2,
+                data: data.schedule.map((item) => item.balance),
+                itemStyle: {
+                    color: "#0288D1", // Deep Blue
+                },
+                lineStyle: {
+                    width: 2,
+                },
+                smooth: true, // Makes the line smoother
             },
         ],
     };
