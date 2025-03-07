@@ -22,13 +22,13 @@ export default function EmiForm({ setEmiData }: { setEmiData: Function }) {
 
     return (
         <form onSubmit={handleSubmit} className="max-w-4xl mx-auto bg-white m-5 p-6 rounded-lg">
-            <h2 className="text-2xl font-bold text-gray-800 text-center">EMI Calculator</h2>
+            <h2 className="text-2xl font-bold text-gray-800 text-center">Home Loan EMI Calculator</h2>
 
             {/* Loan Amount */}
-            <LoanInput label="Loan Amount" value={loanAmount} setValue={setLoanAmount} min={0} max={10000000} step={1000} unit="₹" />
+            <LoanInput label="Loan Amount" value={loanAmount} setValue={setLoanAmount} min={0} max={20000000} step={1} unit="₹" />
 
             {/* Interest Rate */}
-            <LoanInput label="Interest Rate" value={interestRate} setValue={setInterestRate} min={0} max={100} step={0.1} unit="%" />
+            <LoanInput label="Interest Rate" value={interestRate} setValue={setInterestRate} min={0} max={30} step={0.1} unit="%" />
 
             {/* Tenure */}
             <div className="flex gap-4">
@@ -62,7 +62,7 @@ export default function EmiForm({ setEmiData }: { setEmiData: Function }) {
             {/* Submit Button */}
             <button
                 type="submit"
-                className="w-full bg-blue-600 text-white font-medium py-3 rounded-md hover:bg-blue-700 transition duration-300"
+                className="w-full bg-blue-600 text-white font-medium py-3 my-5 rounded-md hover:bg-blue-700 transition duration-300"
             >
                 Calculate EMI
             </button>
