@@ -1,22 +1,17 @@
 import React from "react";
+import {EmiResult} from "@/types/emiTypes";
+import {generatePDF} from "@/utils/generatePdf";
 
-interface EmiSchedule {
-    period: string;
-    principal: number;
-    interest: number;
-    totalPayment: number;
-    balance: number;
-    loanPaidToDate: number;
-}
-
-interface EmiTableProps {
-    schedule: EmiSchedule[];
-}
-
-const EmiTable: React.FC<EmiTableProps> = ({ schedule }) => {
+const EmiTable: React.FC<EmiResult> = ({schedule}) => {
     return (
         <div className="overflow-x-auto mt-6">
             <h2 className="text-xl font-semibold mb-4">EMI Payment Schedule</h2>
+            <button
+                onClick={() => generatePDF(schedule)}
+                className="mb-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition"
+            >
+                Download PDF
+            </button>
             <table className="min-w-full border border-gray-300 shadow-lg">
                 <thead className="bg-blue-500 text-white">
                 <tr>

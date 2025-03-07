@@ -10,6 +10,8 @@ export default function EmiChart({data}: { data: EmiResult }) {
         {name: "Total Interest", value: data.totalInterest}
     ];
 
+
+
     return (
         <div className="w-full bg-white p-6 shadow-lg rounded-lg">
             <h2 className="text-xl font-bold text-gray-800 mb-4 text-center">EMI Analysis</h2>
