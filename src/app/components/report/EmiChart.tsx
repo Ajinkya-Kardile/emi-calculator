@@ -2,6 +2,7 @@
 import React from "react";
 import ReactECharts from "echarts-for-react";
 import { EmiResult } from "@/types/emiTypes";
+import * as echarts from "echarts"; // ✅ Import echarts
 import { EChartsOption } from "echarts";
 
 export default function EmiChart({ data }: { data: EmiResult }) {
@@ -49,28 +50,14 @@ export default function EmiChart({ data }: { data: EmiResult }) {
         ],
     };
 
-    const barOption: EChartsOption  = {
-        tooltip: {
-            trigger: "axis",
-            axisPointer: {
-                type: "cross",
-            },
-        },
-        grid: {
-            right: "20%",
-        },
-        legend: {
-            bottom: 0,
-            data: ["Principal", "Interest", "Balance"],
-        },
+    const areaOption: EChartsOption = {
+        tooltip: { trigger: "axis", axisPointer: { type: "cross" } },
+        grid: { right: "20%", left: "10%", bottom: "15%" },
+        legend: { bottom: 0, data: ["Principal", "Interest", "Balance", "Loan Paid to Date"] },
         xAxis: {
             type: "category",
             data: data.schedule.map((item) => item.period),
-            axisLine: {
-                lineStyle: {
-                    color: "#424242",
-                },
-            },
+            axisLine: { lineStyle: { color: "#424242" } },
         },
         yAxis: [
             {
@@ -78,79 +65,86 @@ export default function EmiChart({ data }: { data: EmiResult }) {
                 name: "Principal",
                 position: "right",
                 alignTicks: true,
-                axisLine: {
-                    show: true,
-                    lineStyle: {
-                        color: "#4CAF50",
-                    },
-                },
-                axisLabel: {
-                    formatter: "₹{value}",
-                },
+                axisLine: { lineStyle: { color: "#4CAF50" } }, // Green Axis
+                axisLabel: { formatter: "₹{value}" },
             },
             {
                 type: "value",
                 name: "Interest",
                 position: "right",
+                offset: 60, // Moves it right for better visibility
                 alignTicks: true,
-                offset: 60,
-                axisLine: {
-                    show: true,
-                    lineStyle: {
-                        color: "#FF9800",
-                    },
-                },
-                axisLabel: {
-                    formatter: "₹{value}",
-                },
+                axisLine: { lineStyle: { color: "#FF9800" } }, // Orange Axis
+                axisLabel: { formatter: "₹{value}" },
             },
             {
                 type: "value",
                 name: "Balance",
                 position: "left",
-                alignTicks: false,
-                axisLine: {
-                    show: true,
-                    lineStyle: {
-                        color: "#03A9F4",
-                    },
-                },
-                axisLabel: {
-                    formatter: "₹{value}",
-                },
-            },
+                axisLine: { lineStyle: { color: "#0288D1" } }, // Blue Axis
+                axisLabel: { formatter: "₹{value}" },
+            }
         ],
         series: [
             {
                 name: "Principal",
-                type: "bar",
+                type: "line",
+                yAxisIndex: 0, // ✅ Uses the first y-axis (Green)
+                smooth: true,
+                showSymbol: false,
                 data: data.schedule.map((item) => item.principal),
-                itemStyle: {
-                    color: "rgba(76, 175, 80, 0.8)", // Green with transparency
+                lineStyle: { width: 2, color: "#4CAF50" }, // Green
+                areaStyle: {
+                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                        { offset: 0, color: "rgba(76, 175, 80, 0.6)" },
+                        { offset: 1, color: "rgba(76, 175, 80, 0.1)" },
+                    ]),
                 },
             },
             {
                 name: "Interest",
-                type: "bar",
-                yAxisIndex: 1,
+                type: "line",
+                yAxisIndex: 1, // ✅ Uses the second y-axis (Orange)
+                smooth: true,
+                showSymbol: false,
                 data: data.schedule.map((item) => item.interest),
-                itemStyle: {
-                    color: "rgba(255, 152, 0, 0.8)", // Orange with transparency
+                lineStyle: { width: 2, color: "#FF9800" }, // Orange
+                areaStyle: {
+                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                        { offset: 0, color: "rgba(255, 152, 0, 0.6)" },
+                        { offset: 1, color: "rgba(255, 152, 0, 0.1)" },
+                    ]),
                 },
             },
             {
                 name: "Balance",
                 type: "line",
-                yAxisIndex: 2,
+                yAxisIndex: 2, // ✅ Uses the third y-axis (Blue)
+                smooth: true,
+                showSymbol: false,
                 data: data.schedule.map((item) => item.balance),
-                itemStyle: {
-                    color: "#0288D1", // Deep Blue
+                lineStyle: { width: 2, color: "#0288D1" }, // Blue
+                areaStyle: {
+                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                        { offset: 0, color: "rgba(2, 136, 209, 0.6)" },
+                        { offset: 1, color: "rgba(2, 136, 209, 0.1)" },
+                    ]),
                 },
-                lineStyle: {
-                    width: 2,
+            },
+            {
+                name: "Loan Paid to Date",
+                type: "line",
+                yAxisIndex: 2,
+                smooth: true,
+                showSymbol: false,
+                data: data.schedule.map((item) => item.loanPaidToDate),
+                lineStyle: { width: 2, color: "#0288D1" }, // Blue
+                areaStyle: {
+                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                        { offset: 0, color: "rgba(2, 136, 209, 0.6)" },
+                        { offset: 1, color: "rgba(2, 136, 209, 0.1)" },
+                    ]),
                 },
-                smooth: true, // Makes the line smoother
-
             },
         ],
     };
@@ -159,7 +153,6 @@ export default function EmiChart({ data }: { data: EmiResult }) {
         <div className="w-full bg-white p-6 shadow-lg rounded-lg">
             <h2 className="text-xl font-bold text-gray-800 mb-4 text-center">EMI Analysis</h2>
 
-            {/* Responsive Layout */}
             <div className="flex flex-col lg:flex-row gap-6">
                 {/* Pie Chart Section */}
                 <div className="w-full lg:w-1/3 flex flex-col items-center">
@@ -169,10 +162,14 @@ export default function EmiChart({ data }: { data: EmiResult }) {
                     </div>
                 </div>
 
-                {/* Bar Chart Section */}
+                {/* Smoothed Gradient Area Chart Section */}
                 <div className="w-full lg:w-2/3">
                     <h3 className="text-lg font-semibold text-gray-700 text-center mb-2">EMI Breakdown per Period</h3>
-                    <ReactECharts option={barOption} style={{ height: "350px", width: "100%" }} />
+                    <ReactECharts
+                        option={areaOption}
+                        style={{ height: "350px", width: "100%" }}
+                        opts={{ renderer: "canvas" }} // ✅ Ensures smooth rendering
+                    />
                 </div>
             </div>
         </div>
