@@ -13,8 +13,9 @@ import {
     IconButton,
     Collapse,
     TablePagination,
+    Button,
 } from "@mui/material";
-import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
+import {CurrencyRupee, Download, KeyboardArrowDown, KeyboardArrowUp} from "@mui/icons-material";
 
 export default function EmiTable({ schedule }: { schedule: EmiSchedule[] }) {
     const [openYears, setOpenYears] = useState<{ [key: number]: boolean }>({});
@@ -61,33 +62,41 @@ export default function EmiTable({ schedule }: { schedule: EmiSchedule[] }) {
     const paginatedYears = years.slice(page * rowsPerPage, (page + 1) * rowsPerPage);
 
     return (
-        <div className="overflow-x-auto mt-6">
-            <h2 className="text-xl font-semibold mb-4">EMI Payment Schedule</h2>
-            <button
-                onClick={() => generatePDF(schedule)}
-                className="mb-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition"
-            >
-                Download PDF
-            </button>
-            <TableContainer component={Paper} sx={{ marginTop: 4, boxShadow: 3 }}>
+        <div className="overflow-x-auto mt-6 p-4 bg-gray-50 rounded-lg shadow-md">
+            {/* Heading */}
+            <div className="flex justify-between items-center mb-4">
+                <h2 className="text-2xl font-bold text-gray-800 flex items-center gap-2">
+                    <CurrencyRupee fontSize="large" className="text-blue-600"/>
+                    EMI Payment Schedule Report
+                </h2>
+                <Button
+                    variant="contained"
+                    color="primary"
+                    startIcon={<Download/>}
+                    onClick={() => generatePDF(schedule)}
+                >
+                    Download
+                </Button>
+            </div>
+            <TableContainer component={Paper} sx={{marginTop: 4, boxShadow: 3}}>
                 <Table>
                     <TableHead>
-                        <TableRow sx={{ backgroundColor: "#1976D2" }}>
-                            <TableCell sx={{ color: "white", fontWeight: "bold" }}>Year</TableCell>
-                            <TableCell sx={{ color: "white", fontWeight: "bold" }}>Principal</TableCell>
-                            <TableCell sx={{ color: "white", fontWeight: "bold" }}>Interest</TableCell>
-                            <TableCell sx={{ color: "white", fontWeight: "bold" }}>Total Payment</TableCell>
-                            <TableCell sx={{ color: "white", fontWeight: "bold" }}>Balance</TableCell>
-                            <TableCell sx={{ color: "white", fontWeight: "bold" }}>Loan Paid %</TableCell>
+                        <TableRow sx={{backgroundColor: "#1976D2"}}>
+                            <TableCell sx={{color: "white", fontWeight: "bold"}}>Year</TableCell>
+                            <TableCell sx={{color: "white", fontWeight: "bold"}}>Principal</TableCell>
+                            <TableCell sx={{color: "white", fontWeight: "bold"}}>Interest</TableCell>
+                            <TableCell sx={{color: "white", fontWeight: "bold"}}>Total Payment</TableCell>
+                            <TableCell sx={{color: "white", fontWeight: "bold"}}>Balance</TableCell>
+                            <TableCell sx={{color: "white", fontWeight: "bold"}}>Loan Paid %</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {paginatedYears.map((year) => (
                             <React.Fragment key={year}>
-                                <TableRow sx={{ backgroundColor: "#E3F2FD", fontWeight: "bold" }}>
+                                <TableRow sx={{backgroundColor: "#E3F2FD", fontWeight: "bold"}}>
                                     <TableCell>
                                         <IconButton onClick={() => toggleYear(year)}>
-                                            {openYears[year] ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
+                                            {openYears[year] ? <KeyboardArrowUp/> : <KeyboardArrowDown/>}
                                         </IconButton>
                                         {year}
                                     </TableCell>
@@ -99,11 +108,11 @@ export default function EmiTable({ schedule }: { schedule: EmiSchedule[] }) {
                                 </TableRow>
 
                                 <TableRow>
-                                    <TableCell colSpan={6} style={{ padding: 0 }}>
+                                    <TableCell colSpan={6} style={{padding: 0}}>
                                         <Collapse in={openYears[year]} timeout="auto" unmountOnExit>
                                             <Table size="small">
                                                 <TableHead>
-                                                    <TableRow sx={{ backgroundColor: "#BBDEFB" }}>
+                                                    <TableRow sx={{backgroundColor: "#BBDEFB"}}>
                                                         <TableCell>Month</TableCell>
                                                         <TableCell>Principal</TableCell>
                                                         <TableCell>Interest</TableCell>
@@ -116,7 +125,7 @@ export default function EmiTable({ schedule }: { schedule: EmiSchedule[] }) {
                                                     {yearlyData[year].months.map((row, index) => (
                                                         <TableRow key={index}>
                                                             <TableCell>
-                                                                {new Date(row.period).toLocaleString("default", { month: "long" })}
+                                                                {new Date(row.period).toLocaleString("default", {month: "long"})}
                                                             </TableCell>
                                                             <TableCell>₹{row.principal.toFixed(2)}</TableCell>
                                                             <TableCell>₹{row.interest.toFixed(2)}</TableCell>

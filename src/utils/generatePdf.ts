@@ -20,12 +20,12 @@ export const generatePDF = async (schedule: EmiSchedule[]) => {
     const { width, height } = page.getSize();
 
     // 🏆 Title Section
-    page.drawText("EMI Payment Schedule", {
+    page.drawText("EMI Payment Schedule Report", {
         x: width / 2 - 110,
         y: yPosition,
-        size: 18,
+        size: 20,  // Increased size
         font: customFont,
-        color: rgb(0.2, 0.2, 0.8),
+        color: rgb(0.09, 0.46, 0.82),  // Blue color
     });
 
     yPosition -= 40;
@@ -46,7 +46,7 @@ export const generatePDF = async (schedule: EmiSchedule[]) => {
             y: yPosition - 5,
             width: tableWidth + 10,
             height: rowHeight,
-            color: rgb(0, 0, 0.8),
+            color: rgb(0.09, 0.46, 0.82),  // RGB for #1976D2
         });
 
         headers.forEach((header, i) => {
