@@ -62,23 +62,24 @@ export default function EmiTable({ schedule }: { schedule: EmiSchedule[] }) {
     const paginatedYears = years.slice(page * rowsPerPage, (page + 1) * rowsPerPage);
 
     return (
-        <div className="overflow-x-auto mt-6 p-4 bg-gray-50 rounded-lg shadow-md">
+        <div className="overflow-x-auto mt-6">
             {/* Heading */}
-            <div className="flex justify-between items-center mb-4">
-                <h2 className="text-2xl font-bold text-gray-800 flex items-center gap-2">
-                    <CurrencyRupee fontSize="large" className="text-blue-600"/>
+            <div className="flex flex-wrap justify-between items-center mb-2 gap-2">
+                <h2 className="text-xl md:text-2xl font-bold text-gray-800 flex items-center gap-2">
+                    <CurrencyRupee fontSize="large" className="text-blue-600" />
                     EMI Payment Schedule Report
                 </h2>
                 <Button
                     variant="contained"
                     color="primary"
-                    startIcon={<Download/>}
+                    startIcon={<Download />}
                     onClick={() => generatePDF(schedule)}
+                    sx={{ fontSize: { xs: "12px", sm: "14px", md: "16px" }, padding: "6px 12px" }}
                 >
                     Download
                 </Button>
             </div>
-            <TableContainer component={Paper} sx={{marginTop: 4, boxShadow: 3}}>
+            <TableContainer component={Paper} sx={{marginTop: 2, boxShadow: 3}}>
                 <Table>
                     <TableHead>
                         <TableRow sx={{backgroundColor: "#1976D2"}}>

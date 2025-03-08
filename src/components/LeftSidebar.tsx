@@ -2,10 +2,10 @@ import React from "react";
 import Link from "next/link";
 import {SidebarAd} from "@/components/ads/Ads";
 
-const Sidebar: React.FC = () => {
+const LeftSidebar: React.FC = () => {
     return (
-        <aside className="hidden lg:block w-72 bg-white shadow-lg rounded-lg p-4">
-            {/* Sidebar Navigation Links */}
+        <aside className="hidden lg:block bg-gray-100 shadow-lg rounded-lg p-4">
+            {/* RightSidebar Navigation Links */}
             <nav className="mb-6">
                 <h2 className="text-lg font-bold mb-3">Quick Links</h2>
                 <ul className="space-y-2">
@@ -16,10 +16,10 @@ const Sidebar: React.FC = () => {
                 </ul>
             </nav>
 
-            {/* Sidebar Advertisement */}
-            <SidebarAd />
+            {/* RightSidebar Advertisement */}
+            <SidebarAd/>
         </aside>
     );
 };
 
-export default Sidebar;
+export default LeftSidebar;

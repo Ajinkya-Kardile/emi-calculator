@@ -154,7 +154,7 @@ export default function EmiChart({data}: { data: EmiResult }) {
     };
 
     return (
-        <div className="w-full bg-white/70 backdrop-blur-lg p-8 shadow-xl rounded-2xl">
+        <div className="w-full bg-white/70 backdrop-blur-lg">
             <h2 className="text-2xl font-extrabold text-gray-900 mb-6 text-center">
                 EMI Analysis
             </h2>

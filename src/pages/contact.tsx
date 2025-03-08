@@ -1,5 +1,5 @@
 "use client"
-import Sidebar from "@/components/Sidebar";
+import RightSidebar from "@/components/RightSidebar";
 
 export default function Contact() {
     return (
@@ -10,8 +10,8 @@ export default function Contact() {
                 </div>
             </main>
 
-            {/* Sidebar Ad */}
-            <Sidebar/>
+            {/*/!* RightSidebar Ad *!/*/}
+            {/*<RightSidebar/>*/}
         </div>
     );
 }
