@@ -18,6 +18,9 @@ import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
 export default function EmiTable({ schedule }: { schedule: EmiSchedule[] }) {
     const [openYears, setOpenYears] = useState<{ [key: number]: boolean }>({});
 
+    // Get initial loan amount for percentage calculation
+    const loanAmount = schedule.length > 0 ? schedule[0].balance + schedule[0].principal : 0;
+
     // Group data by year and calculate yearly totals
     const yearlyData = schedule.reduce((acc, row) => {
         const year = new Date(row.period).getFullYear();
@@ -27,16 +30,27 @@ export default function EmiTable({ schedule }: { schedule: EmiSchedule[] }) {
                 totalPrincipal: 0,
                 totalInterest: 0,
                 totalPayment: 0,
-                totalBalance: row.balance, // Initial balance at the start of the year
+                totalBalance: row.balance,
+                totalLoanPaidToDate: 0,
             };
         }
+
         acc[year].months.push(row);
         acc[year].totalPrincipal += row.principal;
         acc[year].totalInterest += row.interest;
         acc[year].totalPayment += row.totalPayment;
-        acc[year].totalBalance = row.balance; // Update balance to last month's balance
+        acc[year].totalBalance = row.balance;
+        acc[year].totalLoanPaidToDate = ((loanAmount - row.balance) / loanAmount) * 100;
+
         return acc;
-    }, {} as Record<number, { months: EmiSchedule[]; totalPrincipal: number; totalInterest: number; totalPayment: number; totalBalance: number }>);
+    }, {} as Record<number, {
+        months: EmiSchedule[];
+        totalPrincipal: number;
+        totalInterest: number;
+        totalPayment: number;
+        totalBalance: number;
+        totalLoanPaidToDate: number;
+    }>);
 
     const toggleYear = (year: number) => {
         setOpenYears((prev) => ({ ...prev, [year]: !prev[year] }));
@@ -60,6 +74,7 @@ export default function EmiTable({ schedule }: { schedule: EmiSchedule[] }) {
                             <TableCell sx={{ color: "white", fontWeight: "bold" }}>Interest</TableCell>
                             <TableCell sx={{ color: "white", fontWeight: "bold" }}>Total Payment</TableCell>
                             <TableCell sx={{ color: "white", fontWeight: "bold" }}>Balance</TableCell>
+                            <TableCell sx={{ color: "white", fontWeight: "bold" }}>Loan Paid %</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -77,11 +92,12 @@ export default function EmiTable({ schedule }: { schedule: EmiSchedule[] }) {
                                     <TableCell>₹{data.totalInterest.toFixed(2)}</TableCell>
                                     <TableCell>₹{data.totalPayment.toFixed(2)}</TableCell>
                                     <TableCell>₹{data.totalBalance.toFixed(2)}</TableCell>
+                                    <TableCell>{data.totalLoanPaidToDate.toFixed(2)}%</TableCell>
                                 </TableRow>
 
                                 {/* Monthly Breakdown (Collapsible) */}
                                 <TableRow>
-                                    <TableCell colSpan={5} style={{ padding: 0 }}>
+                                    <TableCell colSpan={6} style={{ padding: 0 }}>
                                         <Collapse in={openYears[Number(year)]} timeout="auto" unmountOnExit>
                                             <Table size="small">
                                                 <TableHead>
@@ -91,22 +107,27 @@ export default function EmiTable({ schedule }: { schedule: EmiSchedule[] }) {
                                                         <TableCell>Interest</TableCell>
                                                         <TableCell>Total Payment</TableCell>
                                                         <TableCell>Balance</TableCell>
+                                                        <TableCell>Loan Paid %</TableCell>
                                                     </TableRow>
                                                 </TableHead>
                                                 <TableBody>
-                                                    {data.months.map((row, index) => (
-                                                        <TableRow key={index}>
-                                                            <TableCell>
-                                                                {new Date(row.period).toLocaleString("default", {
-                                                                    month: "long",
-                                                                })}
-                                                            </TableCell>
-                                                            <TableCell>₹{row.principal.toFixed(2)}</TableCell>
-                                                            <TableCell>₹{row.interest.toFixed(2)}</TableCell>
-                                                            <TableCell>₹{row.totalPayment.toFixed(2)}</TableCell>
-                                                            <TableCell>₹{row.balance.toFixed(2)}</TableCell>
-                                                        </TableRow>
-                                                    ))}
+                                                    {data.months.map((row, index) => {
+                                                        const loanPaidPercentage = ((loanAmount - row.balance) / loanAmount) * 100;
+                                                        return (
+                                                            <TableRow key={index}>
+                                                                <TableCell>
+                                                                    {new Date(row.period).toLocaleString("default", {
+                                                                        month: "long",
+                                                                    })}
+                                                                </TableCell>
+                                                                <TableCell>₹{row.principal.toFixed(2)}</TableCell>
+                                                                <TableCell>₹{row.interest.toFixed(2)}</TableCell>
+                                                                <TableCell>₹{row.totalPayment.toFixed(2)}</TableCell>
+                                                                <TableCell>₹{row.balance.toFixed(2)}</TableCell>
+                                                                <TableCell>{loanPaidPercentage.toFixed(2)}%</TableCell>
+                                                            </TableRow>
+                                                        );
+                                                    })}
                                                 </TableBody>
                                             </Table>
                                         </Collapse>
