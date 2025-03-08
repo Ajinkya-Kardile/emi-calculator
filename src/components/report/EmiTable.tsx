@@ -1,8 +1,8 @@
 import React from "react";
-import {EmiResult} from "@/types/emiTypes";
+import {EmiSchedule} from "@/types/emiTypes";
 import {generatePDF} from "@/utils/generatePdf";
 
-const EmiTable: React.FC<EmiResult> = ({schedule}) => {
+export default function EmiTable({schedule}: { schedule: EmiSchedule[] }) {
     return (
         <div className="overflow-x-auto mt-6">
             <h2 className="text-xl font-semibold mb-4">EMI Payment Schedule</h2>
@@ -42,5 +42,3 @@ const EmiTable: React.FC<EmiResult> = ({schedule}) => {
         </div>
     );
 };
-
-export default EmiTable;
