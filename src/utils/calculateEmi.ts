@@ -14,7 +14,6 @@ export function calculateEmi(
     const schedule = [];
     let totalInterest = 0;
     let currentDate = new Date(startDate);
-    let lastYear = currentDate.getFullYear();
 
     for (let i = 0; i < tenureInMonths; i++) {
         const interest = balance * monthlyRate;
@@ -34,7 +33,7 @@ export function calculateEmi(
             interest: Math.round(interest),
             totalPayment: Math.round(emi),
             balance: Math.round(balance),
-            loanPaidToDate: Math.round(loanAmount - balance),
+            loanPaidToDate: (loanAmount - balance) / loanAmount * 100,
         });
 
         currentDate.setMonth(currentDate.getMonth() + 1);
