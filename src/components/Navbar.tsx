@@ -11,8 +11,8 @@ const Navbar: React.FC = () => {
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 {/* Logo */}
                 <Link href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-                    <Image src="https://flowbite.com/docs/images/logo.svg" width={32} height={32} alt="Flowbite Logo" />
-                    <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
+                    <Image src="https://static.vecteezy.com/system/resources/thumbnails/014/179/665/small_2x/calculator-icons-design-in-blue-circle-png.png" width={32} height={32} alt="Flowbite Logo" />
+                    <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">EMI Calculator</span>
                 </Link>
 
                 {/* Mobile Menu Button */}

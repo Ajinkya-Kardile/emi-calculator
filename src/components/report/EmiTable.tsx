@@ -15,7 +15,7 @@ import {
     TablePagination,
     Button,
 } from "@mui/material";
-import {CurrencyRupee, Download, KeyboardArrowDown, KeyboardArrowUp} from "@mui/icons-material";
+import { CurrencyRupee, Download, KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
 
 export default function EmiTable({ schedule }: { schedule: EmiSchedule[] }) {
     const [openYears, setOpenYears] = useState<{ [key: number]: boolean }>({});
@@ -62,7 +62,7 @@ export default function EmiTable({ schedule }: { schedule: EmiSchedule[] }) {
     const paginatedYears = years.slice(page * rowsPerPage, (page + 1) * rowsPerPage);
 
     return (
-        <div className="overflow-x-auto mt-6">
+        <div className="w-full mt-6">
             {/* Heading */}
             <div className="flex flex-wrap justify-between items-center mb-2 gap-2">
                 <h2 className="text-xl md:text-2xl font-bold text-gray-800 flex items-center gap-2">
@@ -79,6 +79,8 @@ export default function EmiTable({ schedule }: { schedule: EmiSchedule[] }) {
                     Download
                 </Button>
             </div>
+            <div className="overflow-x-auto w-full max-w-[80vw]">
+
             <TableContainer component={Paper} sx={{marginTop: 2, boxShadow: 3}}>
                 <Table>
                     <TableHead>
@@ -145,6 +147,8 @@ export default function EmiTable({ schedule }: { schedule: EmiSchedule[] }) {
                     </TableBody>
                 </Table>
             </TableContainer>
+            </div>
+
             <TablePagination
                 component="div"
                 count={years.length}

@@ -18,9 +18,12 @@ export default function EMICalculator() {
                     <EmiForm setEmiData={setEmiData}/>
                     {emiData && (
                         <>
-                            <EmiChart data={emiData}/>
-                            <InlineAd/>
-                            <EmiTable schedule={emiData.schedule}/>
+                            <div className="mt-6">
+                                <EmiChart data={emiData}/>
+                                <InlineAd/>
+                                <EmiTable schedule={emiData.schedule}/>
+                            </div>
+
                         </>
                     )}
                 </div>
