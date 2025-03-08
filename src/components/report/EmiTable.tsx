@@ -12,16 +12,17 @@ import {
     Paper,
     IconButton,
     Collapse,
+    TablePagination,
 } from "@mui/material";
 import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
 
 export default function EmiTable({ schedule }: { schedule: EmiSchedule[] }) {
     const [openYears, setOpenYears] = useState<{ [key: number]: boolean }>({});
+    const [page, setPage] = useState(0);
+    const rowsPerPage = 5;
 
-    // Get initial loan amount for percentage calculation
     const loanAmount = schedule.length > 0 ? schedule[0].balance + schedule[0].principal : 0;
 
-    // Group data by year and calculate yearly totals
     const yearlyData = schedule.reduce((acc, row) => {
         const year = new Date(row.period).getFullYear();
         if (!acc[year]) {
@@ -56,6 +57,9 @@ export default function EmiTable({ schedule }: { schedule: EmiSchedule[] }) {
         setOpenYears((prev) => ({ ...prev, [year]: !prev[year] }));
     };
 
+    const years = Object.keys(yearlyData).map(Number);
+    const paginatedYears = years.slice(page * rowsPerPage, (page + 1) * rowsPerPage);
+
     return (
         <div className="overflow-x-auto mt-6">
             <h2 className="text-xl font-semibold mb-4">EMI Payment Schedule</h2>
@@ -78,27 +82,25 @@ export default function EmiTable({ schedule }: { schedule: EmiSchedule[] }) {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {Object.entries(yearlyData).map(([year, data]) => (
+                        {paginatedYears.map((year) => (
                             <React.Fragment key={year}>
-                                {/* Yearly Row (Click to Expand) */}
                                 <TableRow sx={{ backgroundColor: "#E3F2FD", fontWeight: "bold" }}>
                                     <TableCell>
-                                        <IconButton onClick={() => toggleYear(Number(year))}>
-                                            {openYears[Number(year)] ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
+                                        <IconButton onClick={() => toggleYear(year)}>
+                                            {openYears[year] ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
                                         </IconButton>
                                         {year}
                                     </TableCell>
-                                    <TableCell>₹{data.totalPrincipal.toFixed(2)}</TableCell>
-                                    <TableCell>₹{data.totalInterest.toFixed(2)}</TableCell>
-                                    <TableCell>₹{data.totalPayment.toFixed(2)}</TableCell>
-                                    <TableCell>₹{data.totalBalance.toFixed(2)}</TableCell>
-                                    <TableCell>{data.totalLoanPaidToDate.toFixed(2)}%</TableCell>
+                                    <TableCell>₹{yearlyData[year].totalPrincipal.toFixed(2)}</TableCell>
+                                    <TableCell>₹{yearlyData[year].totalInterest.toFixed(2)}</TableCell>
+                                    <TableCell>₹{yearlyData[year].totalPayment.toFixed(2)}</TableCell>
+                                    <TableCell>₹{yearlyData[year].totalBalance.toFixed(2)}</TableCell>
+                                    <TableCell>{yearlyData[year].totalLoanPaidToDate.toFixed(2)}%</TableCell>
                                 </TableRow>
 
-                                {/* Monthly Breakdown (Collapsible) */}
                                 <TableRow>
                                     <TableCell colSpan={6} style={{ padding: 0 }}>
-                                        <Collapse in={openYears[Number(year)]} timeout="auto" unmountOnExit>
+                                        <Collapse in={openYears[year]} timeout="auto" unmountOnExit>
                                             <Table size="small">
                                                 <TableHead>
                                                     <TableRow sx={{ backgroundColor: "#BBDEFB" }}>
@@ -111,23 +113,18 @@ export default function EmiTable({ schedule }: { schedule: EmiSchedule[] }) {
                                                     </TableRow>
                                                 </TableHead>
                                                 <TableBody>
-                                                    {data.months.map((row, index) => {
-                                                        const loanPaidPercentage = ((loanAmount - row.balance) / loanAmount) * 100;
-                                                        return (
-                                                            <TableRow key={index}>
-                                                                <TableCell>
-                                                                    {new Date(row.period).toLocaleString("default", {
-                                                                        month: "long",
-                                                                    })}
-                                                                </TableCell>
-                                                                <TableCell>₹{row.principal.toFixed(2)}</TableCell>
-                                                                <TableCell>₹{row.interest.toFixed(2)}</TableCell>
-                                                                <TableCell>₹{row.totalPayment.toFixed(2)}</TableCell>
-                                                                <TableCell>₹{row.balance.toFixed(2)}</TableCell>
-                                                                <TableCell>{loanPaidPercentage.toFixed(2)}%</TableCell>
-                                                            </TableRow>
-                                                        );
-                                                    })}
+                                                    {yearlyData[year].months.map((row, index) => (
+                                                        <TableRow key={index}>
+                                                            <TableCell>
+                                                                {new Date(row.period).toLocaleString("default", { month: "long" })}
+                                                            </TableCell>
+                                                            <TableCell>₹{row.principal.toFixed(2)}</TableCell>
+                                                            <TableCell>₹{row.interest.toFixed(2)}</TableCell>
+                                                            <TableCell>₹{row.totalPayment.toFixed(2)}</TableCell>
+                                                            <TableCell>₹{row.balance.toFixed(2)}</TableCell>
+                                                            <TableCell>{((loanAmount - row.balance) / loanAmount * 100).toFixed(2)}%</TableCell>
+                                                        </TableRow>
+                                                    ))}
                                                 </TableBody>
                                             </Table>
                                         </Collapse>
@@ -138,6 +135,14 @@ export default function EmiTable({ schedule }: { schedule: EmiSchedule[] }) {
                     </TableBody>
                 </Table>
             </TableContainer>
+            <TablePagination
+                component="div"
+                count={years.length}
+                rowsPerPage={rowsPerPage}
+                page={page}
+                onPageChange={(_, newPage) => setPage(newPage)}
+                rowsPerPageOptions={[5]}
+            />
         </div>
     );
 }
