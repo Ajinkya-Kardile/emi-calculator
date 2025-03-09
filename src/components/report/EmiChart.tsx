@@ -160,7 +160,7 @@ export default function EmiChart({data}: { data: EmiResult }) {
             </h2>
 
             {/* Result Overview + Pie Chart Section */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center px-0 md:px-6">
                 {/* EMI Result Overview */}
                 <div className="space-y-6">
                     {[
@@ -173,7 +173,7 @@ export default function EmiChart({data}: { data: EmiResult }) {
                     ].map((item, index) => (
                         <div
                             key={index}
-                            className="border-2 border-blue-800 border-solid bg-gray-50 p-6 rounded-xl shadow-md text-center transition-transform transform hover:scale-105">
+                            className="border-2 border-blue-800 border-solid bg-gray-50 p-4 rounded-xl shadow-md text-center transition-transform transform hover:scale-105">
                             <p className="text-md font-medium text-gray-700">{item.label}</p>
                             <p className="text-2xl font-extrabold text-blue-700">{item.value}</p>
                         </div>
