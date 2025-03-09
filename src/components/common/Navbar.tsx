@@ -81,7 +81,12 @@ const Navbar: React.FC = () => {
                             </ul>
                         </li>
 
-                        {/* Pricing */}
+                        {/* FAQ */}
+                        <li>
+                            <Link href="/faq" className="nav-link" onClick={closeDropdown}>FAQ</Link>
+                        </li>
+
+                        {/* About */}
                         <li>
                             <Link href="/about" className="nav-link" onClick={closeDropdown}>About</Link>
                         </li>

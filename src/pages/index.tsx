@@ -22,9 +22,9 @@ export default function Home () {
                     <EmiForm setEmiData={setEmiData}/>
                     {emiData && (
                         <>
-                            <div className="mt-6">
+                            <div className="mt-6 space-y-6">
                                 <EmiChart data={emiData}/>
-                                <InlineAd/>
+                                {/*<InlineAd/>*/}
                                 <EmiTable schedule={emiData.schedule}/>
                             </div>
 
