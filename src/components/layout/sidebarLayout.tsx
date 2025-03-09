@@ -11,7 +11,7 @@ export default function SidebarLayout({children}: { children: React.ReactNode })
             {/*</div>*/}
 
             {/* Main Content */}
-            <main className="flex-1 max-w-[1200px] bg-white p-6 shadow-lg rounded-lg mx-auto">
+            <main className="flex-1 max-w-[1200px] bg-white p-2 md:p-6 shadow-lg rounded-lg mx-auto">
                 {children}
             </main>
 

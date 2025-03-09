@@ -10,7 +10,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         <>
             <HeaderAd />
             <Navbar />
-            <main className="container mx-auto p-4">
+            <main className="container mx-auto p-0 md:p-4">
                 <Component {...pageProps} />
             </main>
             <Footer />

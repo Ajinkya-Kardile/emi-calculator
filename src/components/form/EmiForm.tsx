@@ -2,16 +2,14 @@
 import React, {useEffect, useState} from "react";
 import {calculateEmi} from "@/utils/calculateEmi";
 import LoanInput from "@/components/form/LoanInput";
-import {ToggleButton, ToggleButtonGroup} from "@mui/material";
-import {Tabs, Tab} from "@mui/material";
-import {loanDefaults} from "@/utils/loanDefaults";
+import {Tabs, Tab, ToggleButton, ToggleButtonGroup} from "@mui/material";
 import HomeIcon from "@mui/icons-material/Home";
 import PersonIcon from "@mui/icons-material/Person";
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
+import {loanDefaults} from "@/utils/loanDefaults";
 import {useRouter} from "next/router";
 
 export default function EmiForm({setEmiData}: { setEmiData: Function }) {
-
     const router = useRouter();
     const {loanType: loanQuery} = router.query;
     const [loanType, setLoanType] = useState<"home" | "personal" | "car">("home");
@@ -22,8 +20,6 @@ export default function EmiForm({setEmiData}: { setEmiData: Function }) {
         }
     }, [loanQuery]);
 
-
-    // Function to update loan details when switching tabs
     const handleLoanTypeChange = (event: React.SyntheticEvent, newLoanType: "home" | "personal" | "car") => {
         setLoanType(newLoanType);
         setLoanAmount(loanDefaults[newLoanType].loanAmount);
@@ -33,7 +29,6 @@ export default function EmiForm({setEmiData}: { setEmiData: Function }) {
         router.push(`/?loanType=${newLoanType}`, undefined, {shallow: true});
     };
 
-    // const [loanType, setLoanType] = useState<"home" | "personal" | "car">("home");
     const [loanAmount, setLoanAmount] = useState(loanDefaults.home.loanAmount);
     const [interestRate, setInterestRate] = useState(loanDefaults.home.interestRate);
     const [tenure, setTenure] = useState(loanDefaults.home.tenure);
@@ -45,85 +40,85 @@ export default function EmiForm({setEmiData}: { setEmiData: Function }) {
         setStartDate(today);
     }, []);
 
-    // // Function to update loan details when switching tabs
-    // const handleLoanTypeChange = (event: React.SyntheticEvent, newLoanType: "home" | "personal" | "car") => {
-    //     setLoanType(newLoanType);
-    //     setLoanAmount(loanDefaults[newLoanType].loanAmount);
-    //     setInterestRate(loanDefaults[newLoanType].interestRate);
-    //     setTenure(loanDefaults[newLoanType].tenure);
-    //     setTenureType(loanDefaults[newLoanType].tenureType);
-    // };
-
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         setEmiData(calculateEmi(loanAmount, interestRate, tenure, tenureType, startDate));
     };
 
     return (
-        <form onSubmit={handleSubmit} className="max-w-4xl mx-auto bg-white rounded-lg p-6">
-            <h2 className="text-2xl font-bold text-gray-800 text-center">EMI Calculator</h2>
+        <div className="w-full bg-white bg-opacity-80 rounded-md border-2 border-gray-200">
 
-            {/* Loan Type Tabs */}
-            <Tabs value={loanType} onChange={handleLoanTypeChange} textColor="primary"
-                  indicatorColor="primary"
-                  aria-label="Loan Type Selection Tabs"
-                  variant="fullWidth">
-                <Tab icon={<HomeIcon/>} label="Home Loan" value="home"/>
-                <Tab icon={<PersonIcon/>} label="Personal Loan" value="personal"/>
-                <Tab icon={<DirectionsCarIcon/>} label="Car Loan" value="car"/>
+            {/* Full-Width Tabs */}
+            <Tabs
+                value={loanType}
+                onChange={handleLoanTypeChange}
+                textColor="primary"
+                indicatorColor="primary"
+                variant="fullWidth"
+            >
+                <Tab icon={<HomeIcon/>} label="Home Loan" value="home" className="font-medium"/>
+                <Tab icon={<PersonIcon/>} label="Personal Loan" value="personal" className="font-medium"/>
+                <Tab icon={<DirectionsCarIcon/>} label="Car Loan" value="car" className="font-medium"/>
             </Tabs>
 
-            {/* Loan Amount */}
-            <LoanInput label="Loan Amount" value={loanAmount} setValue={setLoanAmount} min={0} max={20000000} step={1}
-                       unit="₹"/>
+            {/* Form Inside the Card */}
+            <form onSubmit={handleSubmit} className="p-2 md:p-6 space-y-6">
+                <h2 className="text-3xl font-bold text-gray-800 text-center">EMI Calculator</h2>
 
-            {/* Interest Rate */}
-            <LoanInput label="Interest Rate" value={interestRate} setValue={setInterestRate} min={0} max={30} step={0.1}
-                       unit="%"/>
+                {/* Loan Amount */}
+                <LoanInput label="Loan Amount" value={loanAmount} setValue={setLoanAmount} min={0} max={20000000}
+                           step={1} unit="₹"/>
 
-            {/* Tenure */}
-            <div className="flex gap-4">
-                <div className="flex-1">
-                    <LoanInput label="Tenure" value={tenure} setValue={setTenure} min={1} max={100} step={1}
-                               unit={tenureType === "years" ? "Yr" : "Mo"}/>
+                {/* Interest Rate */}
+                <LoanInput label="Interest Rate" value={interestRate} setValue={setInterestRate} min={0} max={30}
+                           step={0.1} unit="%"/>
+
+                {/* Tenure */}
+                <div className="flex gap-4">
+                    <div className="flex-1">
+                        <LoanInput label="Tenure" value={tenure} setValue={setTenure} min={1} max={100} step={1}
+                                   unit={tenureType === "years" ? "Yr" : "Mo"}/>
+                    </div>
+                    <div className="flex-1">
+                        <label className="block text-gray-700 font-medium">Tenure Type:</label>
+                        <ToggleButtonGroup
+                            value={tenureType}
+                            size="small"
+                            exclusive
+                            onChange={(event, newValue) => {
+                                if (newValue !== null) setTenureType(newValue);
+                            }}
+                            className="w-full"
+                        >
+                            <ToggleButton value="months" className="flex-1 font-medium">
+                                Months
+                            </ToggleButton>
+                            <ToggleButton value="years" className="flex-1 font-medium">
+                                Years
+                            </ToggleButton>
+                        </ToggleButtonGroup>
+                    </div>
                 </div>
-                <div className="flex-1">
-                    <label className="block text-gray-700 font-medium">Tenure Type:</label>
-                    <ToggleButtonGroup
-                        value={tenureType}
-                        size="small"
-                        exclusive
-                        onChange={(event, newValue) => {
-                            if (newValue !== null) setTenureType(newValue);
-                        }}
-                        className="w-full"
-                    >
-                        <ToggleButton value="months" className="flex-1">
-                            Months
-                        </ToggleButton>
-                        <ToggleButton value="years" className="flex-1">
-                            Years
-                        </ToggleButton>
-                    </ToggleButtonGroup>
+
+                {/* Start Date */}
+                <div>
+                    <label className="block text-gray-700 font-medium">Start Date:</label>
+                    <input
+                        type="date"
+                        value={startDate}
+                        onChange={(e) => setStartDate(e.target.value)}
+                        className="w-full mt-1 px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none transition bg-gray-50"
+                    />
                 </div>
-            </div>
 
-            {/* Start Date */}
-            <div>
-                <label className="block text-gray-700 font-medium">Start Date:</label>
-                <input
-                    type="date"
-                    value={startDate}
-                    onChange={(e) => setStartDate(e.target.value)}
-                    className="w-full mt-1 px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none transition"
-                />
-            </div>
-
-            {/* Submit Button */}
-            <button type="submit"
-                    className="w-full bg-blue-600 text-white font-medium py-3 my-5 rounded-md hover:bg-blue-700 transition duration-300">
-                Calculate EMI
-            </button>
-        </form>
+                {/* Submit Button */}
+                <button
+                    type="submit"
+                    className="w-full bg-blue-600 text-white font-semibold py-3 mt-6 rounded-lg shadow-md hover:bg-blue-700 transition duration-300"
+                >
+                    Calculate EMI
+                </button>
+            </form>
+        </div>
     );
 }
