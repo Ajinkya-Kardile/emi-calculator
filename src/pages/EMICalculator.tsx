@@ -14,7 +14,9 @@ export default function EMICalculator() {
         <>
             <SidebarLayout>
                 <div>
-                    <h1 className="text-2xl font-bold text-center mb-6">EMI Calculator</h1>
+                    <h1 className="text-3xl font-bold text-gray-800 text-center mb-6">
+                        Best Online EMI Calculator – Calculate Your Loan Instantly
+                    </h1>
                     <EmiForm setEmiData={setEmiData}/>
                     {emiData && (
                         <>

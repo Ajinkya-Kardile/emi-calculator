@@ -4,7 +4,7 @@ import RightSidebar from "@/components/RightSidebar";
 
 export default function SidebarLayout({children}: { children: React.ReactNode }) {
     return (
-        <div className="flex w-full min-h-screen gap-2">
+        <div className="flex flex-col md:flex-row w-full min-h-screen gap-2">
             {/* Left Sidebar (Visible only on Large Screens) */}
             {/*<div className="hidden lg:block w-64">*/}
             {/*    <LeftSidebar/>*/}
@@ -15,11 +15,10 @@ export default function SidebarLayout({children}: { children: React.ReactNode })
                 {children}
             </main>
 
-            {/* Right Sidebar (Visible on Tablets & Large Screens) */}
-            <div className="hidden md:block w-64">
+            {/* Right Sidebar (Always Visible, moves below content on mobile) */}
+            <div className="w-full md:w-64 order-last md:order-none mt-4 md:mt-0">
                 <RightSidebar/>
             </div>
         </div>
-    )
-        ;
+    );
 }

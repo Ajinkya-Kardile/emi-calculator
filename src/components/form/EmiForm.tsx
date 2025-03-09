@@ -1,17 +1,17 @@
 "use client";
-import React, {useEffect, useState} from "react";
-import {calculateEmi} from "@/utils/calculateEmi";
+import React, { useEffect, useState } from "react";
+import { calculateEmi } from "@/utils/calculateEmi";
 import LoanInput from "@/components/form/LoanInput";
-import {Tabs, Tab, ToggleButton, ToggleButtonGroup} from "@mui/material";
+import { Tabs, Tab, ToggleButton, ToggleButtonGroup } from "@mui/material";
 import HomeIcon from "@mui/icons-material/Home";
 import PersonIcon from "@mui/icons-material/Person";
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
-import {loanDefaults} from "@/utils/loanDefaults";
-import {useRouter} from "next/router";
+import { loanDefaults } from "@/utils/loanDefaults";
+import { useRouter } from "next/router";
 
-export default function EmiForm({setEmiData}: { setEmiData: Function }) {
+export default function EmiForm({ setEmiData }: { setEmiData: Function }) {
     const router = useRouter();
-    const {loanType: loanQuery} = router.query;
+    const { loanType: loanQuery } = router.query;
     const [loanType, setLoanType] = useState<"home" | "personal" | "car">("home");
 
     useEffect(() => {
@@ -26,7 +26,7 @@ export default function EmiForm({setEmiData}: { setEmiData: Function }) {
         setInterestRate(loanDefaults[newLoanType].interestRate);
         setTenure(loanDefaults[newLoanType].tenure);
         setTenureType(loanDefaults[newLoanType].tenureType);
-        router.push(`/?loanType=${newLoanType}`, undefined, {shallow: true});
+        router.push(`/?loanType=${newLoanType}`, undefined, { shallow: true });
     };
 
     const [loanAmount, setLoanAmount] = useState(loanDefaults.home.loanAmount);
@@ -45,39 +45,68 @@ export default function EmiForm({setEmiData}: { setEmiData: Function }) {
         setEmiData(calculateEmi(loanAmount, interestRate, tenure, tenureType, startDate));
     };
 
-    return (
-        <div className="w-full bg-white bg-opacity-80 rounded-md border-2 border-gray-200">
+    const getHeading = () => {
+        switch (loanType) {
+            case "home":
+                return "Home Loan EMI Calculator";
+            case "personal":
+                return "Personal Loan EMI Calculator";
+            case "car":
+                return "Car Loan EMI Calculator";
+            default:
+                return "EMI Calculator - Calculate Instantly";
+        }
+    };
 
-            {/* Full-Width Tabs */}
+    return (
+        <div className="w-full bg-white shadow-xl rounded-2xl border border-gray-200 p-4 md:p-6">
+
+            {/* Loan Type Tabs */}
             <Tabs
                 value={loanType}
                 onChange={handleLoanTypeChange}
-                textColor="primary"
-                indicatorColor="primary"
                 variant="fullWidth"
+                sx={{
+                    "& .MuiTabs-indicator": { backgroundColor: "#2563EB" }, // Indicator color
+                }}
             >
-                <Tab icon={<HomeIcon/>} label="Home Loan" value="home" className="font-medium"/>
-                <Tab icon={<PersonIcon/>} label="Personal Loan" value="personal" className="font-medium"/>
-                <Tab icon={<DirectionsCarIcon/>} label="Car Loan" value="car" className="font-medium"/>
+                {[
+                    { value: "home", label: "Home", icon: <HomeIcon /> },
+                    { value: "personal", label: "Personal", icon: <PersonIcon /> },
+                    { value: "car", label: "Car", icon: <DirectionsCarIcon /> }
+                ].map(({ value, label, icon }) => (
+                    <Tab
+                        key={value}
+                        icon={icon}
+                        label={label}
+                        value={value}
+                        sx={{
+                            color: loanType === value ? "#2563EB !important" : "#64748B !important",
+                            fontWeight: loanType === value ? "bold" : "normal",
+                            "&:hover": { color: "#1E40AF !important" },
+                        }}
+                    />
+                ))}
             </Tabs>
 
-            {/* Form Inside the Card */}
+
+            {/* Loan EMI Form */}
             <form onSubmit={handleSubmit} className="p-2 md:p-6 space-y-6">
-                <h2 className="text-3xl font-bold text-gray-800 text-center">EMI Calculator</h2>
+                <h2 className="text-3xl font-extrabold text-center text-gray-900">{getHeading()}</h2>
 
                 {/* Loan Amount */}
                 <LoanInput label="Loan Amount" value={loanAmount} setValue={setLoanAmount} min={0} max={20000000}
-                           step={1} unit="₹"/>
+                           step={1} unit="₹" />
 
                 {/* Interest Rate */}
                 <LoanInput label="Interest Rate" value={interestRate} setValue={setInterestRate} min={0} max={30}
-                           step={0.1} unit="%"/>
+                           step={0.1} unit="%" />
 
                 {/* Tenure */}
                 <div className="flex gap-4">
                     <div className="flex-1">
                         <LoanInput label="Tenure" value={tenure} setValue={setTenure} min={1} max={100} step={1}
-                                   unit={tenureType === "years" ? "Yr" : "Mo"}/>
+                                   unit={tenureType === "years" ? "Yr" : "Mo"} />
                     </div>
                     <div className="flex-1">
                         <label className="block text-gray-700 font-medium">Tenure Type:</label>
@@ -90,10 +119,10 @@ export default function EmiForm({setEmiData}: { setEmiData: Function }) {
                             }}
                             className="w-full"
                         >
-                            <ToggleButton value="months" className="flex-1 font-medium">
+                            <ToggleButton value="months" className="flex-1 font-medium bg-gray-200 hover:bg-gray-300">
                                 Months
                             </ToggleButton>
-                            <ToggleButton value="years" className="flex-1 font-medium">
+                            <ToggleButton value="years" className="flex-1 font-medium bg-gray-200 hover:bg-gray-300">
                                 Years
                             </ToggleButton>
                         </ToggleButtonGroup>
@@ -114,7 +143,7 @@ export default function EmiForm({setEmiData}: { setEmiData: Function }) {
                 {/* Submit Button */}
                 <button
                     type="submit"
-                    className="w-full bg-blue-600 text-white font-semibold py-3 mt-6 rounded-lg shadow-md hover:bg-blue-700 transition duration-300"
+                    className="w-full bg-gradient-to-r from-blue-600 to-blue-800 text-white font-semibold py-3 mt-6 rounded-lg shadow-lg hover:scale-105 transition duration-300"
                 >
                     Calculate EMI
                 </button>
