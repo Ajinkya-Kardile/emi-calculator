@@ -8,9 +8,32 @@ import {loanDefaults} from "@/utils/loanDefaults";
 import HomeIcon from "@mui/icons-material/Home";
 import PersonIcon from "@mui/icons-material/Person";
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
+import {useRouter} from "next/router";
 
 export default function EmiForm({setEmiData}: { setEmiData: Function }) {
+
+    const router = useRouter();
+    const {loanType: loanQuery} = router.query;
     const [loanType, setLoanType] = useState<"home" | "personal" | "car">("home");
+
+    useEffect(() => {
+        if (typeof loanQuery === "string" && ["home", "personal", "car"].includes(loanQuery)) {
+            setLoanType(loanQuery as "home" | "personal" | "car");
+        }
+    }, [loanQuery]);
+
+
+    // Function to update loan details when switching tabs
+    const handleLoanTypeChange = (event: React.SyntheticEvent, newLoanType: "home" | "personal" | "car") => {
+        setLoanType(newLoanType);
+        setLoanAmount(loanDefaults[newLoanType].loanAmount);
+        setInterestRate(loanDefaults[newLoanType].interestRate);
+        setTenure(loanDefaults[newLoanType].tenure);
+        setTenureType(loanDefaults[newLoanType].tenureType);
+        router.push(`/?loanType=${newLoanType}`, undefined, {shallow: true});
+    };
+
+    // const [loanType, setLoanType] = useState<"home" | "personal" | "car">("home");
     const [loanAmount, setLoanAmount] = useState(loanDefaults.home.loanAmount);
     const [interestRate, setInterestRate] = useState(loanDefaults.home.interestRate);
     const [tenure, setTenure] = useState(loanDefaults.home.tenure);
@@ -22,14 +45,14 @@ export default function EmiForm({setEmiData}: { setEmiData: Function }) {
         setStartDate(today);
     }, []);
 
-    // Function to update loan details when switching tabs
-    const handleLoanTypeChange = (event: React.SyntheticEvent, newLoanType: "home" | "personal" | "car") => {
-        setLoanType(newLoanType);
-        setLoanAmount(loanDefaults[newLoanType].loanAmount);
-        setInterestRate(loanDefaults[newLoanType].interestRate);
-        setTenure(loanDefaults[newLoanType].tenure);
-        setTenureType(loanDefaults[newLoanType].tenureType);
-    };
+    // // Function to update loan details when switching tabs
+    // const handleLoanTypeChange = (event: React.SyntheticEvent, newLoanType: "home" | "personal" | "car") => {
+    //     setLoanType(newLoanType);
+    //     setLoanAmount(loanDefaults[newLoanType].loanAmount);
+    //     setInterestRate(loanDefaults[newLoanType].interestRate);
+    //     setTenure(loanDefaults[newLoanType].tenure);
+    //     setTenureType(loanDefaults[newLoanType].tenureType);
+    // };
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
