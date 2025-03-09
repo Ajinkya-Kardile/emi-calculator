@@ -1,8 +1,8 @@
 import type {Metadata} from "next";
 import "@/styles/globals.css";
 import React from "react";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import Navbar from "@/components/common/Navbar";
+import Footer from "@/components/common/Footer";
 import {HeaderAd, StickyBottomAd} from "@/components/ads/Ads";
 
 export const metadata: Metadata = {

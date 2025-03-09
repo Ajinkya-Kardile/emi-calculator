@@ -59,7 +59,7 @@ export default function EmiForm({ setEmiData }: { setEmiData: Function }) {
     };
 
     return (
-        <div className="w-full bg-white shadow-xl rounded-2xl border border-gray-200 p-4 md:p-6">
+        <div className="w-full bg-white shadow-md rounded-2xl border border-gray-200 p-4 md:p-6">
 
             {/* Loan Type Tabs */}
             <Tabs

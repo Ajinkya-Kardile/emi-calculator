@@ -4,7 +4,7 @@ import {SidebarAd} from "@/components/ads/Ads";
 
 const RightSidebar: React.FC = () => {
     return (
-        <aside className="block w-full md:w-auto bg-gray-100 shadow-lg rounded-lg p-4">
+        <aside className="block w-full md:w-auto bg-gray-100 rounded-lg p-4">
             {/* RightSidebar Navigation Links */}
             <nav className="mb-6">
                 <h2 className="text-lg font-bold mb-3">Quick Links</h2>

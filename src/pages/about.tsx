@@ -1,5 +1,5 @@
 "use client"
-import RightSidebar from "@/components/RightSidebar";
+import RightSidebar from "@/components/common/RightSidebar";
 
 export default function About() {
     return (
