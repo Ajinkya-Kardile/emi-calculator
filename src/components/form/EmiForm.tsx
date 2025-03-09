@@ -3,12 +3,18 @@ import React, {useEffect, useState} from "react";
 import {calculateEmi} from "@/utils/calculateEmi";
 import LoanInput from "@/components/form/LoanInput";
 import {ToggleButton, ToggleButtonGroup} from "@mui/material";
+import {Tabs, Tab} from "@mui/material";
+import {loanDefaults} from "@/utils/loanDefaults";
+import HomeIcon from "@mui/icons-material/Home";
+import PersonIcon from "@mui/icons-material/Person";
+import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
 
 export default function EmiForm({setEmiData}: { setEmiData: Function }) {
-    const [loanAmount, setLoanAmount] = useState(500000);
-    const [interestRate, setInterestRate] = useState(7.5);
-    const [tenure, setTenure] = useState(5);
-    const [tenureType, setTenureType] = useState<"months" | "years">("years");
+    const [loanType, setLoanType] = useState<"home" | "personal" | "car">("home");
+    const [loanAmount, setLoanAmount] = useState(loanDefaults.home.loanAmount);
+    const [interestRate, setInterestRate] = useState(loanDefaults.home.interestRate);
+    const [tenure, setTenure] = useState(loanDefaults.home.tenure);
+    const [tenureType, setTenureType] = useState<"months" | "years">(loanDefaults.home.tenureType);
     const [startDate, setStartDate] = useState("");
 
     useEffect(() => {
@@ -16,14 +22,33 @@ export default function EmiForm({setEmiData}: { setEmiData: Function }) {
         setStartDate(today);
     }, []);
 
+    // Function to update loan details when switching tabs
+    const handleLoanTypeChange = (event: React.SyntheticEvent, newLoanType: "home" | "personal" | "car") => {
+        setLoanType(newLoanType);
+        setLoanAmount(loanDefaults[newLoanType].loanAmount);
+        setInterestRate(loanDefaults[newLoanType].interestRate);
+        setTenure(loanDefaults[newLoanType].tenure);
+        setTenureType(loanDefaults[newLoanType].tenureType);
+    };
+
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         setEmiData(calculateEmi(loanAmount, interestRate, tenure, tenureType, startDate));
     };
 
     return (
-        <form onSubmit={handleSubmit} className="max-w-4xl mx-auto bg-white rounded-lg">
-            <h2 className="text-2xl font-bold text-gray-800 text-center">Home Loan EMI Calculator</h2>
+        <form onSubmit={handleSubmit} className="max-w-4xl mx-auto bg-white rounded-lg p-6">
+            <h2 className="text-2xl font-bold text-gray-800 text-center">EMI Calculator</h2>
+
+            {/* Loan Type Tabs */}
+            <Tabs value={loanType} onChange={handleLoanTypeChange} textColor="primary"
+                  indicatorColor="primary"
+                  aria-label="Loan Type Selection Tabs"
+                  variant="fullWidth">
+                <Tab icon={<HomeIcon/>} label="Home Loan" value="home"/>
+                <Tab icon={<PersonIcon/>} label="Personal Loan" value="personal"/>
+                <Tab icon={<DirectionsCarIcon/>} label="Car Loan" value="car"/>
+            </Tabs>
 
             {/* Loan Amount */}
             <LoanInput label="Loan Amount" value={loanAmount} setValue={setLoanAmount} min={0} max={20000000} step={1}
@@ -44,7 +69,6 @@ export default function EmiForm({setEmiData}: { setEmiData: Function }) {
                     <ToggleButtonGroup
                         value={tenureType}
                         size="small"
-                        aria-label="Small sizes"
                         exclusive
                         onChange={(event, newValue) => {
                             if (newValue !== null) setTenureType(newValue);
@@ -73,10 +97,8 @@ export default function EmiForm({setEmiData}: { setEmiData: Function }) {
             </div>
 
             {/* Submit Button */}
-            <button
-                type="submit"
-                className="w-full bg-blue-600 text-white font-medium py-3 my-5 rounded-md hover:bg-blue-700 transition duration-300"
-            >
+            <button type="submit"
+                    className="w-full bg-blue-600 text-white font-medium py-3 my-5 rounded-md hover:bg-blue-700 transition duration-300">
                 Calculate EMI
             </button>
         </form>
