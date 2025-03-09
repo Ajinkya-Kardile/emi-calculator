@@ -12,7 +12,6 @@ const RightSidebar: React.FC = () => {
                     <li><Link href="/" className="text-blue-600 hover:underline">🏠 Home</Link></li>
                     <li><Link href="/faq" className="text-blue-600 hover:underline">💰 FAQ </Link></li>
                     <li><Link href="/about" className="text-blue-600 hover:underline">ℹ️ About Us</Link></li>
-                    <li><Link href="/contact" className="text-blue-600 hover:underline">📞 Contact</Link></li>
                 </ul>
             </nav>
 

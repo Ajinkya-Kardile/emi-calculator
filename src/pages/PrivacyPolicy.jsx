@@ -2,7 +2,7 @@ import React from "react";
 
 const PrivacyPolicy = () => {
     return (
-        <div className="max-w-4xl mx-auto p-6">
+        <div className="max-w-4xl bg-white rounded-sm mx-auto p-6">
             <h1 className="text-3xl font-bold mb-4">Privacy Policy</h1>
             <p className="mb-4">Last updated: March 2025</p>
 
@@ -62,8 +62,8 @@ const PrivacyPolicy = () => {
                 on this page.</p>
 
             <h2 className="text-2xl font-semibold mt-6 mb-2">8. Contact Us</h2>
-            <p className="mb-4">If you have any questions about this Privacy Policy, you can contact us at [your
-                email].</p>
+            <p className="mb-4">If you have any questions about this Privacy Policy, you can contact us at <a href="mailto:support@emicalculator.com" className="text-blue-600 dark:text-blue-400">support@emicalculator.com</a>.
+            </p>
         </div>
     );
 };

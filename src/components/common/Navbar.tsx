@@ -90,11 +90,6 @@ const Navbar: React.FC = () => {
                         <li>
                             <Link href="/about" className="nav-link" onClick={closeDropdown}>About</Link>
                         </li>
-
-                        {/* Contact */}
-                        <li>
-                            <Link href="/contact" className="nav-link" onClick={closeDropdown}>Contact</Link>
-                        </li>
                     </ul>
                 </div>
             </div>
