@@ -12,12 +12,12 @@ export default function EmiChart({data}: { data: EmiResult }) {
     const pieOption: EChartsOption = {
         tooltip: {
             trigger: "item",
-            formatter: (params) => {
-                const param = Array.isArray(params) ? params[0] : params; // Handle both array and object cases
-                const value = param.value as number; // Ensure it's treated as a number
-                const percent = param.percent as number;
-                return `${param.name}: ₹${value.toLocaleString()} (${percent}%)`;
-            },
+            // formatter: (params) => {
+            //     const param = Array.isArray(params) ? params[0] : params; // Handle both array and object cases
+            //     const value = param.value as number; // Ensure it's treated as a number
+            //     const percent = param.percent as number;
+            //     return `${param.name}: ₹${value.toLocaleString()} (${percent}%)`;
+            // },
         },
         legend: {
             bottom: 0,
@@ -59,17 +59,17 @@ export default function EmiChart({data}: { data: EmiResult }) {
         tooltip: {
             trigger: "axis",
             axisPointer: { type: "cross" },
-            formatter: (params: any) => {
-                let tooltipContent = `<strong>${params[0].axisValue}</strong><br/>`;
-                params.forEach((item: any) => {
-                    const seriesColor = colors[item.seriesIndex]; // ✅ Ensure the correct color is used
-                    tooltipContent += `
-                    <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:${seriesColor};margin-right:5px;"></span>
-                    ${item.seriesName}: ₹${item.value.toLocaleString()}<br/>
-                `;
-                });
-                return tooltipContent;
-            },
+            // formatter: (params: any) => {
+            //     let tooltipContent = `<strong>${params[0].axisValue}</strong><br/>`;
+            //     params.forEach((item: any) => {
+            //         const seriesColor = colors[item.seriesIndex]; // ✅ Ensure the correct color is used
+            //         tooltipContent += `
+            //         <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:${seriesColor};margin-right:5px;"></span>
+            //         ${item.seriesName}: ₹${item.value.toLocaleString()}<br/>
+            //     `;
+            //     });
+            //     return tooltipContent;
+            // },
         },
         grid: { right: "15%", left: "10%", bottom: "15%" },
         legend: { bottom: 0, data: ["Principal", "Interest", "Balance"] },
