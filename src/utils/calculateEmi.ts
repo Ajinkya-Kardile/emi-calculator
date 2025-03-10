@@ -13,7 +13,8 @@ export function calculateEmi(
     let balance = loanAmount;
     const schedule = [];
     let totalInterest = 0;
-    let currentDate = new Date(startDate);
+    const currentDate = new Date(startDate);
+
 
     for (let i = 0; i < tenureInMonths; i++) {
         const interest = balance * monthlyRate;
@@ -21,10 +22,10 @@ export function calculateEmi(
         balance -= principal;
         totalInterest += interest;
 
-        let period;
-        let month = currentDate.toLocaleString("default", {month: "short"});
-        let year = currentDate.getFullYear();
-        period = `${month} ${year}`;
+
+        const month = currentDate.toLocaleString("default", {month: "short"});
+        const year = currentDate.getFullYear();
+        const period = `${month} ${year}`;
         schedule.push({
             period,
             month,

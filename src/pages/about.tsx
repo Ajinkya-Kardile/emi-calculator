@@ -15,14 +15,12 @@ export default function About() {
                             <p className="mb-4 font-light text-justify">
                                 We believe financial planning should be simple, transparent, and accessible to everyone.
                                 Our EMI Calculator is designed to help you make smart, informed decisions about your
-                                loans,
-                                whether it's a home loan, personal loan, car loan, or business loan.
+                                loans, whether it&apos;s a home loan, personal loan, car loan, or business loan.
                             </p>
                             <p className="mb-4 font-medium text-justify">
                                 With easy-to-use features and accurate calculations, our tool enables you to plan your
                                 loan repayments efficiently. We provide a seamless experience with instant EMI
-                                breakdowns,
-                                interest analysis, and loan comparison options.
+                                breakdowns, interest analysis, and loan comparison options.
                             </p>
                             <h3 className="mb-4 text-2xl tracking-tight font-bold text-gray-900 dark:text-white text-center">
                                 Why Choose Us?
@@ -35,9 +33,8 @@ export default function About() {
                             </ul>
                             <p className="mb-4 font-medium text-justify">
                                 Our mission is to empower users with the right financial tools to make better borrowing
-                                decisions. Whether you're a first-time borrower or an experienced investor, our EMI
-                                Calculator
-                                helps you stay ahead.
+                                decisions. Whether you&apos;re a first-time borrower or an experienced investor, our EMI
+                                Calculator helps you stay ahead.
                             </p>
                             <div className="flex justify-center mt-6">
                                 <Link

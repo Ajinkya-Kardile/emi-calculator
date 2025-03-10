@@ -9,7 +9,7 @@ import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
 import { loanDefaults } from "@/utils/loanDefaults";
 import { useRouter } from "next/router";
 
-export default function EmiForm({ setEmiData }: { setEmiData: Function }) {
+export default function EmiForm({ setEmiData }: { setEmiData: (data: ReturnType<typeof calculateEmi>) => void }) {
     const router = useRouter();
     const { loanType: loanQuery } = router.query;
     const [loanType, setLoanType] = useState<"home" | "personal" | "car">("home");

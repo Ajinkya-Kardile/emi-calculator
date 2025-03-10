@@ -1,10 +1,11 @@
 import { PDFDocument, rgb } from "pdf-lib";
 import * as fontKit from "fontkit";
-import { EmiSchedule } from "../types/emiTypes";
+import { EmiSchedule } from "@/types/emiTypes";
+import {Fontkit} from "pdf-lib/es/types/fontkit";
 
 export const generatePDF = async (schedule: EmiSchedule[]) => {
     const pdfDoc = await PDFDocument.create();
-    pdfDoc.registerFontkit(fontKit as any);
+    pdfDoc.registerFontkit(fontKit as unknown as Fontkit);
 
     const fontBytes = await fetch("/fonts/Roboto-Regular.ttf").then(res => res.arrayBuffer());
     const customFont = await pdfDoc.embedFont(fontBytes);
@@ -17,15 +18,15 @@ export const generatePDF = async (schedule: EmiSchedule[]) => {
 
     let yPosition = 800;
     let page = pdfDoc.addPage([600, 850]);
-    const { width, height } = page.getSize();
+    const { width } = page.getSize(); // Removed unused 'height'
 
     // 🏆 Title Section
     page.drawText("EMI Payment Schedule Report", {
         x: width / 2 - 110,
         y: yPosition,
-        size: 20,  // Increased size
+        size: 20,
         font: customFont,
-        color: rgb(0.09, 0.46, 0.82),  // Blue color
+        color: rgb(0.09, 0.46, 0.82),
     });
 
     yPosition -= 40;
@@ -46,7 +47,7 @@ export const generatePDF = async (schedule: EmiSchedule[]) => {
             y: yPosition - 5,
             width: tableWidth + 10,
             height: rowHeight,
-            color: rgb(0.09, 0.46, 0.82),  // RGB for #1976D2
+            color: rgb(0.09, 0.46, 0.82),
         });
 
         headers.forEach((header, i) => {

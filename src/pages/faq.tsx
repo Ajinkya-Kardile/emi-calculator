@@ -86,7 +86,7 @@ const faqs = [
         question: "What is the impact of interest rates on EMI?",
         answer: (
             <>
-                Higher interest rates increase EMI payments, while lower interest rates reduce them. It's essential to compare interest rates from different banks before choosing a loan.
+                Higher interest rates increase EMI payments, while lower interest rates reduce them. It&rsquo;s essential to compare interest rates from different banks before choosing a loan.
             </>
         ),
     },
@@ -156,7 +156,8 @@ const faqs = [
         question: "Can I use an EMI Calculator for multiple loan comparisons?",
         answer: (
             <>
-                Yes! An EMI Calculator helps you compare <span className="font-bold">different banks' loan offers</span>, check <span className="font-bold">loan affordability</span>, and select the best EMI option.
+                Yes! An EMI Calculator helps you compare <span className="font-bold">different banks&rsquo; loan offers</span>
+                , check <span className="font-bold">loan affordability</span>, and select the best EMI option.
             </>
         ),
     },

@@ -2,7 +2,6 @@ import type { AppProps } from "next/app";
 import Navbar from "@/components/common/Navbar";
 import Footer from "@/components/common/Footer";
 import "../styles/globals.css";
-import { HeaderAd, StickyBottomAd } from "@/components/ads/Ads";
 import React from "react";
 
 const MyApp = ({ Component, pageProps }: AppProps) => {

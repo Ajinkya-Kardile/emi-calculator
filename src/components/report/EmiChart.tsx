@@ -2,16 +2,21 @@
 import React from "react";
 import ReactECharts from "echarts-for-react";
 import {EmiResult} from "@/types/emiTypes";
-import * as echarts from "echarts"; // ✅ Import echarts
+import * as echarts from "echarts";
 import {EChartsOption} from "echarts";
 
 export default function EmiChart({data}: { data: EmiResult }) {
     const colors = ['#42A5F5', '#EF5350', '#4CAF50'];
+
+    // ✅ Pie Chart Configuration
     const pieOption: EChartsOption = {
         tooltip: {
-            trigger: "item" as const,
-            formatter: (params: any) => {
-                return `${params.name}: ₹${params.value.toLocaleString()} (${params.percent}%)`;
+            trigger: "item",
+            formatter: (params) => {
+                const param = Array.isArray(params) ? params[0] : params; // Handle both array and object cases
+                const value = param.value as number; // Ensure it's treated as a number
+                const percent = param.percent as number;
+                return `${param.name}: ₹${value.toLocaleString()} (${percent}%)`;
             },
         },
         legend: {
@@ -29,10 +34,7 @@ export default function EmiChart({data}: { data: EmiResult }) {
                     borderColor: "#fff",
                     borderWidth: 2,
                 },
-                label: {
-                    show: false,
-                    position: "center",
-                },
+                label: { show: false, position: "center" },
                 emphasis: {
                     label: {
                         show: true,
@@ -40,16 +42,14 @@ export default function EmiChart({data}: { data: EmiResult }) {
                         fontWeight: "bold",
                     },
                 },
-                labelLine: {
-                    show: false,
-                },
+                labelLine: { show: false },
                 data: [
                     {
                         name: "Total Principal",
                         value: data.totalPayment - data.totalInterest,
-                        itemStyle: {color: colors[0]}
-                    }, // Blue
-                    {name: "Total Interest", value: data.totalInterest, itemStyle: {color: colors[1]}}, // Red
+                        itemStyle: { color: colors[0] }
+                    },
+                    { name: "Total Interest", value: data.totalInterest, itemStyle: { color: colors[1] } },
                 ],
             },
         ],
@@ -71,12 +71,12 @@ export default function EmiChart({data}: { data: EmiResult }) {
                 return tooltipContent;
             },
         },
-        grid: {right: "15%", left: "10%", bottom: "15%"},
-        legend: {bottom: 0, data: ["Principal", "Interest", "Balance"]},
+        grid: { right: "15%", left: "10%", bottom: "15%" },
+        legend: { bottom: 0, data: ["Principal", "Interest", "Balance"] },
         xAxis: {
             type: "category",
             data: data.schedule.map((item) => item.period),
-            axisLine: {lineStyle: {color: "#424242"}},
+            axisLine: { lineStyle: { color: "#424242" } },
         },
         yAxis: [
             {
@@ -84,69 +84,69 @@ export default function EmiChart({data}: { data: EmiResult }) {
                 name: "Principal",
                 position: "right",
                 alignTicks: true,
-                axisLine: {lineStyle: {color: colors[0]}}, // Green Axis
-                axisLabel: {formatter: "₹{value}"},
+                axisLine: { lineStyle: { color: colors[0] } },
+                axisLabel: { formatter: "₹{value}" },
             },
             {
                 type: "value",
                 name: "Interest",
                 position: "right",
-                offset: 60, // Moves it right for better visibility
+                offset: 60,
                 alignTicks: true,
-                axisLine: {lineStyle: {color: colors[1]}}, // Orange Axis
-                axisLabel: {formatter: "₹{value}"},
+                axisLine: { lineStyle: { color: colors[1] } },
+                axisLabel: { formatter: "₹{value}" },
             },
             {
                 type: "value",
                 name: "Balance",
                 position: "left",
-                axisLine: {lineStyle: {color: colors[2]}}, // Blue Axis
-                axisLabel: {formatter: "₹{value}"},
-            }
+                axisLine: { lineStyle: { color: colors[2] } },
+                axisLabel: { formatter: "₹{value}" },
+            },
         ],
         series: [
             {
                 name: "Principal",
                 type: "line",
-                yAxisIndex: 0, // ✅ Uses the first y-axis (Green)
+                yAxisIndex: 0,
                 smooth: true,
                 showSymbol: false,
                 data: data.schedule.map((item) => item.principal),
-                lineStyle: {width: 2, color: colors[0]}, // Green
+                lineStyle: { width: 2, color: colors[0] },
                 areaStyle: {
                     color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                        {offset: 0, color: "rgba(76, 175, 80, 0.6)"},
-                        {offset: 1, color: "rgba(76, 175, 80, 0.1)"},
+                        { offset: 0, color: "rgba(76, 175, 80, 0.6)" },
+                        { offset: 1, color: "rgba(76, 175, 80, 0.1)" },
                     ]),
                 },
             },
             {
                 name: "Interest",
                 type: "line",
-                yAxisIndex: 1, // ✅ Uses the second y-axis (Orange)
+                yAxisIndex: 1,
                 smooth: true,
                 showSymbol: false,
                 data: data.schedule.map((item) => item.interest),
-                lineStyle: {width: 2, color: colors[1]}, // Orange
+                lineStyle: { width: 2, color: colors[1] },
                 areaStyle: {
                     color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                        {offset: 0, color: "rgba(255, 152, 0, 0.6)"},
-                        {offset: 1, color: "rgba(255, 152, 0, 0.1)"},
+                        { offset: 0, color: "rgba(255, 152, 0, 0.6)" },
+                        { offset: 1, color: "rgba(255, 152, 0, 0.1)" },
                     ]),
                 },
             },
             {
                 name: "Balance",
                 type: "line",
-                yAxisIndex: 2, // ✅ Uses the third y-axis (Blue)
+                yAxisIndex: 2,
                 smooth: true,
                 showSymbol: false,
                 data: data.schedule.map((item) => item.balance),
-                lineStyle: {width: 2, color: colors[2]}, // Blue
+                lineStyle: { width: 2, color: colors[2] },
                 areaStyle: {
                     color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                        {offset: 0, color: "rgba(2, 136, 209, 0.6)"},
-                        {offset: 1, color: "rgba(2, 136, 209, 0.1)"},
+                        { offset: 0, color: "rgba(2, 136, 209, 0.6)" },
+                        { offset: 1, color: "rgba(2, 136, 209, 0.1)" },
                     ]),
                 },
             },
@@ -182,7 +182,7 @@ export default function EmiChart({data}: { data: EmiResult }) {
 
                 {/* Pie Chart */}
                 <div className="flex flex-col items-center">
-                <h3 className="text-lg font-semibold text-gray-700 text-center mb-3">
+                    <h3 className="text-lg font-semibold text-gray-700 text-center mb-3">
                         Principal vs Interest
                     </h3>
                     <ReactECharts option={pieOption} style={{height: "320px", width: "100%"}}/>

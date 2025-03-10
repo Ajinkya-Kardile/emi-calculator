@@ -5,7 +5,6 @@ import EmiForm from "@/components/form/EmiForm";
 import EmiTable from "@/components/report/EmiTable";
 import EmiChart from "@/components/report/EmiChart";
 import {EmiResult} from "@/types/emiTypes";
-import {InlineAd} from "@/components/ads/Ads";
 import SidebarLayout from "@/components/layout/sidebarLayout";
 import LoanInfo from "@/components/common/LoanInfo";
 
