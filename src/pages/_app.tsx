@@ -1,7 +1,7 @@
 import type { AppProps } from "next/app";
 import Navbar from "@/components/common/Navbar";
 import Footer from "@/components/common/Footer";
-import "../styles/globals.css";
+import "@/styles/globals.css";
 import React from "react";
 import type {Metadata} from "next";
 
