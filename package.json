@@ -9,6 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mantine/core": "^7.17.1",
+    "@mui/icons-material": "^6.4.7",
+    "@mui/material": "^6.4.7",
     "echarts": "^5.6.0",
     "echarts-for-react": "^3.0.3",
     "fontkit": "^2.0.4",
