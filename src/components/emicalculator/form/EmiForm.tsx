@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { calculateEmi } from "@/utils/calculateEmi";
-import LoanInput from "@/components/form/LoanInput";
+import LoanInput from "@/components/emicalculator/form/LoanInput";
 import { Tabs, Tab, ToggleButton, ToggleButtonGroup } from "@mui/material";
 import HomeIcon from "@mui/icons-material/Home";
 import PersonIcon from "@mui/icons-material/Person";

@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import {SidebarAd} from "@/components/ads/Ads";
+import { SidebarAd } from "@/components/ads/Ads";
 
 const LeftSidebar: React.FC = () => {
     return (
