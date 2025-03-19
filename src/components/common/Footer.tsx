@@ -13,7 +13,7 @@ const footerData = {
         {name: "Home", url: "/"},
         {name: "FAQs", url: "/faq"},
         {name: "About Us", url: "/about"},
-        {name: "Contact Us", url: "mailto:support@emicalculator.com"},
+        {name: "Contact Us", url: "mailto:emicalculatortool@gmail.com"},
     ],
     tools: [
         {name: "Home Loan EMI Calculator", url: "/?loanType=home"},
