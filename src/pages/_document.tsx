@@ -5,6 +5,7 @@ export default function Document() {
         <Html lang="en">
             <Head>
                 {/* ✅ Google Tag Manager (GTM) */}
+                {/* eslint-disable-next-line @next/next/next-script-for-ga */}
                 <script
                     dangerouslySetInnerHTML={{
                         __html: `

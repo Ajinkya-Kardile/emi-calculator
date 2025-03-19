@@ -86,7 +86,7 @@ export default function EMIInfo() {
                         <strong>Interest Rate</strong> – Higher <span className="font-bold">interest rates</span> lead
                         to increased EMI payments.
                         The rate depends on the loan type (e.g., <span className="font-bold">Home Loan, Personal Loan, or Car Loan</span>)
-                        and the lender's terms.
+                        and the lender&#39;s terms.
                     </li>
                     <li>
                         <strong>Loan Tenure</strong> – A <span className="font-bold">longer tenure</span> reduces the
