@@ -8,7 +8,7 @@ export default function Document() {
             <meta name="description"
                   content="Use our EMI Calculator to estimate your monthly loan installments for home, car, personal, or business loans. Calculate interest, tenure, and total repayment with ease."/>
             <link rel="canonical" href="https://emicalculatortool.in/"/>
-            <meta name="google-site-verification" content="Gv-JvvDBGJDvYDrZudH9JhbJ-zdP7-sWLngDMpI7E-o"/>
+            <meta name="google-site-verification" content="Gv-JvvDBGJDvYDrZudH9JhbJ-zdP7-sWLngDMpI7E-o" />
             <Head/>
             <body>
             <Main/>
