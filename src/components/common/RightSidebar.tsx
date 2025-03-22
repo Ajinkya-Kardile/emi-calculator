@@ -8,12 +8,12 @@ const RightSidebar: React.FC = () => {
             <div className="mb-8">
                 <h2 className="text-lg font-semibold text-gray-800 mb-2">🔧 EMI Calculator Tools</h2>
                 <ul className="space-y-1">
-                    <li><Link href="/?loanType=home" className="block text-gray-700 hover:text-blue-600 font-medium">🏠
+                    <li><Link href="/emi-calculator?loanType=home" className="block text-gray-700 hover:text-blue-600 font-medium">🏠
                         Home Loan Calculator</Link></li>
-                    <li><Link href="/?loanType=personal"
+                    <li><Link href="/emi-calculator?loanType=personal"
                               className="block text-gray-700 hover:text-blue-600 font-medium">👤 Personal Loan
                         Calculator</Link></li>
-                    <li><Link href="/?loanType=car" className="block text-gray-700 hover:text-blue-600 font-medium">🚗
+                    <li><Link href="/emi-calculator?loanType=car" className="block text-gray-700 hover:text-blue-600 font-medium">🚗
                         Car Loan Calculator</Link></li>
                 </ul>
             </div>

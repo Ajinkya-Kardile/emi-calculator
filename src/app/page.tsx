@@ -1,7 +1,5 @@
 import React from "react";
-import SidebarLayout from "@/components/layout/sidebarLayout";
-import LoanInfo from "@/components/emicalculator/LoanInfo";
-import SimpleEmiCalculator from "@/components/emicalculator/SimpleEmiCalculator";
+import SimpleEmiCalculator from "./emi-calculator/page";
 import Head from "next/head";
 
 export default function Home() {
@@ -29,13 +27,7 @@ export default function Home() {
                 <meta property="og:image" content="https://emicalculatortool.in/logo.png"/>
 
             </Head>
-
-            <div className="w-full">
-                <SidebarLayout>
-                    <SimpleEmiCalculator/>
-                </SidebarLayout>
-                <LoanInfo/>
-            </div>
+            <SimpleEmiCalculator/>
         </>
     );
 

@@ -1,6 +1,8 @@
+"use client"
 import React, {useState} from "react";
 import SidebarLayout from "@/components/layout/sidebarLayout";
 import Head from "next/head";
+import {ExpandLess, ExpandMore} from "@mui/icons-material";
 
 
 const faqs = [
@@ -261,9 +263,11 @@ export default function FAQ() {
                                     onClick={() => toggleAccordion(index)}
                                 >
                                     {faq.question}
-                                    <span className="text-xl font-bold">
-                                    {openIndex === index ? "−" : "+"}
-                                </span>
+                                    {openIndex === index ? (
+                                        <ExpandLess fontSize="large"/>
+                                    ) : (
+                                        <ExpandMore fontSize="large"/>
+                                    )}
                                 </button>
                                 <div
                                     className={`overflow-hidden transition-all duration-300 ${

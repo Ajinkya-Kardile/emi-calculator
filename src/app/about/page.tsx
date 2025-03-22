@@ -64,7 +64,7 @@ export default function About() {
                                     Calculator helps you stay ahead.
                                 </p>
                                 <div className="flex justify-center mt-6">
-                                    <Link href="/" passHref>
+                                    <Link href="/emi-calculator" passHref>
                                         <button
                                             className="px-6 py-3 text-lg font-semibold text-blue-600 border-2 border-blue-600 rounded-lg shadow-md hover:bg-blue-600 hover:text-white transition-all duration-300">
                                             🏠 Go to Home

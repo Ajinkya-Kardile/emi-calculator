@@ -1,34 +1,23 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { calculateEmi } from "@/utils/calculateEmi";
-import LoanInput from "@/components/emicalculator/form/LoanInput";
-import { Tabs, Tab, ToggleButton, ToggleButtonGroup } from "@mui/material";
+
+import React, {useEffect, useState} from "react";
+import {calculateEmi} from "@/utils/calculateEmi";
+import LoanInput from "./LoanInput";
+import {Tabs, Tab, ToggleButton, ToggleButtonGroup} from "@mui/material";
 import HomeIcon from "@mui/icons-material/Home";
 import PersonIcon from "@mui/icons-material/Person";
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
-import { loanDefaults } from "@/utils/loanDefaults";
-import { useRouter } from "next/router";
+import {loanDefaults} from "@/utils/loanDefaults";
+import {useSearchParams, useRouter} from "next/navigation";
 
-export default function EmiForm({ setEmiData }: { setEmiData: (data: ReturnType<typeof calculateEmi>) => void }) {
+export default function EmiForm({setEmiData}: { setEmiData: (data: ReturnType<typeof calculateEmi>) => void }) {
+    const searchParams = useSearchParams();
     const router = useRouter();
-    const { loanType: loanQuery } = router.query;
+
+    // Get loan type from URL query params
+    const loanQuery = searchParams.get("loanType");
+
     const [loanType, setLoanType] = useState<"home" | "personal" | "car">("home");
-
-    useEffect(() => {
-        if (typeof loanQuery === "string" && ["home", "personal", "car"].includes(loanQuery)) {
-            setLoanType(loanQuery as "home" | "personal" | "car");
-        }
-    }, [loanQuery]);
-
-    const handleLoanTypeChange = (event: React.SyntheticEvent, newLoanType: "home" | "personal" | "car") => {
-        setLoanType(newLoanType);
-        setLoanAmount(loanDefaults[newLoanType].loanAmount);
-        setInterestRate(loanDefaults[newLoanType].interestRate);
-        setTenure(loanDefaults[newLoanType].tenure);
-        setTenureType(loanDefaults[newLoanType].tenureType);
-        router.push(`/?loanType=${newLoanType}`, undefined, { shallow: true });
-    };
-
     const [loanAmount, setLoanAmount] = useState(loanDefaults.home.loanAmount);
     const [interestRate, setInterestRate] = useState(loanDefaults.home.interestRate);
     const [tenure, setTenure] = useState(loanDefaults.home.tenure);
@@ -36,9 +25,27 @@ export default function EmiForm({ setEmiData }: { setEmiData: (data: ReturnType<
     const [startDate, setStartDate] = useState("");
 
     useEffect(() => {
+        if (loanQuery && ["home", "personal", "car"].includes(loanQuery)) {
+            setLoanType(loanQuery as "home" | "personal" | "car");
+        }
+    }, [loanQuery]);
+
+    useEffect(() => {
         const today = new Date().toISOString().split("T")[0];
         setStartDate(today);
     }, []);
+
+    const handleLoanTypeChange = (event: React.SyntheticEvent, newLoanType: "home" | "personal" | "car") => {
+        setLoanType(newLoanType);
+        setLoanAmount(loanDefaults[newLoanType].loanAmount);
+        setInterestRate(loanDefaults[newLoanType].interestRate);
+        setTenure(loanDefaults[newLoanType].tenure);
+        setTenureType(loanDefaults[newLoanType].tenureType);
+
+        // Update URL with new loan type
+        router.push(`/?loanType=${newLoanType}`);
+    };
+
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -46,16 +53,11 @@ export default function EmiForm({ setEmiData }: { setEmiData: (data: ReturnType<
     };
 
     const getHeading = () => {
-        switch (loanType) {
-            case "home":
-                return "Home Loan EMI Calculator";
-            case "personal":
-                return "Personal Loan EMI Calculator";
-            case "car":
-                return "Car Loan EMI Calculator";
-            default:
-                return "EMI Calculator - Calculate Instantly";
-        }
+        return {
+            home: "Home Loan EMI Calculator",
+            personal: "Personal Loan EMI Calculator",
+            car: "Car Loan EMI Calculator"
+        }[loanType] || "EMI Calculator - Calculate Instantly";
     };
 
     return (
@@ -67,14 +69,14 @@ export default function EmiForm({ setEmiData }: { setEmiData: (data: ReturnType<
                 onChange={handleLoanTypeChange}
                 variant="fullWidth"
                 sx={{
-                    "& .MuiTabs-indicator": { backgroundColor: "#2563EB" }, // Indicator color
+                    "& .MuiTabs-indicator": {backgroundColor: "#2563EB"}, // Indicator color
                 }}
             >
                 {[
-                    { value: "home", label: "Home", icon: <HomeIcon /> },
-                    { value: "personal", label: "Personal", icon: <PersonIcon /> },
-                    { value: "car", label: "Car", icon: <DirectionsCarIcon /> }
-                ].map(({ value, label, icon }) => (
+                    {value: "home", label: "Home", icon: <HomeIcon/>},
+                    {value: "personal", label: "Personal", icon: <PersonIcon/>},
+                    {value: "car", label: "Car", icon: <DirectionsCarIcon/>}
+                ].map(({value, label, icon}) => (
                     <Tab
                         key={value}
                         icon={icon}
@@ -83,7 +85,7 @@ export default function EmiForm({ setEmiData }: { setEmiData: (data: ReturnType<
                         sx={{
                             color: loanType === value ? "#2563EB !important" : "#64748B !important",
                             fontWeight: loanType === value ? "bold" : "normal",
-                            "&:hover": { color: "#1E40AF !important" },
+                            "&:hover": {color: "#1E40AF !important"},
                         }}
                     />
                 ))}
@@ -96,17 +98,17 @@ export default function EmiForm({ setEmiData }: { setEmiData: (data: ReturnType<
 
                 {/* Loan Amount */}
                 <LoanInput label="Loan Amount" value={loanAmount} setValue={setLoanAmount} min={0} max={20000000}
-                           step={1} unit="₹" />
+                           step={1} unit="₹"/>
 
                 {/* Interest Rate */}
                 <LoanInput label="Interest Rate" value={interestRate} setValue={setInterestRate} min={0} max={30}
-                           step={0.1} unit="%" />
+                           step={0.1} unit="%"/>
 
                 {/* Tenure */}
                 <div className="flex gap-4">
                     <div className="flex-1">
                         <LoanInput label="Tenure" value={tenure} setValue={setTenure} min={1} max={100} step={1}
-                                   unit={tenureType === "years" ? "Yr" : "Mo"} />
+                                   unit={tenureType === "years" ? "Yr" : "Mo"}/>
                     </div>
                     <div className="flex-1">
                         <label className="block text-gray-700 font-medium">Tenure Type:</label>

@@ -19,7 +19,7 @@ const Navbar: React.FC = () => {
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 {/* Logo */}
                 <Link href="/" className="flex items-center space-x-3">
-                    <Image src="/logo.png" width={32} height={32} alt="Flowbite Logo"/>
+                    <Image src="/logo.png" width={32} height={32} alt="Emi Calculator Logo"/>
                     <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">EMI Calculator</span>
                 </Link>
 
@@ -66,9 +66,9 @@ const Navbar: React.FC = () => {
                                 dropdownOpen ? "block opacity-100 scale-100 z-50" : "hidden opacity-0 scale-95"
                             }`}>
                                 {[
-                                    {name: "🏡 Home Loan EMI", href: "/?loanType=home"},
-                                    {name: "👤 Personal Loan EMI", href: "/?loanType=personal"},
-                                    {name: "🚗 Car Loan EMI", href: "/?loanType=car"},
+                                    {name: "🏡 Home Loan EMI", href: "/emi-calculator?loanType=home"},
+                                    {name: "👤 Personal Loan EMI", href: "/emi-calculator?loanType=personal"},
+                                    {name: "🚗 Car Loan EMI", href: "/emi-calculator?loanType=car"},
                                 ].map((item, index) => (
                                     <li key={index}>
                                         <Link href={item.href}
@@ -81,12 +81,12 @@ const Navbar: React.FC = () => {
                             </ul>
                         </li>
 
-                        {/* FAQ */}
+                        {/* faq */}
                         <li>
                             <Link href="/faq" className="nav-link" onClick={closeDropdown}>FAQ</Link>
                         </li>
 
-                        {/* About */}
+                        {/* about */}
                         <li>
                             <Link href="/about" className="nav-link" onClick={closeDropdown}>About</Link>
                         </li>
