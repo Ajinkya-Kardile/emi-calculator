@@ -34,17 +34,24 @@ export const metadata: Metadata = {
     robots: "index, follow",
     openGraph: {
         type: "website",
-        title: "EMI Calculator Tool - Calculate Loan EMI Instantly",
-        description: "Use our advanced EMI Calculator to estimate your monthly installments for home, car, and personal loans. Get real-time calculations and financial insights.",
+        title: "EMI Calculator Online - Easy Loan EMI Calculator for Home, Car & Personal Loans",
+        description: "Use our free EMI Calculator to calculate loan EMI online for home, car, personal, and business loans. Get instant monthly installment breakdowns with interest rates, loan tenure, and repayment schedules.",
         url: "https://emicalculatortool.in",
-        images: ["https://emicalculatortool.in/og-image.jpg"],
         siteName: "EMI Calculator Tool",
+        images: [
+            {
+                url: "https://emicalculatortool.in/og-image.png",
+                width: 1200,
+                height: 630,
+                alt: "Best EMI Calculator Online - Calculate Loan EMI Instantly"
+            }
+        ],
     },
     twitter: {
         card: "summary_large_image",
         title: "EMI Calculator Tool - Calculate Loan EMI Instantly",
         description: "Use our advanced EMI Calculator to estimate your monthly installments for home, car, and personal loans. Get real-time calculations and financial insights.",
-        images: ["https://emicalculatortool.in/og-image.jpg"],
+        images: ["https://emicalculatortool.in/og-image.png"],
         site: "@emicalculatortool",
     },
     icons: {
