@@ -1,8 +1,8 @@
 "use client"
 import React, {useState} from "react";
 import SidebarLayout from "@/components/layout/sidebarLayout";
-import Head from "next/head";
 import {ExpandLess, ExpandMore} from "@mui/icons-material";
+import Head from "next/head";
 
 
 const faqs = [
@@ -232,22 +232,11 @@ export default function FAQ() {
     return (
         <>
             <Head>
-                {/* SEO Meta Tags */}
-                <title>FAQs | EMI Calculator - Loan & Interest Queries</title>
-                <meta name="description"
-                      content="Get answers to all your EMI-related questions. Learn how EMI is calculated, factors affecting loan EMI, and ways to reduce your monthly payments."/>
-                <meta name="keywords"
-                      content="EMI Calculator, Loan EMI, Personal Loan, Home Loan, Car Loan, Interest Rate, Loan Repayment, Financial Planning"/>
-                <meta name="robots" content="index, follow"/>
-
-                {/* Open Graph (OG) Meta Tags for Social Media */}
-                <meta property="og:title" content="FAQs | EMI Calculator - Loan & Interest Queries"/>
-                <meta property="og:description"
-                      content="Find answers to all your loan EMI questions. Understand how EMIs work and how you can manage your repayments efficiently."/>
-                <meta property="og:url" content="https://emicalculatortool.in/faq"/>
-                <meta property="og:type" content="website"/>
-                <meta property="og:image" content="https://emicalculatortool.in/logo.png"/>
-
+                <title>FAQs | Loan & Interest Queries</title>
+                <meta
+                    name="description"
+                    content="Get answers to all your EMI-related questions. Learn how EMI is calculated, factors affecting loan EMI, and ways to reduce your monthly payments."
+                />
             </Head>
             <SidebarLayout>
                 <div className="max-w-5xl mx-auto p-6">

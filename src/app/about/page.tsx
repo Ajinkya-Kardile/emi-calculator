@@ -1,27 +1,14 @@
-import Head from "next/head";
 import SidebarLayout from "@/components/layout/sidebarLayout";
 import React from "react";
 import Link from "next/link";
+import {Metadata} from "next";
 
+export const metadata: Metadata = {
+    title: "About Us"
+};
 export default function About() {
     return (
         <>
-            <Head>
-                <title>About Us - EMI Calculator</title>
-                <meta name="description"
-                      content="Learn about our EMI Calculator and how it helps you make smart financial decisions with accurate and transparent loan calculations."/>
-                <meta name="keywords"
-                      content="EMI calculator, loan calculator, finance planning, loan comparison, home loan, personal loan"/>
-                <meta name="author" content="EMI Calculator Team"/>
-                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-                <meta property="og:title" content="About Us - EMI Calculator"/>
-                <meta property="og:description"
-                      content="Our EMI Calculator simplifies financial planning with fast, transparent, and accurate calculations."/>
-                <meta property="og:type" content="website"/>
-                <meta property="og:url" content="https://www.emicalculator.com/about"/>
-                <meta property="og:image" content="https://www.emicalculator.com/images/emi-banner.png"/>
-            </Head>
-
             <SidebarLayout>
                 <div className=" w-full">
                     {/* About Section */}

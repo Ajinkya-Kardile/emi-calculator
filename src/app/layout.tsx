@@ -12,9 +12,24 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-    title: "EMI Calculator Tool - Accurate Loan EMI Calculator for Home, Car & Personal Loans",
+    title: {
+        default: "EMI Calculator Tool - Accurate Loan EMI Calculator for Home, Car & Personal Loans",
+        template: "%s - EMI Calculator Tool",
+    },
     description: "Calculate your Home Loan, Car Loan, and Personal Loan EMIs with our Free EMI Calculator Tool. Get detailed EMI breakdowns, interest calculations, and amortization schedules instantly.",
-    keywords: "EMI Calculator, Loan Calculator, Home Loan EMI, Car Loan EMI, Personal Loan EMI, Interest Calculator, Amortization Schedule, Loan Repayment, Loan EMI Calculator India",
+    keywords: [
+        "EMI Calculator", "EMI Calculator Tool", "Loan Calculator", "Loan Calculator Tool",
+        "Home Loan EMI", "Home Loan EMI Calculator", "Personal Loan EMI", "Car Loan EMI",
+        "Interest Rate Calculator", "Loan Repayment", "Loan EMI Calculator", "Education Loan EMI",
+        "Business Loan EMI", "Bike Loan EMI", "Home Loan Interest Calculator", "Mortgage EMI Calculator",
+        "EMI Payment Calculator", "Loan Interest Rate Calculator", "Housing Loan EMI",
+        "SBI EMI Calculator", "HDFC Loan EMI Calculator", "ICICI EMI Calculator", "Axis Bank EMI Calculator",
+        "Bank Loan EMI Calculator", "Online EMI Calculator", "Loan Amortization Calculator",
+        "EMI Calculation Formula", "Fixed vs Floating Interest Rate", "Best Loan EMI Calculator",
+        "EMI Calculator with Prepayment", "Loan Repayment Schedule", "Monthly EMI Calculator",
+        "Financial Planning Tool", "Loan Affordability Calculator", "Interest Rate Comparison",
+        "Personal Finance Calculator", "Best Loan Calculator in India"
+    ],
     authors: [{name: "EMI Calculator Tool"}],
     robots: "index, follow",
     openGraph: {

@@ -1,5 +1,9 @@
 import React from "react";
-
+import {Metadata} from "next";
+export const metadata: Metadata = {
+    title: "FAQs | Loan & Interest Queries",
+    description: "Get answers to all your EMI-related questions. Learn how EMI is calculated, factors affecting loan EMI, and ways to reduce your monthly payments."
+};
 const PrivacyPolicy = () => {
     return (
         <div className="max-w-4xl bg-white rounded-sm mx-auto p-6">
