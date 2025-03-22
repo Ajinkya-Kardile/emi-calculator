@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, {Suspense} from "react";
 import {useState} from "react";
 import EmiForm from "./form/EmiForm";
 import EmiTable from "./report/EmiTable";
@@ -8,6 +8,7 @@ import {EmiResult} from "@/types/emiTypes";
 import SidebarLayout from "@/components/layout/sidebarLayout";
 import LoanInfo from "./LoanInfo";
 import Head from "next/head";
+import Loader from "@/components/common/Loader";
 
 export default function SimpleEmiCalculator() {
     const [emiData, setEmiData] = useState<EmiResult | null>(null);
@@ -26,17 +27,20 @@ export default function SimpleEmiCalculator() {
                     <h1 className="text-3xl font-bold text-gray-800 text-center mb-6">
                         Best Online EMI Calculator – Calculate Your Loan Instantly
                     </h1>
-                    <EmiForm setEmiData={setEmiData}/>
+                    <Suspense fallback={<Loader />}>
+                        <EmiForm setEmiData={setEmiData}/>
+                    </Suspense>
                     {emiData && (
-                        <>
-                            <div className="mt-6 space-y-6">
-                                <EmiChart data={emiData}/>
-                                {/*<InlineAd/>*/}
-                                <EmiTable schedule={emiData.schedule}/>
-                            </div>
+                            <>
+                                <div className="mt-6 space-y-6">
+                                    <EmiChart data={emiData}/>
+                                    {/*<InlineAd/>*/}
+                                    <EmiTable schedule={emiData.schedule}/>
+                                </div>
 
-                        </>
-                    )}
+                            </>
+                        )}
+
                 </SidebarLayout>
                 <LoanInfo/>
             </div>
