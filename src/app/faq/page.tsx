@@ -2,7 +2,6 @@
 import React, {useState} from "react";
 import SidebarLayout from "@/components/layout/sidebarLayout";
 import {ExpandLess, ExpandMore} from "@mui/icons-material";
-import Head from "next/head";
 
 
 const faqs = [
@@ -231,13 +230,6 @@ export default function FAQ() {
 
     return (
         <>
-            <Head>
-                <title>FAQs | Loan & Interest Queries</title>
-                <meta
-                    name="description"
-                    content="Get answers to all your EMI-related questions. Learn how EMI is calculated, factors affecting loan EMI, and ways to reduce your monthly payments."
-                />
-            </Head>
             <SidebarLayout>
                 <div className="max-w-5xl mx-auto p-6">
                     <h1 className="text-3xl font-bold text-gray-800 text-center mb-6">
