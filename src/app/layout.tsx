@@ -65,7 +65,7 @@ export default function RootLayout({children}: { children: React.ReactNode }) {
         <GoogleTagManager gtmId="GTM-KCH58NMT"/>
         <body>
         <Navbar/>
-        <main className="mx-auto p-0 md:p-4">{children}</main>
+        <main className="mx-auto py-1 md:p-4">{children}</main>
         <Footer/>
         </body>
         </html>

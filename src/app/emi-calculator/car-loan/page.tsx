@@ -17,7 +17,7 @@ export default function CarLoan() {
                     <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white leading-tight">
                         Car Loan EMI Calculator
                     </h1>
-                    <h2 className="text-xl sm:text-2xl font-semibold text-blue-700 dark:text-orange-400 mt-2">
+                    <h2 className="text-xl sm:text-2xl font-semibold text-blue-900 dark:text-blue-400 mt-2">
                         Estimate Your Monthly Payments Instantly
                     </h2>
                     <p className="text-lg text-gray-600 dark:text-gray-300 mt-3">
@@ -26,7 +26,7 @@ export default function CarLoan() {
                     </p>
                 </div>
 
-                <div className="mt-8 bg-white dark:bg-gray-800">
+                <div className="mt-4">
                     <EmiCalculatorComponent loanType="car"/>
                 </div>
             </SidebarLayout>
