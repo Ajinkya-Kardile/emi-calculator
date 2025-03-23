@@ -92,9 +92,9 @@ export default function EmiForm({loanType, setEmiData}: {
 
 
             <form onSubmit={handleSubmit} className="p-2 md:p-6 space-y-6">
-                <h2 className="text-3xl font-bold text-center text-gray-900">
-                    {loanType.toUpperCase()} LOAN EMI CALCULATOR
-                </h2>
+                {/*<h2 className="text-3xl font-bold text-center text-gray-900">*/}
+                {/*    {loanType.toUpperCase()} LOAN EMI CALCULATOR*/}
+                {/*</h2>*/}
 
                 <LoanInput label="Loan Amount" value={loanAmount} setValue={setLoanAmount} min={0} max={20000000}
                            step={1} unit="₹"/>
