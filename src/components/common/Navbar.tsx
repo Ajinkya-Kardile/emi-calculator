@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useRef, useEffect } from "react";
+import React, {useState, useRef, useEffect} from "react";
 import Image from "next/image";
 import Link from "next/link";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
@@ -20,6 +20,7 @@ const Navbar: React.FC = () => {
                 setDropdownOpen(false);
             }
         }
+
         document.addEventListener("mousedown", handleClickOutside);
         return () => document.removeEventListener("mousedown", handleClickOutside);
     }, []);
@@ -35,7 +36,7 @@ const Navbar: React.FC = () => {
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 {/* Logo */}
                 <Link href="/" className="flex items-center space-x-3">
-                    <Image src="/logo.png" width={32} height={32} alt="EMI Calculator Logo" />
+                    <Image src="/logo.png" width={32} height={32} alt="EMI Calculator Logo"/>
                     <span className="text-2xl font-semibold text-gray-900 dark:text-white">
                         EMI Calculator
                     </span>
@@ -48,12 +49,14 @@ const Navbar: React.FC = () => {
                     onClick={() => setNavbar(!navbar)}
                 >
                     {navbar ? (
-                        <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"
+                        <svg className="w-6 h-6 text-gray-900 dark:text-white" fill="none" stroke="currentColor"
+                             strokeWidth="2" strokeLinecap="round"
                              strokeLinejoin="round" viewBox="0 0 24 24">
                             <path d="M6 18L18 6M6 6l12 12"/>
                         </svg>
                     ) : (
-                        <svg className="w-6 h-6 text-gray-900 dark:text-white" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"
+                        <svg className="w-6 h-6 text-gray-900 dark:text-white" fill="none" stroke="currentColor"
+                             strokeWidth="2" strokeLinecap="round"
                              strokeLinejoin="round" viewBox="0 0 24 24">
                             <path d="M3 12h18M3 6h18M3 18h18"/>
                         </svg>
@@ -62,10 +65,11 @@ const Navbar: React.FC = () => {
 
                 {/* Navigation Links */}
                 <div className={`w-full md:flex md:items-center md:w-auto ${navbar ? "block" : "hidden"}`}>
-                    <ul className="flex flex-col md:flex-row md:space-x-8 p-4 md:p-0 rounded-lg bg-gray-50 dark:bg-gray-800 md:dark:bg-transparent">
+                    <ul className="flex flex-col md:flex-row md:space-x-8 p-4 md:p-0 rounded-lg bg-gray-50 md:bg-transparent dark:bg-gray-800 md:dark:bg-transparent">
                         {/* Home */}
                         <li>
-                            <Link href="/" className="nav-link text-gray-900 dark:text-white" onClick={closeMenus}>Home</Link>
+                            <Link href="/" className="nav-link text-gray-900 dark:text-white"
+                                  onClick={closeMenus}>Home</Link>
                         </li>
 
                         {/* Tools Dropdown */}
@@ -74,7 +78,8 @@ const Navbar: React.FC = () => {
                                 className="nav-link flex items-center gap-1 text-gray-900 dark:text-white"
                                 onClick={() => setDropdownOpen(!dropdownOpen)}
                             >
-                                Tools <KeyboardArrowDownIcon className={`transition-transform ${dropdownOpen ? "rotate-180" : ""}`} />
+                                Tools <KeyboardArrowDownIcon
+                                className={`transition-transform ${dropdownOpen ? "rotate-180" : ""}`}/>
                             </button>
 
                             {/* Dropdown Menu */}
@@ -85,10 +90,26 @@ const Navbar: React.FC = () => {
                                 }`}
                             >
                                 {[
-                                    { name: "Home Loan EMI", href: "/emi-calculator/home-loan", icon: <HomeIcon fontSize="small" /> },
-                                    { name: "Personal Loan EMI", href: "/emi-calculator/personal-loan", icon: <PersonIcon fontSize="small" /> },
-                                    { name: "Car Loan EMI", href: "/emi-calculator/car-loan", icon: <DirectionsCarIcon fontSize="small" /> },
-                                    { name: "Credit Card Payment EMI", href: "/emi-calculator/credit-card", icon: <CreditCardIcon fontSize="small" /> },
+                                    {
+                                        name: "Home Loan EMI",
+                                        href: "/emi-calculator/home-loan",
+                                        icon: <HomeIcon fontSize="small"/>
+                                    },
+                                    {
+                                        name: "Personal Loan EMI",
+                                        href: "/emi-calculator/personal-loan",
+                                        icon: <PersonIcon fontSize="small"/>
+                                    },
+                                    {
+                                        name: "Car Loan EMI",
+                                        href: "/emi-calculator/car-loan",
+                                        icon: <DirectionsCarIcon fontSize="small"/>
+                                    },
+                                    {
+                                        name: "Credit Card Payment EMI",
+                                        href: "/emi-calculator/credit-card",
+                                        icon: <CreditCardIcon fontSize="small"/>
+                                    },
                                 ].map((item, index) => (
                                     <li key={index}>
                                         <Link href={item.href}
@@ -103,12 +124,14 @@ const Navbar: React.FC = () => {
 
                         {/* FAQ */}
                         <li>
-                            <Link href="/faq" className="nav-link text-gray-900 dark:text-white" onClick={closeMenus}>FAQ</Link>
+                            <Link href="/faq" className="nav-link text-gray-900 dark:text-white"
+                                  onClick={closeMenus}>FAQ</Link>
                         </li>
 
                         {/* About */}
                         <li>
-                            <Link href="/about" className="nav-link text-gray-900 dark:text-white" onClick={closeMenus}>About</Link>
+                            <Link href="/about" className="nav-link text-gray-900 dark:text-white"
+                                  onClick={closeMenus}>About</Link>
                         </li>
                     </ul>
                 </div>
