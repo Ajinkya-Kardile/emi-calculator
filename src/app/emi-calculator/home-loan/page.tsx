@@ -1,8 +1,8 @@
 import EmiCalculatorComponent from "@/components/emicalculator/emicalculator";
 import SidebarLayout from "@/components/layout/sidebarLayout";
-import LoanInfo from "../LoanInfo";
 import React from "react";
-import { Metadata } from "next";
+import {Metadata} from "next";
+import HomeLoanInfo from "./homeLoanInfo";
 
 export const metadata: Metadata = {
     title: "Home Loan EMI Calculator – Calculate Your Monthly Payments & Interest",
@@ -14,10 +14,13 @@ export default function HomeLoan() {
     return (
         <div className="w-full">
             <SidebarLayout>
-                <div className="text-center max-w-3xl mx-auto">
+                <div className="text-center max-w-5xl mx-auto">
                     <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white leading-tight">
-                        Home Loan EMI Calculator – Get Accurate Monthly Payments Instantly
+                        Home Loan EMI Calculator
                     </h1>
+                    <h2 className="text-xl sm:text-2xl font-semibold text-blue-700 dark:text-orange-400 mt-2">
+                        Get Accurate Monthly Payments Instantly
+                    </h2>
                     <p className="text-lg text-gray-600 dark:text-gray-300 mt-3">
                         Use our free <strong>Home Loan EMI Calculator</strong> to estimate your <strong>monthly
                         installment, total interest, and repayment schedule</strong> effortlessly.
@@ -29,7 +32,7 @@ export default function HomeLoan() {
                     <EmiCalculatorComponent loanType="home"/>
                 </div>
             </SidebarLayout>
-            <LoanInfo />
+            <HomeLoanInfo/>
         </div>
     );
 }

@@ -1,8 +1,8 @@
 import EmiCalculatorComponent from "@/components/emicalculator/emicalculator";
 import SidebarLayout from "@/components/layout/sidebarLayout";
-import LoanInfo from "../LoanInfo";
 import React from "react";
 import {Metadata} from "next";
+import CarLoanInfo from "./carLoanInfo";
 
 export const metadata: Metadata = {
     title: "Car Loan EMI Calculator - Calculate Your EMI Instantly",
@@ -13,10 +13,13 @@ export default function CarLoan() {
     return (
         <div className="w-full">
             <SidebarLayout>
-                <div className="text-center max-w-3xl mx-auto">
+                <div className="text-center max-w-5xl mx-auto">
                     <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white leading-tight">
                         Car Loan EMI Calculator
                     </h1>
+                    <h2 className="text-xl sm:text-2xl font-semibold text-blue-700 dark:text-orange-400 mt-2">
+                        Estimate Your Monthly Payments Instantly
+                    </h2>
                     <p className="text-lg text-gray-600 dark:text-gray-300 mt-3">
                         Easily calculate your monthly car loan payments, total interest, and loan tenure.
                         Plan your auto loan with accurate EMI calculations in seconds.
@@ -27,7 +30,7 @@ export default function CarLoan() {
                     <EmiCalculatorComponent loanType="car"/>
                 </div>
             </SidebarLayout>
-            <LoanInfo/>
+            <CarLoanInfo/>
         </div>
     );
 }
