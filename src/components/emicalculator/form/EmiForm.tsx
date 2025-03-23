@@ -131,7 +131,9 @@ export default function EmiForm({loanType, setEmiData}: {
                         type="date"
                         value={startDate}
                         onChange={(e) => setStartDate(e.target.value)}
-                        className="w-full mt-1 px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none transition bg-gray-50"
+                        className="w-full mt-1 px-4 py-2 border border-gray-300 text-gray-700
+                   rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none transition
+                   bg-gray-50 dark:bg-gray-50 dark:text-gray-700 dark:border-gray-300"
                     />
                 </div>
 
