@@ -18,7 +18,7 @@ const RightSidebar: React.FC = () => {
                               className="block text-gray-700 hover:text-blue-600 font-medium">🚗
                         Car Loan Calculator</Link></li>
                     <li><Link href="/emi-calculator/credit-card"
-                              className="block text-gray-700 hover:text-blue-600 font-medium">🚗
+                              className="block text-gray-700 hover:text-blue-600 font-medium">💳
                         Credit Card Payment EMI Calculator</Link></li>
                 </ul>
             </div>

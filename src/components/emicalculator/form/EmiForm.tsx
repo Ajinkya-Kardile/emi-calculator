@@ -1,24 +1,27 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
-import { calculateEmi } from "@/utils/calculateEmi";
+import React, {useState, useEffect} from "react";
+import {useRouter} from "next/navigation";
+import {calculateEmi} from "@/utils/calculateEmi";
 import LoanInput from "./LoanInput";
-import { Tab, Tabs, ToggleButton, ToggleButtonGroup } from "@mui/material";
-import { loanDefaults } from "@/utils/loanDefaults";
+import {Tab, Tabs, ToggleButton, ToggleButtonGroup} from "@mui/material";
+import {loanDefaults} from "@/utils/loanDefaults";
 import HomeIcon from "@mui/icons-material/Home";
 import PersonIcon from "@mui/icons-material/Person";
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
 
 const loanTypes = [
-    { value: "home", label: "Home Loan", icon: <HomeIcon />, href: "/emi-calculator/home-loan" },
-    { value: "personal", label: "Personal Loan", icon: <PersonIcon />, href: "/emi-calculator/personal-loan" },
-    { value: "car", label: "Car Loan", icon: <DirectionsCarIcon />, href: "/emi-calculator/car-loan" },
-    { value: "creditCard", label: "Credit Card", icon: <CreditCardIcon />, href: "/emi-calculator/credit-card" },
+    {value: "home", label: "Home Loan", icon: <HomeIcon/>, href: "/emi-calculator/home-loan"},
+    {value: "personal", label: "Personal Loan", icon: <PersonIcon/>, href: "/emi-calculator/personal-loan"},
+    {value: "car", label: "Car Loan", icon: <DirectionsCarIcon/>, href: "/emi-calculator/car-loan"},
+    {value: "creditCard", label: "Credit Card", icon: <CreditCardIcon/>, href: "/emi-calculator/credit-card"},
 ];
 
-export default function EmiForm({ loanType, setEmiData }: { loanType: keyof typeof loanDefaults; setEmiData: (data: ReturnType<typeof calculateEmi>) => void }) {
+export default function EmiForm({loanType, setEmiData}: {
+    loanType: keyof typeof loanDefaults;
+    setEmiData: (data: ReturnType<typeof calculateEmi>) => void
+}) {
     const router = useRouter();
     const selectedIndex = loanTypes.findIndex((tab) => tab.value === loanType);
     const defaultValues = loanDefaults[loanType] || loanDefaults["home"];
@@ -44,16 +47,30 @@ export default function EmiForm({ loanType, setEmiData }: { loanType: keyof type
 
     return (
         <div className="w-full bg-white shadow-md rounded-2xl border border-gray-200 p-4 md:p-6">
-            {/* Loan Type Tabs */}
             <Tabs
                 value={selectedIndex}
                 onChange={(_, newIndex) => router.push(loanTypes[newIndex].href)}
                 variant="fullWidth"
                 sx={{
-                    "& .MuiTabs-indicator": { backgroundColor: "#2563EB" },
+                    "& .MuiTabs-indicator": {
+                        backgroundColor: "#2563EB",
+                        height: "2px",
+                        bottom: 0,
+                        "@media (max-width: 767px)": {
+                            display: "none", // Hide default indicator in grid mode
+                        },
+                    },
+                    "& .MuiTabs-flexContainer": {
+                        display: "grid",
+                        gridTemplateColumns: "repeat(2, 1fr)", // 2x2 grid for mobile
+                        gap: "8px",
+                        "@media (min-width: 768px)": {
+                            display: "flex", // Row layout for tablets and above
+                        },
+                    },
                 }}
             >
-                {loanTypes.map(({ value, label, icon }, index) => (
+                {loanTypes.map(({value, label, icon}, index) => (
                     <Tab
                         key={value}
                         icon={icon}
@@ -62,23 +79,32 @@ export default function EmiForm({ loanType, setEmiData }: { loanType: keyof type
                         sx={{
                             color: loanType === value ? "#2563EB !important" : "#64748B !important",
                             fontWeight: loanType === value ? "bold" : "normal",
-                            "&:hover": { color: "#1E40AF !important" },
+                            "&:hover": {color: "#1E40AF !important"},
+                            minWidth: "auto", // Allows proper spacing in grid mode
+                            borderBottom: loanType === value ? "3px solid #2563EB" : "3px solid transparent", // Manual indicator
+                            "@media (min-width: 768px)": {
+                                borderBottom: "none", // Use MUI indicator in row mode
+                            },
                         }}
                     />
                 ))}
             </Tabs>
 
+
             <form onSubmit={handleSubmit} className="p-2 md:p-6 space-y-6">
-                <h2 className="text-3xl font-extrabold text-center text-gray-900">
-                    {loanType.toUpperCase()} Loan EMI Calculator
+                <h2 className="text-3xl font-bold text-center text-gray-900">
+                    {loanType.toUpperCase()} LOAN EMI CALCULATOR
                 </h2>
 
-                <LoanInput label="Loan Amount" value={loanAmount} setValue={setLoanAmount} min={0} max={20000000} step={1} unit="₹" />
-                <LoanInput label="Interest Rate" value={interestRate} setValue={setInterestRate} min={0} max={30} step={0.1} unit="%" />
+                <LoanInput label="Loan Amount" value={loanAmount} setValue={setLoanAmount} min={0} max={20000000}
+                           step={1} unit="₹"/>
+                <LoanInput label="Interest Rate" value={interestRate} setValue={setInterestRate} min={0} max={30}
+                           step={0.1} unit="%"/>
 
                 <div className="flex gap-4">
                     <div className="flex-1">
-                        <LoanInput label="Tenure" value={tenure} setValue={setTenure} min={1} max={100} step={1} unit={tenureType === "years" ? "Yr" : "Mo"} />
+                        <LoanInput label="Tenure" value={tenure} setValue={setTenure} min={1} max={100} step={1}
+                                   unit={tenureType === "years" ? "Yr" : "Mo"}/>
                     </div>
                     <div className="flex-1">
                         <label className="block text-gray-700 font-medium">Tenure Type:</label>

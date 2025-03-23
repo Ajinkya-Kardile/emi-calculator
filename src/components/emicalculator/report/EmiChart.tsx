@@ -12,12 +12,6 @@ export default function EmiChart({data}: { data: EmiResult }) {
     const pieOption: EChartsOption = {
         tooltip: {
             trigger: "item",
-            // formatter: (params) => {
-            //     const param = Array.isArray(params) ? params[0] : params; // Handle both array and object cases
-            //     const value = param.value as number; // Ensure it's treated as a number
-            //     const percent = param.percent as number;
-            //     return `${param.name}: ₹${value.toLocaleString()} (${percent}%)`;
-            // },
         },
         legend: {
             bottom: 0,
@@ -34,7 +28,7 @@ export default function EmiChart({data}: { data: EmiResult }) {
                     borderColor: "#fff",
                     borderWidth: 2,
                 },
-                label: { show: false, position: "center" },
+                label: {show: false, position: "center"},
                 emphasis: {
                     label: {
                         show: true,
@@ -42,14 +36,14 @@ export default function EmiChart({data}: { data: EmiResult }) {
                         fontWeight: "bold",
                     },
                 },
-                labelLine: { show: false },
+                labelLine: {show: false},
                 data: [
                     {
                         name: "Total Principal",
                         value: data.totalPayment - data.totalInterest,
-                        itemStyle: { color: colors[0] }
+                        itemStyle: {color: colors[0]}
                     },
-                    { name: "Total Interest", value: data.totalInterest, itemStyle: { color: colors[1] } },
+                    {name: "Total Interest", value: data.totalInterest, itemStyle: {color: colors[1]}},
                 ],
             },
         ],
@@ -58,25 +52,14 @@ export default function EmiChart({data}: { data: EmiResult }) {
     const areaOption: EChartsOption = {
         tooltip: {
             trigger: "axis",
-            axisPointer: { type: "cross" },
-            // formatter: (params: any) => {
-            //     let tooltipContent = `<strong>${params[0].axisValue}</strong><br/>`;
-            //     params.forEach((item: any) => {
-            //         const seriesColor = colors[item.seriesIndex]; // ✅ Ensure the correct color is used
-            //         tooltipContent += `
-            //         <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:${seriesColor};margin-right:5px;"></span>
-            //         ${item.seriesName}: ₹${item.value.toLocaleString()}<br/>
-            //     `;
-            //     });
-            //     return tooltipContent;
-            // },
+            axisPointer: {type: "cross"},
         },
-        grid: { right: "15%", left: "10%", bottom: "15%" },
-        legend: { bottom: 0, data: ["Principal", "Interest", "Balance"] },
+        grid: {right: "15%", left: "10%", bottom: "15%"},
+        legend: {bottom: 0, data: ["Principal", "Interest", "Balance"]},
         xAxis: {
             type: "category",
             data: data.schedule.map((item) => item.period),
-            axisLine: { lineStyle: { color: "#424242" } },
+            axisLine: {lineStyle: {color: "#424242"}},
         },
         yAxis: [
             {
@@ -84,8 +67,8 @@ export default function EmiChart({data}: { data: EmiResult }) {
                 name: "Principal",
                 position: "right",
                 alignTicks: true,
-                axisLine: { lineStyle: { color: colors[0] } },
-                axisLabel: { formatter: "₹{value}" },
+                axisLine: {lineStyle: {color: colors[0]}},
+                axisLabel: {formatter: "₹{value}"},
             },
             {
                 type: "value",
@@ -93,15 +76,15 @@ export default function EmiChart({data}: { data: EmiResult }) {
                 position: "right",
                 offset: 60,
                 alignTicks: true,
-                axisLine: { lineStyle: { color: colors[1] } },
-                axisLabel: { formatter: "₹{value}" },
+                axisLine: {lineStyle: {color: colors[1]}},
+                axisLabel: {formatter: "₹{value}"},
             },
             {
                 type: "value",
                 name: "Balance",
                 position: "left",
-                axisLine: { lineStyle: { color: colors[2] } },
-                axisLabel: { formatter: "₹{value}" },
+                axisLine: {lineStyle: {color: colors[2]}},
+                axisLabel: {formatter: "₹{value}"},
             },
         ],
         series: [
@@ -112,11 +95,11 @@ export default function EmiChart({data}: { data: EmiResult }) {
                 smooth: true,
                 showSymbol: false,
                 data: data.schedule.map((item) => item.principal),
-                lineStyle: { width: 2, color: colors[0] },
+                lineStyle: {width: 2, color: colors[0]},
                 areaStyle: {
                     color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                        { offset: 0, color: "rgba(76, 175, 80, 0.6)" },
-                        { offset: 1, color: "rgba(76, 175, 80, 0.1)" },
+                        {offset: 0, color: "rgba(76, 175, 80, 0.6)"},
+                        {offset: 1, color: "rgba(76, 175, 80, 0.1)"},
                     ]),
                 },
             },
@@ -127,11 +110,11 @@ export default function EmiChart({data}: { data: EmiResult }) {
                 smooth: true,
                 showSymbol: false,
                 data: data.schedule.map((item) => item.interest),
-                lineStyle: { width: 2, color: colors[1] },
+                lineStyle: {width: 2, color: colors[1]},
                 areaStyle: {
                     color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                        { offset: 0, color: "rgba(255, 152, 0, 0.6)" },
-                        { offset: 1, color: "rgba(255, 152, 0, 0.1)" },
+                        {offset: 0, color: "rgba(255, 152, 0, 0.6)"},
+                        {offset: 1, color: "rgba(255, 152, 0, 0.1)"},
                     ]),
                 },
             },
@@ -142,11 +125,11 @@ export default function EmiChart({data}: { data: EmiResult }) {
                 smooth: true,
                 showSymbol: false,
                 data: data.schedule.map((item) => item.balance),
-                lineStyle: { width: 2, color: colors[2] },
+                lineStyle: {width: 2, color: colors[2]},
                 areaStyle: {
                     color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                        { offset: 0, color: "rgba(2, 136, 209, 0.6)" },
-                        { offset: 1, color: "rgba(2, 136, 209, 0.1)" },
+                        {offset: 0, color: "rgba(2, 136, 209, 0.6)"},
+                        {offset: 1, color: "rgba(2, 136, 209, 0.1)"},
                     ]),
                 },
             },

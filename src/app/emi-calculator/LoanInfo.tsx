@@ -1,5 +1,3 @@
-"use client";
-import React from "react";
 export default function EMIInfo() {
     return (
         <div className="w-full mx-auto mt-4 p-6 bg-white rounded-lg">
