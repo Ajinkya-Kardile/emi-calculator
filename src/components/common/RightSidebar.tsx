@@ -8,17 +8,22 @@ const RightSidebar: React.FC = () => {
             <div className="mb-8">
                 <h2 className="text-lg font-semibold text-gray-800 mb-2">🔧 EMI Calculator Tools</h2>
                 <ul className="space-y-1">
-                    <li><Link href="/emi-calculator?loanType=home" className="block text-gray-700 hover:text-blue-600 font-medium">🏠
+                    <li><Link href="/emi-calculator/home-loan"
+                              className="block text-gray-700 hover:text-blue-600 font-medium">🏠
                         Home Loan Calculator</Link></li>
-                    <li><Link href="/emi-calculator?loanType=personal"
+                    <li><Link href="/emi-calculator/personal-loan"
                               className="block text-gray-700 hover:text-blue-600 font-medium">👤 Personal Loan
                         Calculator</Link></li>
-                    <li><Link href="/emi-calculator?loanType=car" className="block text-gray-700 hover:text-blue-600 font-medium">🚗
+                    <li><Link href="/emi-calculator/car-loan"
+                              className="block text-gray-700 hover:text-blue-600 font-medium">🚗
                         Car Loan Calculator</Link></li>
+                    <li><Link href="/emi-calculator/credit-card"
+                              className="block text-gray-700 hover:text-blue-600 font-medium">🚗
+                        Credit Card Payment EMI Calculator</Link></li>
                 </ul>
             </div>
 
-            {/* Quick Links Section */}
+
             <nav className="mb-8">
                 <h2 className="text-lg font-semibold text-gray-800 mb-2">🌐 Quick Links</h2>
                 <ul className="space-y-2 ">
@@ -38,7 +43,8 @@ const RightSidebar: React.FC = () => {
                            className="block text-gray-700 hover:text-blue-600 font-medium">RBI Official Website</a>
                     </li>
                     <li><a href="https://www.rbi.org.in/Scripts/FAQView.aspx?Id=76" target="_blank"
-                           rel="noopener noreferrer" className="block text-gray-700 hover:text-blue-600 font-medium">RBI Loan Guidelines</a></li>
+                           rel="noopener noreferrer" className="block text-gray-700 hover:text-blue-600 font-medium">RBI
+                        Loan Guidelines</a></li>
                     <li><a href="https://www.sebi.gov.in/" target="_blank" rel="noopener noreferrer"
                            className="block text-gray-700 hover:text-blue-600 font-medium">SEBI Official Website</a>
                     </li>

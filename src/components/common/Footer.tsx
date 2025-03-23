@@ -16,9 +16,10 @@ const footerData = {
         {name: "Contact Us", url: "mailto:emicalculatortool@gmail.com"},
     ],
     tools: [
-        {name: "Home Loan EMI Calculator", url: "/emi-calculator?loanType=home"},
-        {name: "Personal Loan EMI Calculator", url: "/emi-calculator?loanType=personal"},
-        {name: "Car Loan EMI Calculator", url: "/emi-calculator?loanType=car"},
+        {name: "Home Loan EMI Calculator", url: "/emi-calculator/home-loan"},
+        {name: "Personal Loan EMI Calculator", url: "/emi-calculator/personal-loan"},
+        {name: "Car Loan EMI Calculator", url: "/emi-calculator/car-loan"},
+        {name: "Credit Card EMI Calculator", url: "/emi-calculator/credit-card"},
     ],
     legal: [
         {name: "Privacy Policy", url: "/privacy-policy"},

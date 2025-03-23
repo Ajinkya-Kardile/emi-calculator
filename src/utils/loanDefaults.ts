@@ -17,4 +17,10 @@ export const loanDefaults = {
         tenure: 5,
         tenureType: "years" as "months" | "years",
     },
+    creditCard: {
+        loanAmount: 50000,
+        interestRate: 15.0,
+        tenure: 12,
+        tenureType: "years" as "months" | "years",
+    }
 };

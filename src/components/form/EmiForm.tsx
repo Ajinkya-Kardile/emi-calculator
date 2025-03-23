@@ -1,92 +1,64 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { calculateEmi } from "@/utils/calculateEmi";
 import LoanInput from "./LoanInput";
-import { Tabs, Tab, ToggleButton, ToggleButtonGroup } from "@mui/material";
+import { Tab, Tabs, ToggleButton, ToggleButtonGroup } from "@mui/material";
+import { loanDefaults } from "@/utils/loanDefaults";
 import HomeIcon from "@mui/icons-material/Home";
 import PersonIcon from "@mui/icons-material/Person";
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
-import { loanDefaults } from "@/utils/loanDefaults";
 
-export default function EmiForm({ setEmiData }: { setEmiData: (data: ReturnType<typeof calculateEmi>) => void }) {
-    const pathname = usePathname();
+const loanTypes = [
+    { value: "home", label: "Home Loan", icon: <HomeIcon />, href: "/emi-calculator/home-loan" },
+    { value: "personal", label: "Personal Loan", icon: <PersonIcon />, href: "/emi-calculator/personal-loan" },
+    { value: "car", label: "Car Loan", icon: <DirectionsCarIcon />, href: "/emi-calculator/car-loan" },
+    { value: "creditCard", label: "Credit Card", icon: <CreditCardIcon />, href: "/emi-calculator/credit-card" },
+];
+
+export default function EmiForm({ loanType, setEmiData }: { loanType: keyof typeof loanDefaults; setEmiData: (data: ReturnType<typeof calculateEmi>) => void }) {
     const router = useRouter();
+    const selectedIndex = loanTypes.findIndex((tab) => tab.value === loanType);
+    const defaultValues = loanDefaults[loanType] || loanDefaults["home"];
 
-    // Map routes to loan types
-    const routeToLoanType: Record<string, "home" | "personal" | "car" | "creditCard"> = {
-        "/emi-calculator/home-loan": "home",
-        "/emi-calculator/personal-loan": "personal",
-        "/emi-calculator/car-loan": "car",
-        "/emi-calculator/credit-card-emi": "creditCard",
-    };
+    const [loanAmount, setLoanAmount] = useState(defaultValues.loanAmount);
+    const [interestRate, setInterestRate] = useState(defaultValues.interestRate);
+    const [tenure, setTenure] = useState(defaultValues.tenure);
+    const [tenureType, setTenureType] = useState<"months" | "years">(defaultValues.tenureType);
+    const [startDate, setStartDate] = useState(new Date().toISOString().split("T")[0]);
 
-    const loanType = routeToLoanType[pathname] || "home"; // Default to home loan
-    const [loanAmount, setLoanAmount] = useState(loanDefaults[loanType].loanAmount);
-    const [interestRate, setInterestRate] = useState(loanDefaults[loanType].interestRate);
-    const [tenure, setTenure] = useState(loanDefaults[loanType].tenure);
-    const [tenureType, setTenureType] = useState<"months" | "years">(loanDefaults[loanType].tenureType);
-    const [startDate, setStartDate] = useState("");
-
+    // Reset state when loanType changes
     useEffect(() => {
-        const today = new Date().toISOString().split("T")[0];
-        setStartDate(today);
-    }, []);
-
-    useEffect(() => {
-        // Update loan details when route changes
-        setLoanAmount(loanDefaults[loanType].loanAmount);
-        setInterestRate(loanDefaults[loanType].interestRate);
-        setTenure(loanDefaults[loanType].tenure);
-        setTenureType(loanDefaults[loanType].tenureType);
+        setLoanAmount(defaultValues.loanAmount);
+        setInterestRate(defaultValues.interestRate);
+        setTenure(defaultValues.tenure);
+        setTenureType(defaultValues.tenureType);
     }, [loanType]);
-
-    const handleLoanTypeChange = (event: React.SyntheticEvent, newLoanType: "home" | "personal" | "car" | "creditCard") => {
-        const loanTypeToRoute: Record<string, string> = {
-            home: "/emi-calculator/home-loan",
-            personal: "/emi-calculator/personal-loan",
-            car: "/emi-calculator/car-loan",
-            creditCard: "/emi-calculator/credit-card-emi",
-        };
-        router.push(loanTypeToRoute[newLoanType]);
-    };
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         setEmiData(calculateEmi(loanAmount, interestRate, tenure, tenureType, startDate));
     };
 
-    const getHeading = () => ({
-        home: "Home Loan EMI Calculator",
-        personal: "Personal Loan EMI Calculator",
-        car: "Car Loan EMI Calculator",
-        creditCard: "Credit Card EMI Calculator",
-    })[loanType] || "EMI Calculator";
-
     return (
         <div className="w-full bg-white shadow-md rounded-2xl border border-gray-200 p-4 md:p-6">
             {/* Loan Type Tabs */}
             <Tabs
-                value={loanType}
-                onChange={handleLoanTypeChange}
+                value={selectedIndex}
+                onChange={(_, newIndex) => router.push(loanTypes[newIndex].href)}
                 variant="fullWidth"
                 sx={{
-                    "& .MuiTabs-indicator": { backgroundColor: "#2563EB" }, // Indicator color
+                    "& .MuiTabs-indicator": { backgroundColor: "#2563EB" },
                 }}
             >
-                {[
-                    { value: "home", label: "Home Loan", icon: <HomeIcon /> },
-                    { value: "personal", label: "Personal Loan", icon: <PersonIcon /> },
-                    { value: "car", label: "Car Loan", icon: <DirectionsCarIcon /> },
-                    { value: "creditCard", label: "Credit Card", icon: <CreditCardIcon /> },
-                ].map(({ value, label, icon }) => (
+                {loanTypes.map(({ value, label, icon }, index) => (
                     <Tab
                         key={value}
                         icon={icon}
                         label={label}
-                        value={value}
+                        value={index}
                         sx={{
                             color: loanType === value ? "#2563EB !important" : "#64748B !important",
                             fontWeight: loanType === value ? "bold" : "normal",
@@ -96,17 +68,14 @@ export default function EmiForm({ setEmiData }: { setEmiData: (data: ReturnType<
                 ))}
             </Tabs>
 
-            {/* Loan EMI Form */}
             <form onSubmit={handleSubmit} className="p-2 md:p-6 space-y-6">
-                <h2 className="text-3xl font-extrabold text-center text-gray-900">{getHeading()}</h2>
+                <h2 className="text-3xl font-extrabold text-center text-gray-900">
+                    {loanType.toUpperCase()} Loan EMI Calculator
+                </h2>
 
-                {/* Loan Amount */}
                 <LoanInput label="Loan Amount" value={loanAmount} setValue={setLoanAmount} min={0} max={20000000} step={1} unit="₹" />
-
-                {/* Interest Rate */}
                 <LoanInput label="Interest Rate" value={interestRate} setValue={setInterestRate} min={0} max={30} step={0.1} unit="%" />
 
-                {/* Tenure */}
                 <div className="flex gap-4">
                     <div className="flex-1">
                         <LoanInput label="Tenure" value={tenure} setValue={setTenure} min={1} max={100} step={1} unit={tenureType === "years" ? "Yr" : "Mo"} />
@@ -117,9 +86,7 @@ export default function EmiForm({ setEmiData }: { setEmiData: (data: ReturnType<
                             value={tenureType}
                             size="small"
                             exclusive
-                            onChange={(event, newValue) => {
-                                if (newValue !== null) setTenureType(newValue);
-                            }}
+                            onChange={(event, newValue) => newValue && setTenureType(newValue)}
                             className="w-full"
                         >
                             <ToggleButton value="months" className="flex-1 font-medium bg-gray-200 hover:bg-gray-300">
@@ -132,7 +99,6 @@ export default function EmiForm({ setEmiData }: { setEmiData: (data: ReturnType<
                     </div>
                 </div>
 
-                {/* Start Date */}
                 <div>
                     <label className="block text-gray-700 font-medium">Start Date:</label>
                     <input
