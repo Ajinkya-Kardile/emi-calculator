@@ -1,45 +1,65 @@
 @import "tailwindcss";
 
 :root {
-    --background: #f8f9fa;
-    --foreground: #212529;
-    --primary: #007bff;
-    --secondary: #6c757d;
-    --border: #dee2e6;
-    --hover: #e9ecef;
+    /* Light Mode */
+    --background: #f8f9fa; /* Soft Off-White */
+    --foreground: #212529; /* Dark Gray */
+    --primary: #007bff; /* Modern Blue */
+    --secondary: #ff6b00; /* Vibrant Orange */
+    --muted: #adb5bd; /* Subtle Gray */
+    --card-bg: #ffffff; /* White Cards */
+    --border: #dee2e6; /* Light Border */
+    --hover: rgba(0, 123, 255, 0.1); /* Fix: Added Hover Background */
+
+    /* Dark Mode */
+    --background-dark: #121212; /* Deep Gray */
+    --foreground-dark: #f8f9fa; /* Light Gray */
+    --card-bg-dark: #1e1e1e; /* Dark Card */
+    --border-dark: #333; /* Darker Border */
+    --hover-dark: rgba(255, 255, 255, 0.1); /* Dark Mode Hover */
 }
 
+/* Light Mode */
 body {
     background: var(--background);
     color: var(--foreground);
     font-family: "Inter", sans-serif;
     line-height: 1.6;
+    transition: background 0.3s, color 0.3s;
 }
 
-/* Table Styling */
+/* Dark Mode */
+body.dark-mode {
+    background: var(--background-dark);
+    color: var(--foreground-dark);
+}
+
+/* 📌 Modern Table Styling */
 table {
     width: 100%;
     border-collapse: collapse;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    background: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background: var(--card-bg);
+    transition: background 0.3s;
 }
 
-/* Table Header */
+/* 📌 Table Header */
 thead {
     background-color: var(--primary);
     color: white;
-    font-weight: 400;
+    font-weight: 600;
+    text-transform: uppercase;
 }
 
 th {
-    padding: 10px;
-    text-transform: uppercase;
+    padding: 12px;
+    text-align: left;
     letter-spacing: 0.05em;
 }
 
-/* Table Rows */
+/* 📌 Table Rows */
 tbody tr {
     transition: background 0.3s ease;
 }
@@ -49,21 +69,24 @@ tbody tr:nth-child(even) {
 }
 
 tbody tr:hover {
-    background-color: rgba(0, 123, 255, 0.1);
+    background-color: var(--hover);
 }
 
-/* Table Cells */
+/* 📌 Table Cells */
 td {
-    padding: 10px;
+    padding: 12px;
     border-bottom: 1px solid var(--border);
 }
 
-/*!* Responsive Table *!*/
-/*@media (max-width: 768px) {*/
-/*    table {*/
-/*        display: block;*/
-/*        width: 100%;*/
-/*        overflow-x: auto;*/
-/*        white-space: nowrap;*/
-/*    }*/
-/*}*/
+/* 📌 Dark Mode Table */
+.dark-mode table {
+    background: var(--card-bg-dark);
+}
+
+.dark-mode tbody tr:nth-child(even) {
+    background-color: var(--hover-dark);
+}
+
+.dark-mode tbody tr:hover {
+    background-color: var(--hover-dark);
+}
