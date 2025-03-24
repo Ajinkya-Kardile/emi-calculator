@@ -63,7 +63,7 @@ export default function RootLayout({children}: { children: React.ReactNode }) {
     return (
         <html lang="en">
         <GoogleTagManager gtmId="GTM-KCH58NMT"/>
-        <body>
+        <body className="bg-gray-200 dark:bg-gray-700">
         <Navbar/>
         <main className="mx-auto py-1 md:p-2">{children}</main>
         <Footer/>

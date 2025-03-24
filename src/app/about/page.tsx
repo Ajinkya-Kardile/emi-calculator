@@ -10,11 +10,11 @@ export default function About() {
     return (
         <>
             <SidebarLayout>
-                <div className=" w-full">
+                <div className="w-full bg-white dark:bg-gray-900">
                     {/* About Section */}
-                    <section className="bg-white dark:bg-gray-900 w-full">
-                        <div className="px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
-                            <div className="max-w-screen-lg text-gray-500 sm:text-lg dark:text-gray-400">
+                    <section className="w-full">
+                        <div className="px-4 mx-auto max-w-full lg:py-8 lg:px-6">
+                            <div className="text-gray-500 sm:text-lg dark:text-blue-100">
                                 <h2 className="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white text-center">
                                     About Us
                                 </h2>
@@ -32,6 +32,13 @@ export default function About() {
                                     breakdowns, interest
                                     analysis, and loan comparison options.
                                 </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section className="w-full">
+                        <div className="px-4 mx-auto lg:py-8 lg:px-6">
+                            <div className="text-gray-500 sm:text-lg dark:text-blue-100">
                                 <h3 className="mb-4 text-2xl tracking-tight font-bold text-gray-900 dark:text-white text-center">
                                     Why Choose Us?
                                 </h3>
@@ -45,15 +52,15 @@ export default function About() {
                                 </ul>
                                 <p className="mb-4 font-medium text-justify">
                                     Our mission is to empower users with the right financial tools to make better
-                                    borrowing
-                                    decisions. Whether you&#39;re a first-time borrower or an experienced investor, our
-                                    EMI
+                                    borrowing decisions.
+                                    Whether you&#39;re a first-time borrower or an experienced investor, our EMI
                                     Calculator helps you stay ahead.
                                 </p>
                                 <div className="flex justify-center mt-6">
                                     <Link href="/emi-calculator" passHref>
                                         <button
-                                            className="px-6 py-3 text-lg font-semibold text-blue-600 border-2 border-blue-600 rounded-lg shadow-md hover:bg-blue-600 hover:text-white transition-all duration-300">
+                                            className="px-6 py-3 text-lg font-semibold text-blue-600 dark:text-blue-400 border-2 border-blue-600 dark:border-blue-400 rounded-lg shadow-md hover:bg-blue-600 dark:hover:bg-blue-500 hover:text-white transition-all duration-300"
+                                        >
                                             🏠 Go to Home
                                         </button>
                                     </Link>
@@ -66,7 +73,7 @@ export default function About() {
                     <section className="bg-gray-100 dark:bg-gray-800 py-8 mt-10 w-full">
                         <div className="px-4 mx-auto max-w-screen-xl text-gray-900 dark:text-white text-center">
                             <h2 className="mb-4 text-3xl font-bold">Contact Us</h2>
-                            <p className="mb-6 text-lg text-gray-600 dark:text-gray-400">
+                            <p className="mb-6 text-lg text-gray-600 dark:text-gray-300">
                                 Have any questions or need assistance? Feel free to reach out to us.
                             </p>
                             <div className="flex flex-col items-center space-y-4">

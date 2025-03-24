@@ -11,7 +11,7 @@ export default function SidebarLayout({children}: { children: React.ReactNode })
             </main>
 
             {/* Right Sidebar (Hidden on Small Screens) */}
-            <div className="w-full md:w-64 mt-2 md:mt-0">
+            <div className="w-full md:w-64 ">
                 <RightSidebar/>
             </div>
         </div>

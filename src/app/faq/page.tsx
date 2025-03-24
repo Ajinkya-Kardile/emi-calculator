@@ -232,28 +232,28 @@ export default function FAQ() {
         <>
             <SidebarLayout>
                 <div className="max-w-5xl mx-auto p-6">
-                    <h1 className="text-3xl font-bold text-gray-800 text-center mb-6">
+                    <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-200 text-center mb-6">
                         Frequently Asked Questions (FAQs)
                     </h1>
 
                     <div className="space-y-4">
                         {faqs.map((faq, index) => (
-                            <div key={index} className="border border-gray-300 rounded-lg shadow-md">
+                            <div key={index} className="border border-gray-300 dark:border-gray-700 rounded-lg shadow-md">
                                 <button
-                                    className="w-full text-left p-4 text-lg font-semibold flex justify-between items-center text-blue-800 hover:bg-blue-50 transition-all duration-200"
+                                    className="w-full text-left p-4 text-lg font-semibold flex justify-between items-center text-blue-800 dark:text-blue-200 hover:bg-blue-50 dark:hover:bg-blue-900 transition-all duration-200"
                                     onClick={() => toggleAccordion(index)}
                                 >
                                     {faq.question}
                                     {openIndex === index ? (
-                                        <ExpandLess fontSize="large"/>
+                                        <ExpandLess fontSize="large" />
                                     ) : (
-                                        <ExpandMore fontSize="large"/>
+                                        <ExpandMore fontSize="large" />
                                     )}
                                 </button>
                                 <div
                                     className={`overflow-hidden transition-all duration-300 ${
                                         openIndex === index ? "p-4" : "max-h-0 p-0"
-                                    } text-gray-700 border-t border-gray-300`}
+                                    } text-gray-700 dark:text-gray-300 border-t border-gray-300 dark:border-gray-700`}
                                 >
                                     {faq.answer}
                                 </div>
@@ -263,5 +263,6 @@ export default function FAQ() {
                 </div>
             </SidebarLayout>
         </>
+
     );
 }
