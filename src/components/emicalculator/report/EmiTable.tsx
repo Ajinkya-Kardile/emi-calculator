@@ -79,7 +79,7 @@ export default function EmiTable({ schedule }: { schedule: EmiSchedule[] }) {
                     Download
                 </Button>
             </div>
-            <div className="overflow-x-auto w-full max-w-[80vw]">
+            <div className="overflow-x-auto w-full max-w-full">
 
             <TableContainer component={Paper} sx={{marginTop: 2, boxShadow: 3}}>
                 <Table>

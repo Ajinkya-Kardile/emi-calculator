@@ -21,7 +21,7 @@ export default function SimpleEmiCalculator() {
                     </p>
                 </div>
 
-                <div className="mt-4">
+                <div className="mt-2">
                     <EmiCalculatorComponent loanType="home"/>
                 </div>
             </SidebarLayout>

@@ -6,7 +6,7 @@ export default function SidebarLayout({children}: { children: React.ReactNode })
         <div className="flex flex-col md:flex-row w-full min-h-screen gap-2">
             {/* Main Content */}
             <main
-                className="flex-1 max-w-[1200px] bg-white dark:bg-gray-900 text-gray-900 dark:text-white p-2 md:p-6 rounded-lg">
+                className="flex-1 bg-white dark:bg-gray-900 text-gray-900 dark:text-white p-2 md:p-6 rounded-lg">
                 {children}
             </main>
 

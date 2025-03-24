@@ -1,6 +1,6 @@
 export default function HomeLoanInfo() {
     return (
-        <div className="w-full mx-auto m-4 p-6 bg-white dark:bg-gray-900 rounded-lg">
+        <div className="w-full mx-auto mt-2 p-6 bg-white dark:bg-gray-900 rounded-lg">
             <h1 className="text-3xl font-bold text-center text-blue-900 dark:text-blue-400 mb-6">
                 Home Loan EMI Calculator – Calculation, Factors & Tips
             </h1>
