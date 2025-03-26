@@ -12,16 +12,17 @@ const footerData = {
     quickLinks: [
         {name: "Home", url: "/"},
         {name: "FAQs", url: "/faq"},
-        {name: "About Us", url: "/about"},
-        {name: "Contact Us", url: "mailto:support@emicalculator.com"},
+        {name: "about Us", url: "/about"},
+        {name: "Contact Us", url: "mailto:emicalculatortool@gmail.com"},
     ],
     tools: [
-        {name: "Home Loan EMI Calculator", url: "/?loanType=home"},
-        {name: "Personal Loan EMI Calculator", url: "/?loanType=personal"},
-        {name: "Car Loan EMI Calculator", url: "/?loanType=car"},
+        {name: "Home Loan EMI Calculator", url: "/emi-calculator/home-loan"},
+        {name: "Personal Loan EMI Calculator", url: "/emi-calculator/personal-loan"},
+        {name: "Car Loan EMI Calculator", url: "/emi-calculator/car-loan"},
+        {name: "Credit Card EMI Calculator", url: "/emi-calculator/credit-card"},
     ],
     legal: [
-        {name: "Privacy Policy", url: "/PrivacyPolicy"},
+        {name: "Privacy Policy", url: "/privacy-policy"},
     ],
 };
 

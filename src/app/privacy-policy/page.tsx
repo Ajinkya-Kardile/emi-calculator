@@ -1,5 +1,9 @@
 import React from "react";
-
+import {Metadata} from "next";
+export const metadata: Metadata = {
+    title: "FAQs | Loan & Interest Queries",
+    description: "Get answers to all your EMI-related questions. Learn how EMI is calculated, factors affecting loan EMI, and ways to reduce your monthly payments."
+};
 const PrivacyPolicy = () => {
     return (
         <div className="max-w-4xl bg-white rounded-sm mx-auto p-6">
@@ -62,7 +66,9 @@ const PrivacyPolicy = () => {
                 on this page.</p>
 
             <h2 className="text-2xl font-semibold mt-6 mb-2">8. Contact Us</h2>
-            <p className="mb-4">If you have any questions about this Privacy Policy, you can contact us at <a href="mailto:support@emicalculator.com" className="text-blue-600 dark:text-blue-400">support@emicalculator.com</a>.
+            <p className="mb-4">If you have any questions about this Privacy Policy, you can contact us at <a
+                href="mailto:emicalculatortool@gmail.com"
+                className="text-blue-600 dark:text-blue-400">emicalculatortool@gmail.com</a>.
             </p>
         </div>
     );

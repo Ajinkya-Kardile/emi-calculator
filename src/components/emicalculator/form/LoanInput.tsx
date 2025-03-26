@@ -45,7 +45,7 @@ const LoanInput: React.FC<LoanInputProps> = ({label, value, setValue, min, max, 
                     step={step}
                     onChange={handleInputChange}
                     onBlur={handleInputBlur}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none transition"
+                    className="w-full px-4 py-2 text-gray-700 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none transition"
                 />
                 {unit && (
                     <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500">{unit}</span>

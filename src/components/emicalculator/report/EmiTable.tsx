@@ -65,8 +65,8 @@ export default function EmiTable({ schedule }: { schedule: EmiSchedule[] }) {
         <div className="w-full mt-6">
             {/* Heading */}
             <div className="flex flex-wrap justify-between items-center mb-2 gap-2">
-                <h2 className="text-xl md:text-2xl font-bold text-gray-800 flex items-center gap-2">
-                    <CurrencyRupee fontSize="large" className="text-blue-600" />
+                <h2 className="text-xl md:text-2xl font-bold text-gray-800 dark:text-gray-300 flex items-center gap-2">
+                    <CurrencyRupee fontSize="large" className="text-blue-900 dark:text-blue-300" />
                     EMI Payment Schedule Report
                 </h2>
                 <Button
@@ -79,7 +79,7 @@ export default function EmiTable({ schedule }: { schedule: EmiSchedule[] }) {
                     Download
                 </Button>
             </div>
-            <div className="overflow-x-auto w-full max-w-[80vw]">
+            <div className="overflow-x-auto w-full max-w-full">
 
             <TableContainer component={Paper} sx={{marginTop: 2, boxShadow: 3}}>
                 <Table>

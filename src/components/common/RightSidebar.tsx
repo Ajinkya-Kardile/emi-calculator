@@ -1,58 +1,85 @@
 import React from "react";
 import Link from "next/link";
-import { SidebarAd } from "@/components/ads/Ads";
+import HomeIcon from "@mui/icons-material/Home";
+import PersonIcon from "@mui/icons-material/Person";
+import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
+import CreditCardIcon from "@mui/icons-material/CreditCard";
+import PublicIcon from "@mui/icons-material/Public";
+import HelpIcon from "@mui/icons-material/Help";
+import InfoIcon from "@mui/icons-material/Info";
+import DescriptionIcon from "@mui/icons-material/Description";
 
 const RightSidebar: React.FC = () => {
     return (
-        <aside className="block w-full h-full md:w-auto bg-white rounded-md px-2 py-6">
+        <aside className="block w-full h-full md:w-auto bg-white dark:bg-gray-900 rounded-md p-4">
             {/* Loan EMI Calculator Tools Section */}
             <div className="mb-8">
-                <h2 className="text-lg font-semibold text-gray-800 mb-2">🔧 EMI Calculator Tools</h2>
+                <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-2 flex items-center gap-2">
+                    <DescriptionIcon fontSize="small"/> EMI Calculator Tools
+                </h2>
                 <ul className="space-y-1">
-                    <li><Link href="/?loanType=home" className="block text-gray-700 hover:text-blue-600 font-medium">🏠
-                        Home Loan Calculator</Link></li>
-                    <li><Link href="/?loanType=personal"
-                              className="block text-gray-700 hover:text-blue-600 font-medium">👤 Personal Loan
-                        Calculator</Link></li>
-                    <li><Link href="/?loanType=car" className="block text-gray-700 hover:text-blue-600 font-medium">🚗
-                        Car Loan Calculator</Link></li>
+                    {[
+                        {name: "Home Loan Calculator", href: "/emi-calculator/home-loan", icon: HomeIcon},
+                        {name: "Personal Loan Calculator", href: "/emi-calculator/personal-loan", icon: PersonIcon},
+                        {name: "Car Loan Calculator", href: "/emi-calculator/car-loan", icon: DirectionsCarIcon},
+                        {name: "Credit Card EMI Calculator", href: "/emi-calculator/credit-card", icon: CreditCardIcon},
+                    ].map((item, index) => (
+                        <li key={index} className="flex items-center gap-2">
+                            <item.icon fontSize="small" className="text-gray-600 dark:text-gray-300 flex-shrink-0"/>
+                            <Link href={item.href}
+                                  className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors duration-200">
+                                {item.name}
+                            </Link>
+                        </li>
+                    ))}
                 </ul>
             </div>
 
             {/* Quick Links Section */}
             <nav className="mb-8">
-                <h2 className="text-lg font-semibold text-gray-800 mb-2">🌐 Quick Links</h2>
-                <ul className="space-y-2 ">
-                    <li><Link href="/" className="block text-gray-700 hover:text-blue-600 font-medium">🏠 Home</Link>
-                    </li>
-                    <li><Link href="/faq" className="block text-gray-700 hover:text-blue-600 font-medium">❓ FAQs</Link>
-                    </li>
-                    <li><Link href="/about" className="block text-gray-700 hover:text-blue-600 font-medium">ℹ️ About
-                        Us</Link></li>
+                <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-2 flex items-center gap-2">
+                    <PublicIcon fontSize="small"/> Quick Links
+                </h2>
+                <ul className="space-y-1">
+                    {[
+                        {name: "Home", href: "/", icon: HomeIcon},
+                        {name: "FAQs", href: "/faq", icon: HelpIcon},
+                        {name: "About Us", href: "/about", icon: InfoIcon},
+                    ].map((item, index) => (
+                        <li key={index} className="flex items-center gap-2">
+                            <item.icon fontSize="small" className="text-gray-600 dark:text-gray-300 flex-shrink-0"/>
+                            <Link href={item.href}
+                                  className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors duration-200">
+                                {item.name}
+                            </Link>
+                        </li>
+                    ))}
                 </ul>
             </nav>
 
+            {/* Important Guidelines Section */}
             <div className="mb-6">
-                <h2 className="text-lg font-semibold text-gray-800 mb-2">📜 Important Guidelines</h2>
-                <ul className="space-y-1 ps-2">
-                    <li><a href="https://www.rbi.org.in/" target="_blank" rel="noopener noreferrer"
-                           className="block text-gray-700 hover:text-blue-600 font-medium">RBI Official Website</a>
-                    </li>
-                    <li><a href="https://www.rbi.org.in/Scripts/FAQView.aspx?Id=76" target="_blank"
-                           rel="noopener noreferrer" className="block text-gray-700 hover:text-blue-600 font-medium">RBI Loan Guidelines</a></li>
-                    <li><a href="https://www.sebi.gov.in/" target="_blank" rel="noopener noreferrer"
-                           className="block text-gray-700 hover:text-blue-600 font-medium">SEBI Official Website</a>
-                    </li>
-                    <li><a href="https://financialservices.gov.in/" target="_blank" rel="noopener noreferrer"
-                           className="block text-gray-700 hover:text-blue-600 font-medium">Ministry of Finance -
-                        Financial Services</a></li>
+                <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-2 flex items-center gap-2">
+                    <DescriptionIcon fontSize="small"/> Important Guidelines
+                </h2>
+                <ul className="space-y-1">
+                    {[
+                        {name: "RBI Official Website", href: "https://www.rbi.org.in/"},
+                        {name: "RBI Loan Guidelines", href: "https://www.rbi.org.in/Scripts/FAQView.aspx?Id=76"},
+                        {name: "SEBI Official Website", href: "https://www.sebi.gov.in/"},
+                        {name: "Ministry of Finance - Financial Services", href: "https://financialservices.gov.in/"},
+                    ].map((item, index) => (
+                        <li key={index} className="flex items-center gap-2">
+                            <DescriptionIcon fontSize="small"
+                                             className="text-gray-600 dark:text-gray-300 flex-shrink-0"/>
+                            <a href={item.href} target="_blank" rel="noopener noreferrer"
+                               className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors duration-200">
+                                {item.name}
+                            </a>
+                        </li>
+                    ))}
                 </ul>
             </div>
-
-            {/*/!* Advertisement Section *!/*/}
-            {/*<div className="border-t pt-4">*/}
-            {/*    <SidebarAd />*/}
-            {/*</div>*/}
         </aside>
     );
 };
