@@ -1,12 +1,12 @@
 export default function EMIInfo() {
     return (
         <div className="w-full mx-auto mt-4 p-6 bg-white dark:bg-gray-900 rounded-lg">
-            <h2 className="text-3xl font-bold text-center text-blue-900 dark:text-blue-400 mb-6">
+            <h2 className="text-3xl font-bold text-center text-blue-950 dark:text-blue-400 mb-6">
                 Loan EMI Calculator - Everything You Need to Know
             </h2>
 
             <section className="mb-6">
-                <h3 className="text-2xl font-semibold text-blue-800 dark:text-blue-300 mb-3">What is an EMI?</h3>
+                <h3 className="text-2xl font-semibold text-blue-950 dark:text-blue-300 mb-3">What is an EMI?</h3>
                 <p className="text-gray-700 dark:text-gray-300">
                     An <span className="font-bold">EMI (Equated Monthly Installment)</span> is a fixed monthly payment
                     that a borrower makes to a lender while repaying a loan.
@@ -34,7 +34,7 @@ export default function EMIInfo() {
 
 
             <section className="mb-6">
-                <h3 className="text-2xl font-semibold text-blue-800 dark:text-blue-300 mb-3">EMI Calculation
+                <h3 className="text-2xl font-semibold text-blue-950 dark:text-blue-300 mb-3">EMI Calculation
                     Formula</h3>
                 <p className="text-gray-700  dark:text-gray-300 mb-2">
                     The EMI for a loan is calculated using the standard formula:
@@ -57,7 +57,7 @@ export default function EMIInfo() {
             </section>
 
             <section className="mb-6">
-                <h3 className="text-2xl font-semibold text-blue-800 dark:text-blue-300 mb-3">Types of EMI
+                <h3 className="text-2xl font-semibold text-blue-950 dark:text-blue-300 mb-3">Types of EMI
                     Calculators</h3>
                 <ul className="list-disc list-inside text-gray-700 dark:text-gray-300">
                     <li><strong>Home Loan EMI Calculator</strong> - Calculate monthly payments for home loans.</li>
@@ -68,7 +68,7 @@ export default function EMIInfo() {
             </section>
 
             <section className="mb-6">
-                <h3 className="text-2xl font-semibold text-blue-800 dark:text-blue-300 mb-3">Factors Affecting Loan
+                <h3 className="text-2xl font-semibold text-blue-950 dark:text-blue-300 mb-3">Factors Affecting Loan
                     EMI</h3>
                 <p className="text-gray-700  dark:text-gray-300 mb-3">
                     Several key factors influence the <span
@@ -112,7 +112,7 @@ export default function EMIInfo() {
 
 
             <section className="mb-6">
-                <h3 className="text-2xl font-semibold text-blue-800 dark:text-blue-300 mb-3">Benefits of Using an EMI
+                <h3 className="text-2xl font-semibold text-blue-950 dark:text-blue-300 mb-3">Benefits of Using an EMI
                     Calculator</h3>
                 <p className="text-gray-700  dark:text-gray-300 mb-3">
                     An <span className="font-bold">EMI Calculator</span> is a powerful tool that helps borrowers

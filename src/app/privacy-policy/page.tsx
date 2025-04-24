@@ -68,7 +68,7 @@ const PrivacyPolicy = () => {
             <h2 className="text-2xl font-semibold mt-6 mb-2">8. Contact Us</h2>
             <p className="mb-4">If you have any questions about this Privacy Policy, you can contact us at <a
                 href="mailto:emicalculatortool@gmail.com"
-                className="text-blue-600 dark:text-blue-400">emicalculatortool@gmail.com</a>.
+                className="text-blue-950 dark:text-blue-400">emicalculatortool@gmail.com</a>.
             </p>
         </div>
     );

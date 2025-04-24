@@ -11,10 +11,10 @@ import DescriptionIcon from "@mui/icons-material/Description";
 
 const RightSidebar: React.FC = () => {
     return (
-        <aside className="block w-full h-full md:w-auto bg-white dark:bg-gray-900 rounded-md p-4">
+        <aside className="block w-full h-full md:w-auto bg-gray-50 dark:bg-gray-900 rounded-md p-4">
             {/* Loan EMI Calculator Tools Section */}
             <div className="mb-8">
-                <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-2 flex items-center gap-2">
+                <h2 className="text-lg font-semibold text-yellow-400 dark:text-gray-100 mb-2 flex items-center gap-2">
                     <DescriptionIcon fontSize="small"/> EMI Calculator Tools
                 </h2>
                 <ul className="space-y-1">
@@ -37,7 +37,7 @@ const RightSidebar: React.FC = () => {
 
             {/* Quick Links Section */}
             <nav className="mb-8">
-                <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-2 flex items-center gap-2">
+                <h2 className="text-lg font-semibold text-yellow-400 dark:text-gray-100 mb-2 flex items-center gap-2">
                     <PublicIcon fontSize="small"/> Quick Links
                 </h2>
                 <ul className="space-y-1">
@@ -59,7 +59,7 @@ const RightSidebar: React.FC = () => {
 
             {/* Important Guidelines Section */}
             <div className="mb-6">
-                <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-2 flex items-center gap-2">
+                <h2 className="text-lg font-semibold text-yellow-400 dark:text-gray-100 mb-2 flex items-center gap-2">
                     <DescriptionIcon fontSize="small"/> Important Guidelines
                 </h2>
                 <ul className="space-y-1">
