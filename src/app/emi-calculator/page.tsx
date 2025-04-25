@@ -11,7 +11,7 @@ export default function SimpleEmiCalculator() {
                     <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white leading-tight">
                         Best Online Loan EMI Calculator Tool
                     </h1>
-                    <h2 className="text-xl sm:text-2xl font-semibold text-blue-900 dark:text-blue-400 mt-2">
+                    <h2 className="text-xl sm:text-2xl font-semibold text-blue-950 dark:text-blue-400 mt-2">
                         Calculate Your Loan EMI Instantly
                     </h2>
                     <p className="text-lg text-gray-700  dark:text-gray-300 mt-3">

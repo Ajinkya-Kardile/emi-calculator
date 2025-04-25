@@ -5,7 +5,7 @@ export default function Loader() {
     return (
         <div className="flex flex-col items-center justify-center h-screen">
             <motion.div
-                className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"
+                className="w-12 h-12 border-4 border-blue-950 border-t-transparent rounded-full animate-spin"
                 initial={{opacity: 0}}
                 animate={{opacity: 1}}
                 transition={{duration: 0.5}}
