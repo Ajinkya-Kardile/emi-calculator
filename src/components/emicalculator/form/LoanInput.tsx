@@ -34,7 +34,7 @@ const LoanInput: React.FC<LoanInputProps> = ({label, value, setValue, min, max, 
 
     return (
         <div className="space-y-3">
-            <label className="text-gray-700 font-medium">{label}</label>
+            <label className="text-gray-700 dark:text-gray-300 font-medium">{label}</label>
 
             <div className="relative">
                 <input
@@ -45,10 +45,12 @@ const LoanInput: React.FC<LoanInputProps> = ({label, value, setValue, min, max, 
                     step={step}
                     onChange={handleInputChange}
                     onBlur={handleInputBlur}
-                    className="w-full px-4 py-2 text-gray-700 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none transition"
+                    className="w-full px-4 py-2 text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:outline-none transition"
                 />
                 {unit && (
-                    <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500">{unit}</span>
+                    <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-gray-400">
+                        {unit}
+                    </span>
                 )}
             </div>
 
@@ -66,13 +68,14 @@ const LoanInput: React.FC<LoanInputProps> = ({label, value, setValue, min, max, 
                         height: 18,
                         width: 18,
                         marginTop: -6,
+                        opacity: 1,
                     },
                     rail: {backgroundColor: "#d1d5db", height: 6},
                 }}
                 aria-label={`${label} Slider`}
             />
 
-            <div className="flex justify-between text-sm text-gray-500">
+            <div className="flex justify-between text-sm text-gray-500 dark:text-gray-400">
                 <span>{min}</span>
                 <span>{Math.round((min + max) / 2)}</span>
                 <span>{max}</span>
