@@ -8,13 +8,14 @@ import PublicIcon from "@mui/icons-material/Public";
 import HelpIcon from "@mui/icons-material/Help";
 import InfoIcon from "@mui/icons-material/Info";
 import DescriptionIcon from "@mui/icons-material/Description";
+import SavingsIcon from "@mui/icons-material/Savings";
 
 const RightSidebar: React.FC = () => {
     return (
         <aside className="block w-full h-full md:w-auto bg-gray-50 dark:bg-gray-900 rounded-md p-4">
             {/* Loan EMI Calculator Tools Section */}
             <div className="mb-8">
-                <h2 className="text-lg font-semibold text-yellow-400 dark:text-gray-100 mb-2 flex items-center gap-2">
+                <h2 className="text-lg font-bold text-blue-950 dark:text-gray-100 mb-2 flex items-center gap-2">
                     <DescriptionIcon fontSize="small"/> EMI Calculator Tools
                 </h2>
                 <ul className="space-y-1">
@@ -23,6 +24,7 @@ const RightSidebar: React.FC = () => {
                         {name: "Personal Loan Calculator", href: "/emi-calculator/personal-loan", icon: PersonIcon},
                         {name: "Car Loan Calculator", href: "/emi-calculator/car-loan", icon: DirectionsCarIcon},
                         {name: "Credit Card EMI Calculator", href: "/emi-calculator/credit-card", icon: CreditCardIcon},
+                        {name: "Fixed Deposit Calculator", href: "/financial/fd-calculator", icon: SavingsIcon},
                     ].map((item, index) => (
                         <li key={index} className="flex items-center gap-2">
                             <item.icon fontSize="small" className="text-gray-600 dark:text-gray-300 flex-shrink-0"/>
@@ -37,7 +39,7 @@ const RightSidebar: React.FC = () => {
 
             {/* Quick Links Section */}
             <nav className="mb-8">
-                <h2 className="text-lg font-semibold text-yellow-400 dark:text-gray-100 mb-2 flex items-center gap-2">
+                <h2 className="text-lg font-bold text-blue-950 dark:text-gray-100 mb-2 flex items-center gap-2">
                     <PublicIcon fontSize="small"/> Quick Links
                 </h2>
                 <ul className="space-y-1">
@@ -59,7 +61,7 @@ const RightSidebar: React.FC = () => {
 
             {/* Important Guidelines Section */}
             <div className="mb-6">
-                <h2 className="text-lg font-semibold text-yellow-400 dark:text-gray-100 mb-2 flex items-center gap-2">
+                <h2 className="text-lg font-bold text-blue-950 dark:text-gray-100 mb-2 flex items-center gap-2">
                     <DescriptionIcon fontSize="small"/> Important Guidelines
                 </h2>
                 <ul className="space-y-1">

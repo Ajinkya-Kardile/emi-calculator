@@ -184,7 +184,7 @@ export default function EmiForm({loanType, setEmiData}: {
 
                 <button
                     type="submit"
-                    className="w-full bg-gradient-to-r from-blue-600 to-blue-800 text-white font-semibold 
+                    className="w-full bg-gradient-to-r from-blue-400 to-blue-800 text-white font-semibold
                              py-3 rounded-lg shadow-lg hover:scale-[1.02] transition duration-300
                              focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                 >
