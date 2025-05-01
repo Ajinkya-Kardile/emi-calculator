@@ -4,7 +4,7 @@ import React, {useState, useEffect} from "react";
 import {useRouter} from "next/navigation";
 import {calculateEmi} from "@/utils/calculateEmi";
 import LoanInput from "./LoanInput";
-import {Tab, Tabs, ToggleButton, ToggleButtonGroup, ToggleButtonProps} from "@mui/material";
+import {Tab, Tabs, ToggleButton, ToggleButtonGroup} from "@mui/material";
 import {loanDefaults} from "@/utils/loanDefaults";
 import HomeIcon from "@mui/icons-material/Home";
 import PersonIcon from "@mui/icons-material/Person";
