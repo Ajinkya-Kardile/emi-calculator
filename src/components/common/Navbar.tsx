@@ -7,6 +7,8 @@ import HomeIcon from "@mui/icons-material/Home";
 import PersonIcon from "@mui/icons-material/Person";
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
+import SavingsIcon from "@mui/icons-material/Savings";
+
 
 const Navbar: React.FC = () => {
     const [navbar, setNavbar] = useState(false);
@@ -109,6 +111,11 @@ const Navbar: React.FC = () => {
                                         name: "Credit Card Payment EMI",
                                         href: "/emi-calculator/credit-card",
                                         icon: <CreditCardIcon fontSize="small"/>
+                                    },
+                                    {
+                                        name: "FD Calculator",
+                                        href: "/financial/fd-calculator",
+                                        icon: <SavingsIcon fontSize="small"/>
                                     },
                                 ].map((item, index) => (
                                     <li key={index}>
