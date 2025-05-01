@@ -10,6 +10,28 @@ import HomeIcon from "@mui/icons-material/Home";
 import PersonIcon from "@mui/icons-material/Person";
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
+import {styled} from "@mui/material/styles";
+
+const StyledToggleButton = styled(ToggleButton)(({theme}) => ({
+    "&.MuiToggleButton-root": {
+        color: theme.palette.mode === 'dark' ? '#E5E7EB' : '#4B5563',
+        backgroundColor: theme.palette.mode === 'dark' ? '#374151' : '#F3F4F6',
+        border: `1px solid ${theme.palette.mode === 'dark' ? '#4B5563' : '#D1D5DB'}`,
+        "&:hover": {
+            backgroundColor: theme.palette.mode === 'dark' ? '#4B5563' : '#E5E7EB',
+        },
+        "&.Mui-selected": {
+            color: theme.palette.mode === 'dark' ? '#FFFFFF' : '#FFFFFF',
+            backgroundColor: theme.palette.mode === 'dark' ? '#2563EB' : '#2563EB',
+            "&:hover": {
+                backgroundColor: theme.palette.mode === 'dark' ? '#1D4ED8' : '#1D4ED8',
+            },
+        },
+        "&.Mui-disabled": {
+            color: theme.palette.mode === 'dark' ? '#6B7280' : '#9CA3AF',
+        },
+    },
+}));
 
 const loanTypes = [
     {value: "home", label: "Home Loan", icon: <HomeIcon/>, href: "/emi-calculator/home-loan"},
@@ -46,7 +68,7 @@ export default function EmiForm({loanType, setEmiData}: {
     };
 
     return (
-        <div className="w-full bg-white shadow-md rounded-2xl border border-gray-200 p-4 md:p-6">
+        <div className="w-full bg-white shadow-md rounded-xl sm:rounded-2xl border border-gray-200 p-4 sm:p-6 dark:bg-gray-800 dark:border-gray-700">
             <Tabs
                 value={selectedIndex}
                 onChange={(_, newIndex) => router.push(loanTypes[newIndex].href)}
@@ -57,15 +79,15 @@ export default function EmiForm({loanType, setEmiData}: {
                         height: "2px",
                         bottom: 0,
                         "@media (max-width: 767px)": {
-                            display: "none", // Hide default indicator in grid mode
+                            display: "none",
                         },
                     },
                     "& .MuiTabs-flexContainer": {
                         display: "grid",
-                        gridTemplateColumns: "repeat(2, 1fr)", // 2x2 grid for mobile
+                        gridTemplateColumns: "repeat(2, 1fr)",
                         gap: "8px",
                         "@media (min-width: 768px)": {
-                            display: "flex", // Row layout for tablets and above
+                            display: "flex",
                         },
                     },
                 }}
@@ -80,67 +102,91 @@ export default function EmiForm({loanType, setEmiData}: {
                             color: loanType === value ? "#2563EB !important" : "#64748B !important",
                             fontWeight: loanType === value ? "bold" : "normal",
                             "&:hover": {color: "#1E40AF !important"},
-                            minWidth: "auto", // Allows proper spacing in grid mode
-                            borderBottom: loanType === value ? "3px solid #2563EB" : "3px solid transparent", // Manual indicator
+                            minWidth: "auto",
+                            borderBottom: loanType === value ? "3px solid #2563EB" : "3px solid transparent",
                             "@media (min-width: 768px)": {
-                                borderBottom: "none", // Use MUI indicator in row mode
+                                borderBottom: "none",
+                            },
+                            "& .MuiSvgIcon-root": {
+                                color: loanType === value ? "#2563EB !important" : "#64748B !important",
                             },
                         }}
                     />
                 ))}
             </Tabs>
 
-
             <form onSubmit={handleSubmit} className="p-2 md:p-6 space-y-6">
-                {/*<h2 className="text-3xl font-bold text-center text-gray-900">*/}
-                {/*    {loanType.toUpperCase()} LOAN EMI CALCULATOR*/}
-                {/*</h2>*/}
-
-                <LoanInput label="Loan Amount" value={loanAmount} setValue={setLoanAmount} min={0} max={20000000}
-                           step={1} unit="₹"/>
-                <LoanInput label="Interest Rate" value={interestRate} setValue={setInterestRate} min={0} max={30}
-                           step={0.1} unit="%"/>
+                <LoanInput
+                    label="Loan Amount"
+                    value={loanAmount}
+                    setValue={setLoanAmount}
+                    min={0}
+                    max={20000000}
+                    step={1}
+                    unit="₹"
+                />
+                <LoanInput
+                    label="Interest Rate"
+                    value={interestRate}
+                    setValue={setInterestRate}
+                    min={0}
+                    max={30}
+                    step={0.1}
+                    unit="%"
+                />
 
                 <div className="flex gap-4">
                     <div className="flex-1">
-                        <LoanInput label="Tenure" value={tenure} setValue={setTenure} min={1} max={100} step={1}
-                                   unit={tenureType === "years" ? "Yr" : "Mo"}/>
+                        <LoanInput
+                            label="Tenure"
+                            value={tenure}
+                            setValue={setTenure}
+                            min={1}
+                            max={100}
+                            step={1}
+                            unit={tenureType === "years" ? "Yr" : "Mo"}
+                        />
                     </div>
                     <div className="flex-1">
-                        <label className="block text-gray-700 font-medium">Tenure Type:</label>
+                        <label className="block text-gray-700 dark:text-gray-300 font-medium mb-2">
+                            Tenure Type:
+                        </label>
                         <ToggleButtonGroup
                             value={tenureType}
                             size="small"
                             exclusive
                             onChange={(event, newValue) => newValue && setTenureType(newValue)}
-                            className="w-full"
+                            className="w-full grid grid-cols-2 gap-2 sm:flex sm:gap-1"
                         >
-                            <ToggleButton value="months" className="flex-1 font-medium bg-gray-200 hover:bg-gray-300">
+                            <StyledToggleButton value="months" className="flex-1 font-medium bg-gray-200 hover:bg-gray-300">
                                 Months
-                            </ToggleButton>
-                            <ToggleButton value="years" className="flex-1 font-medium bg-gray-200 hover:bg-gray-300">
+                            </StyledToggleButton>
+                            <StyledToggleButton value="years" className="flex-1 font-medium bg-gray-200 hover:bg-gray-300">
                                 Years
-                            </ToggleButton>
+                            </StyledToggleButton>
                         </ToggleButtonGroup>
                     </div>
                 </div>
 
                 <div>
-                    <label className="block text-gray-700 font-medium">Start Date:</label>
+                    <label className="block text-gray-700 dark:text-gray-300 font-medium mb-2">
+                        Start Date:
+                    </label>
                     <input
                         type="date"
                         value={startDate}
                         onChange={(e) => setStartDate(e.target.value)}
-                        className="w-full mt-1 px-4 py-2 border border-gray-300 text-gray-700
-                   rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none transition
-                   bg-gray-50 dark:bg-gray-50 dark:text-gray-700 dark:border-gray-300"
+                        className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md 
+                               focus:ring-2 focus:ring-blue-400 focus:outline-none transition
+                               bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                     />
                 </div>
 
-                {/* Submit Button */}
                 <button
                     type="submit"
-                    className="w-full bg-gradient-to-r from-blue-600 to-blue-800 text-white font-semibold py-3 mt-6 rounded-lg shadow-lg hover:scale-105 transition duration-300"
+                    className="w-full bg-gradient-to-r from-blue-400 to-blue-800 text-white font-semibold
+                             py-3 rounded-lg shadow-lg hover:scale-[1.02] transition duration-300
+                             focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                 >
                     Calculate EMI
                 </button>

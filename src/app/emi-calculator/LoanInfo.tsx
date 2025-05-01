@@ -8,27 +8,26 @@ export default function EMIInfo() {
             <section className="mb-6">
                 <h3 className="text-2xl font-semibold text-blue-950 dark:text-blue-300 mb-3">What is an EMI?</h3>
                 <p className="text-gray-700 dark:text-gray-300">
-                    An <span className="font-bold">EMI (Equated Monthly Installment)</span> is a fixed monthly payment
+                    An <strong>EMI (Equated Monthly Installment)</strong> is a fixed monthly payment
                     that a borrower makes to a lender while repaying a loan.
-                    It includes two main components: <span className="font-bold">principal</span> (the original loan
-                    amount) and <span className="font-bold">interest</span> (the cost of borrowing).
+                    It includes two main components: <strong>principal</strong> (the original loan
+                    amount) and <strong>interest</strong> (the cost of borrowing).
                 </p>
                 <p className="text-gray-700  dark:text-gray-300 mt-3">
-                    Whether you are taking a <span className="font-bold">Home Loan EMI, Personal Loan EMI, Car Loan EMI, Education Loan EMI</span>,
+                    Whether you are taking a <strong>Home Loan EMI, Personal Loan EMI, Car Loan EMI, Education Loan EMI</strong>,
                     or any other loan,
-                    the EMI remains constant throughout the tenure. The amount depends on factors like the <span
-                    className="font-bold">loan amount, interest rate, and tenure</span>.
+                    the EMI remains constant throughout the tenure. The amount depends on factors like the <strong
+                    className="font-bold">loan amount, interest rate, and tenure</strong>.
                 </p>
                 <p className="text-gray-700  dark:text-gray-300 mt-3">
-                    Using an <span className="font-bold">EMI Calculator</span>, you can easily estimate your monthly
-                    installments and plan your <span className="font-bold">loan repayment</span> accordingly.
-                    This helps in better <span className="font-bold">financial planning</span> and ensures that your
+                    Using an <strong>EMI Calculator</strong>, you can easily estimate your monthly
+                    installments and plan your <strong>loan repayment</strong> accordingly.
+                    This helps in better <strong>financial planning</strong> and ensures that your
                     budget is not affected by unexpected expenses.
                 </p>
                 <p className="text-gray-700  dark:text-gray-300 mt-3">
-                    You can calculate your <span className="font-bold">Loan EMI</span> instantly using our <span
-                    className="font-bold">Online EMI Calculator</span>,
-                    which provides an accurate breakdown of your <span className="font-bold">monthly payments, interest amount, and total repayment</span>.
+                    You can calculate your <strong>Loan EMI</strong> instantly using our <strong>Online EMI Calculator</strong>,
+                    which provides an accurate breakdown of your <strong>monthly payments, interest amount, and total repayment</strong>.
                 </p>
             </section>
 
@@ -71,41 +70,41 @@ export default function EMIInfo() {
                 <h3 className="text-2xl font-semibold text-blue-950 dark:text-blue-300 mb-3">Factors Affecting Loan
                     EMI</h3>
                 <p className="text-gray-700  dark:text-gray-300 mb-3">
-                    Several key factors influence the <span
-                    className="font-bold">Equated Monthly Installment (EMI)</span> of a loan. Understanding these
+                    Several key factors influence the <strong
+                    className="font-bold">Equated Monthly Installment (EMI)</strong> of a loan. Understanding these
                     factors
-                    can help you make informed financial decisions when applying for a <span className="font-bold">Home Loan EMI, Personal Loan EMI, Car Loan EMI, or any other loan.</span>
+                    can help you make informed financial decisions when applying for a <strong>Home Loan EMI, Personal Loan EMI, Car Loan EMI, or any other loan.</strong>
                 </p>
                 <ul className="list-disc list-inside text-gray-700  dark:text-gray-300 space-y-2">
                     <li>
-                        <strong>Loan Amount (Principal)</strong> – The higher the <span className="font-bold">loan amount</span>,
+                        <strong>Loan Amount (Principal)</strong> – The higher the <strong>loan amount</strong>,
                         the higher the EMI.
-                        A <span className="font-bold">Loan EMI Calculator</span> helps you estimate the monthly
+                        A <strong>Loan EMI Calculator</strong> helps you estimate the monthly
                         installment based on the borrowed amount.
                     </li>
                     <li>
-                        <strong>Interest Rate</strong> – Higher <span className="font-bold">interest rates</span> lead
+                        <strong>Interest Rate</strong> – Higher <strong>interest rates</strong> lead
                         to increased EMI payments.
-                        The rate depends on the loan type (e.g., <span className="font-bold">Home Loan, Personal Loan, or Car Loan</span>)
+                        The rate depends on the loan type (e.g., <strong>Home Loan, Personal Loan, or Car Loan</strong>)
                         and the lender&#39;s terms.
                     </li>
                     <li>
-                        <strong>Loan Tenure</strong> – A <span className="font-bold">longer tenure</span> reduces the
+                        <strong>Loan Tenure</strong> – A <strong>longer tenure</strong> reduces the
                         EMI amount but increases the total interest paid over time.
                         Shorter tenures result in higher EMIs but lower overall interest costs.
                     </li>
                     <li>
-                        <strong>Type of Interest</strong> – Loans can have <span className="font-bold">fixed or floating interest rates</span>.
+                        <strong>Type of Interest</strong> – Loans can have <strong>fixed or floating interest rates</strong>.
                         Fixed rates keep the EMI constant, while floating rates fluctuate based on market conditions.
                     </li>
                     <li>
-                        <strong>Prepayments & Part-Payments</strong> – Making <span
-                        className="font-bold">extra payments</span> reduces the outstanding loan amount, lowering future
+                        <strong>Prepayments & Part-Payments</strong> – Making <strong
+                        className="font-bold">extra payments</strong> reduces the outstanding loan amount, lowering future
                         EMIs.
                     </li>
                 </ul>
                 <p className="text-gray-700  dark:text-gray-300 mt-3">
-                    Use our <span className="font-bold">Online EMI Calculator</span> to quickly estimate your monthly
+                    Use our <strong>Online EMI Calculator</strong> to quickly estimate your monthly
                     payments and plan your finances better!
                 </p>
             </section>
@@ -115,35 +114,35 @@ export default function EMIInfo() {
                 <h3 className="text-2xl font-semibold text-blue-950 dark:text-blue-300 mb-3">Benefits of Using an EMI
                     Calculator</h3>
                 <p className="text-gray-700  dark:text-gray-300 mb-3">
-                    An <span className="font-bold">EMI Calculator</span> is a powerful tool that helps borrowers
-                    estimate their <span className="font-bold">monthly loan payments</span> before applying for a
-                    <span className="font-bold"> Home Loan, Personal Loan, Car Loan, or Business Loan</span>. Here’s why
+                    An <strong>EMI Calculator</strong> is a powerful tool that helps borrowers
+                    estimate their <strong>monthly loan payments</strong> before applying for a
+                    <strong> Home Loan, Personal Loan, Car Loan, or Business Loan</strong>. Here’s why
                     you should use one:
                 </p>
                 <ul className="list-disc list-inside text-gray-700  dark:text-gray-300 space-y-2">
                     <li>
-                        <strong>Quick & Accurate EMI Calculation</strong> – Instantly calculate your <span
-                        className="font-bold">loan EMI</span>
+                        <strong>Quick & Accurate EMI Calculation</strong> – Instantly calculate your <strong
+                        className="font-bold">loan EMI</strong>
                         with precision, avoiding manual errors.
                     </li>
                     <li>
-                        <strong>Compare Different Loan Options</strong> – Check <span className="font-bold">multiple loan amounts, interest rates, and tenures </span>
+                        <strong>Compare Different Loan Options</strong> – Check <strong>multiple loan amounts, interest rates, and tenures </strong>
                         to choose the best loan for your needs.
                     </li>
                     <li>
-                        <strong>Better Budgeting & Financial Planning</strong> – Plan your <span className="font-bold">loan repayment strategy</span> in
+                        <strong>Better Budgeting & Financial Planning</strong> – Plan your <strong>loan repayment strategy</strong> in
                         advance to ensure
                         it fits your monthly expenses.
                     </li>
                     <li>
-                        <strong>Avoid Hidden Surprises</strong> – Know the <span className="font-bold">exact EMI, interest payable, and total loan cost</span> beforehand.
+                        <strong>Avoid Hidden Surprises</strong> – Know the <strong>exact EMI, interest payable, and total loan cost</strong> beforehand.
                     </li>
                     <li>
-                        <strong>Works for All Loan Types</strong> – Use it for <span className="font-bold">Home Loan EMI, Personal Loan EMI, Car Loan EMI, Business Loan EMI, and more.</span>
+                        <strong>Works for All Loan Types</strong> – Use it for <strong>Home Loan EMI, Personal Loan EMI, Car Loan EMI, Business Loan EMI, and more.</strong>
                     </li>
                 </ul>
                 <p className="text-gray-700  dark:text-gray-300 mt-3">
-                    Try our <span className="font-bold">Online Loan EMI Calculator</span> today and make informed
+                    Try our <strong>Online Loan EMI Calculator</strong> today and make informed
                     financial decisions!
                 </p>
             </section>

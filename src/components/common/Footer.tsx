@@ -20,6 +20,7 @@ const footerData = {
         {name: "Personal Loan EMI Calculator", url: "/emi-calculator/personal-loan"},
         {name: "Car Loan EMI Calculator", url: "/emi-calculator/car-loan"},
         {name: "Credit Card EMI Calculator", url: "/emi-calculator/credit-card"},
+        {name: "Fixed Deposit Calculator", url: "/financial/fd-calculator"},
     ],
     legal: [
         {name: "Privacy Policy", url: "/privacy-policy"},
