@@ -12,10 +12,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-    title: {
-        default: "EMI Calculator - Calculate Home, Car & Personal Loan EMIs",
-        template: "%s | EMI Calculator",
-    },
+    title: "EMI Calculator - Calculate Home, Car & Personal Loan EMIs",
     description: "Free EMI Calculator for Home, Car & Personal Loans. Get instant EMI breakdowns with interest rates and amortization schedules. Calculate loan payments easily.",
     keywords: [
         "EMI Calculator", "EMI Calculator Tool", "Loan Calculator", "Loan Calculator Tool",
