@@ -5,9 +5,24 @@ import {Metadata} from "next";
 import CreditCardEMIInfo from "./creditCardLoanInfo";
 
 export const metadata: Metadata = {
-    title: "Credit Card EMI Calculator",
-    description: "Use our free Credit Card EMI Calculator to estimate your monthly installment, total interest, and repayment schedule. Get instant results and make informed financial decisions about your credit card loan.",
-    keywords: "Credit Card EMI Calculator, Credit Card Loan Calculator, EMI on Credit Card, Credit Card Interest Calculator, Credit Card Repayment Calculator, Monthly Installments, Credit Card Loan EMI, Credit Card Installment Plan, Calculate EMI for Credit Card, Credit Card Loan Interest Rate, Credit Card Balance EMI, Convert Credit Card Bill to EMI, Credit Card EMI Charges, Best Credit Card EMI Plans, Online EMI Calculator for Credit Card, Credit Card EMI Conversion, Credit Card Interest Rate Calculator, Calculate Credit Card Dues in EMI",
+    title: "Credit Card EMI Calculator | Convert to EMI & Calculate Interest",
+    description: "Free Credit Card EMI Calculator - Convert your credit card bill into monthly installments. Calculate interest, repayment schedule & compare EMI options instantly.",
+    keywords: [
+        "Credit Card EMI Calculator",
+        "Convert Credit Card to EMI",
+        "Credit Card Loan EMI",
+        "EMI on Credit Card Payment",
+        "Credit Card Interest Calculator",
+        "Best Credit Card EMI Plans",
+        "Credit Card Repayment Calculator",
+        "No Cost EMI Calculator",
+        "Credit Card Balance Transfer EMI",
+        "EMI vs Revolve Credit Card"
+    ],
+    openGraph: {
+        title: "Credit Card EMI Calculator - Convert Purchases to Installments",
+        description: "Calculate credit card EMI, interest charges & repayment options. Compare no-cost EMI vs regular EMI to save money."
+    }
 };
 
 

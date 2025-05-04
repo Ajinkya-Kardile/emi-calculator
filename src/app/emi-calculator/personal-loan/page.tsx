@@ -5,9 +5,20 @@ import {Metadata} from "next";
 import PersonalLoanInfo from "./personalLoanInfo";
 
 export const metadata: Metadata = {
-    title: "Personal Loan EMI Calculator – Calculate Monthly Payments & Interest",
-    description: "Use our free Personal Loan EMI Calculator to estimate your monthly installment, total interest, and repayment schedule. Get instant results and make informed financial decisions before taking a personal loan.",
-    keywords: "Personal Loan EMI Calculator, Personal Loan Calculator, Loan EMI Calculator, Monthly EMI for Personal Loan, Interest Rate on Personal Loan, Unsecured Loan EMI, Calculate Personal Loan EMI, Online EMI Calculator for Personal Loan, Best Personal Loan Calculator, Personal Loan Repayment Plan, Loan Amortization Schedule, Personal Loan Interest Rate Calculator, Instant Loan EMI Calculator, Short-Term Loan EMI, Easy Loan EMI Calculation, Personal Loan Payment Plan",
+    title: "Personal Loan EMI Calculator | Instant Monthly Payment Estimates",
+    description: "Free Personal Loan EMI Calculator - Calculate monthly installments, interest rates & repayment schedule. Plan your loan efficiently with accurate EMI estimates.",
+    keywords: [
+        "Personal Loan EMI Calculator",
+        "Personal Loan EMI",
+        "Loan EMI Calculator",
+        "Monthly Loan Payments",
+        "Personal Loan Interest Rates",
+        "Online EMI Calculator",
+        "Loan Repayment Calculator",
+        "Loan Amortization Schedule",
+        "Instant EMI Calculation",
+        "Financial Planning Tool"
+    ]
 };
 
 export default function PersonalLoan() {
