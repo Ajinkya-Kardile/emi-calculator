@@ -5,9 +5,24 @@ import {Metadata} from "next";
 import CarLoanInfo from "./carLoanInfo";
 
 export const metadata: Metadata = {
-    title: "Car Loan EMI Calculator - Calculate Your EMI Instantly",
-    description: "Use our Car Loan EMI Calculator to estimate your monthly payments. Compare loan interest rates and repayment schedules to make informed financial decisions.",
-    keywords: "Car Loan EMI Calculator, Car Loan Calculator, Auto Loan EMI, Vehicle Loan EMI, Auto Loan Calculator, Car Finance Calculator, Monthly Car Loan Payment, Car Loan Interest Calculator, Best Car Loan EMI Tool, Vehicle Finance EMI Calculation, Car Loan Repayment Schedule",
+    title: "Car Loan EMI Calculator | Instant Auto Loan Payment Estimates",
+    description: "Free Car Loan EMI Calculator - Calculate monthly installments, interest rates & repayment schedule. Compare loan offers & find affordable car financing options.",
+    keywords: [
+        "Car Loan EMI Calculator",
+        "Auto Loan Calculator",
+        "Car Finance EMI",
+        "Vehicle Loan Calculator",
+        "Monthly Car Payment",
+        "Car Loan Interest Rates",
+        "Best Car Loan EMI",
+        "Loan Against Car",
+        "Used Car Loan EMI",
+        "Affordable Car Financing"
+    ],
+    openGraph: {
+        title: "Car Loan EMI Calculator - Find Your Best Auto Loan Option",
+        description: "Calculate exact EMI for new or used cars. Compare bank rates and choose the most affordable car loan repayment plan."
+    }
 };
 export default function CarLoan() {
     return (

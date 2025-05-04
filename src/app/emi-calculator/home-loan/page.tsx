@@ -5,9 +5,24 @@ import {Metadata} from "next";
 import HomeLoanInfo from "./homeLoanInfo";
 
 export const metadata: Metadata = {
-    title: "Home Loan EMI Calculator – Calculate Your Monthly Payments & Interest",
-    description: "Use our free Home Loan EMI Calculator to estimate your monthly installment, total interest, and repayment schedule. Get instant results and make informed financial decisions before taking a home loan.",
-    keywords: "Home Loan EMI Calculator, Home Loan Calculator, Housing Loan EMI, Mortgage EMI Calculator, Home Loan Interest Rate, Home Loan Repayment, Calculate EMI for Home Loan, Property Loan Calculator, Home Loan Interest, Home Loan Installments, Mortgage Loan EMI, Online EMI Calculator for Home Loan, Housing Loan Repayment Plan, Loan Amortization Schedule, Home Loan Payment Plan, Monthly Mortgage Calculator, Home Finance EMI, Housing Finance EMI Calculator",
+    title: "Home Loan EMI Calculator | Accurate Monthly Payment Estimates",
+    description: "Calculate your home loan EMI, interest, and repayment schedule instantly. Free online tool for homebuyers to plan mortgage payments accurately.",
+    keywords: [
+        "Home Loan EMI Calculator",
+        "Mortgage Calculator",
+        "Housing Loan EMI",
+        "Home Loan Interest Rates",
+        "EMI Calculator for Home Loan",
+        "Property Loan Calculator",
+        "Home Loan Repayment",
+        "Loan Amortization Schedule",
+        "Monthly Mortgage Calculator",
+        "Home Finance Planning"
+    ],
+    openGraph: {
+        title: "Home Loan EMI Calculator - Plan Your Mortgage Payments",
+        description: "Free online tool to calculate home loan EMI, interest, and complete repayment schedule for your dream home purchase."
+    }
 };
 
 export default function HomeLoan() {

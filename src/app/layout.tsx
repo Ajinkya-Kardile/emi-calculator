@@ -13,10 +13,10 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
     title: {
-        default: "EMI Calculator Tool - Accurate Loan EMI Calculator for Home, Car & Personal Loans",
-        template: "%s - EMI Calculator Tool",
+        default: "EMI Calculator - Calculate Home, Car & Personal Loan EMIs",
+        template: "%s | EMI Calculator",
     },
-    description: "Calculate your Home Loan, Car Loan, and Personal Loan EMIs with our Free EMI Calculator Tool. Get detailed EMI breakdowns, interest calculations, and amortization schedules instantly.",
+    description: "Free EMI Calculator for Home, Car & Personal Loans. Get instant EMI breakdowns with interest rates and amortization schedules. Calculate loan payments easily.",
     keywords: [
         "EMI Calculator", "EMI Calculator Tool", "Loan Calculator", "Loan Calculator Tool",
         "Home Loan EMI", "Home Loan EMI Calculator", "Personal Loan EMI", "Car Loan EMI",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     robots: "index, follow",
     openGraph: {
         type: "website",
-        title: "EMI Calculator Online - Easy Loan EMI Calculator for Home, Car & Personal Loans",
+        title: "Calculate Loan EMIs Online - Free EMI Calculator Tool",
         description: "Use our free EMI Calculator to calculate loan EMI online for home, car, personal, and business loans. Get instant monthly installment breakdowns with interest rates, loan tenure, and repayment schedules.",
         url: "https://emicalculatortool.in",
         siteName: "EMI Calculator Tool",

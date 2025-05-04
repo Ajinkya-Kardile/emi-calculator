@@ -1,9 +1,21 @@
 import React from "react";
 import {Metadata} from "next";
+
 export const metadata: Metadata = {
-    title: "FAQs | Loan & Interest Queries",
-    description: "Get answers to all your EMI-related questions. Learn how EMI is calculated, factors affecting loan EMI, and ways to reduce your monthly payments."
+    title: "Privacy Policy | EMI Calculator Tool - Data Protection & Security",
+    description: "Learn how EMI Calculator Tool protects your data. Our privacy policy explains information collection, cookie usage, and your rights regarding personal data.",
+    keywords: [
+        "EMI Calculator Privacy Policy",
+        "Loan Calculator Data Protection",
+        "Financial Tool Security",
+        "EMI Calculator Data Collection",
+        "Privacy Policy for Finance Tools",
+        "Cookie Policy EMI Calculator",
+        "GDPR Compliance Calculator",
+        "Data Security Loan Tool"
+    ]
 };
+
 const PrivacyPolicy = () => {
     return (
         <div className="max-w-4xl bg-white rounded-sm mx-auto p-6">
