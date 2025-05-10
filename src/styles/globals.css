@@ -18,3 +18,45 @@
     --border-dark: #333; /* Darker Border */
     --hover-dark: rgba(255, 255, 255, 0.1); /* Dark Mode Hover */
 }
+
+/* Smooth accordion animations */
+.accordion-item {
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.accordion-item:hover {
+    transform: translateY(-1px);
+}
+
+.accordion-item:active {
+    transform: translateY(0);
+}
+
+/* Gradient underline effect */
+.gradient-underline {
+    position: relative;
+}
+
+.gradient-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.accordion-header:hover .gradient-underline::after {
+    transform: scaleX(1);
+}
+
+/* Dark mode transitions */
+@media (prefers-color-scheme: dark) {
+    .accordion-item {
+        transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+}
