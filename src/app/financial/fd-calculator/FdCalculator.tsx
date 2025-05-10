@@ -12,19 +12,24 @@ import OutlinedInput from "@mui/material/OutlinedInput";
 import MenuItem from "@mui/material/MenuItem";
 import ReactECharts from "echarts-for-react";
 
-const StyledToggleButton = styled(ToggleButton)(({theme}) => ({
+const StyledToggleButton = styled(ToggleButton)(({ theme }) => ({
     "&.MuiToggleButton-root": {
         color: theme.palette.mode === 'dark' ? '#E5E7EB' : '#4B5563',
         backgroundColor: theme.palette.mode === 'dark' ? '#374151' : '#F3F4F6',
         border: `1px solid ${theme.palette.mode === 'dark' ? '#4B5563' : '#D1D5DB'}`,
+        transition: 'transform 0.3s ease',
         "&:hover": {
             backgroundColor: theme.palette.mode === 'dark' ? '#4B5563' : '#E5E7EB',
         },
         "&.Mui-selected": {
-            color: theme.palette.mode === 'dark' ? '#FFFFFF' : '#FFFFFF',
-            backgroundColor: theme.palette.mode === 'dark' ? '#2563EB' : '#2563EB',
+            color: '#FFFFFF',
+            backgroundImage: 'linear-gradient(to right, #3b82f6, #2563eb)', // from-blue-400 to-blue-800
+            // borderColor: 'transparent',
+            backgroundColor: theme.palette.mode === 'dark' ? '#374151' : '#F3F4F6',
+            border: `1px solid ${theme.palette.mode === 'dark' ? '#4B5563' : '#D1D5DB'}`,
+            transform: 'scale(1.02)',
             "&:hover": {
-                backgroundColor: theme.palette.mode === 'dark' ? '#1D4ED8' : '#1D4ED8',
+                backgroundImage: 'linear-gradient(to right, #3B82F6, #1D4ED8)', // brighter gradient on hover
             },
         },
         "&.Mui-disabled": {
@@ -143,7 +148,9 @@ export default function FdCalculator() {
                                                unit={tenureType === "years" ? "Yr" : "Mo"}/>
                                 </div>
                                 <div className="flex-1">
-                                    <label className="block text-sm sm:text-base font-medium text-gray-700 dark:text-gray-300">Tenure Type</label>
+                                    <label
+                                        className="block text-sm sm:text-base font-medium text-gray-700 dark:text-gray-300">Tenure
+                                        Type</label>
                                     <ToggleButtonGroup
                                         value={tenureType}
                                         size="small"
@@ -175,7 +182,7 @@ export default function FdCalculator() {
                                 id="payout-frequency-select"
                                 value={frequency}
                                 onChange={(e) => setFrequency(e.target.value as typeof frequency)}
-                                input={<OutlinedInput />}
+                                input={<OutlinedInput/>}
                                 className="w-full"
                                 sx={{
                                     "& .MuiOutlinedInput-root": {

@@ -12,19 +12,24 @@ import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
 import {styled} from "@mui/material/styles";
 
-const StyledToggleButton = styled(ToggleButton)(({theme}) => ({
+const StyledToggleButton = styled(ToggleButton)(({ theme }) => ({
     "&.MuiToggleButton-root": {
         color: theme.palette.mode === 'dark' ? '#E5E7EB' : '#4B5563',
         backgroundColor: theme.palette.mode === 'dark' ? '#374151' : '#F3F4F6',
         border: `1px solid ${theme.palette.mode === 'dark' ? '#4B5563' : '#D1D5DB'}`,
+        transition: 'transform 0.3s ease',
         "&:hover": {
             backgroundColor: theme.palette.mode === 'dark' ? '#4B5563' : '#E5E7EB',
         },
         "&.Mui-selected": {
-            color: theme.palette.mode === 'dark' ? '#FFFFFF' : '#FFFFFF',
-            backgroundColor: theme.palette.mode === 'dark' ? '#2563EB' : '#2563EB',
+            color: '#FFFFFF',
+            backgroundImage: 'linear-gradient(to right, #3b82f6, #2563eb)', // from-blue-400 to-blue-800
+            // borderColor: 'transparent',
+            backgroundColor: theme.palette.mode === 'dark' ? '#374151' : '#F3F4F6',
+            border: `1px solid ${theme.palette.mode === 'dark' ? '#4B5563' : '#D1D5DB'}`,
+            transform: 'scale(1.02)',
             "&:hover": {
-                backgroundColor: theme.palette.mode === 'dark' ? '#1D4ED8' : '#1D4ED8',
+                backgroundImage: 'linear-gradient(to right, #3B82F6, #1D4ED8)', // brighter gradient on hover
             },
         },
         "&.Mui-disabled": {
@@ -32,6 +37,7 @@ const StyledToggleButton = styled(ToggleButton)(({theme}) => ({
         },
     },
 }));
+
 
 const loanTypes = [
     {value: "home", label: "Home Loan", icon: <HomeIcon/>, href: "/emi-calculator/home-loan"},
@@ -156,7 +162,7 @@ export default function EmiForm({loanType, setEmiData}: {
                             size="small"
                             exclusive
                             onChange={(event, newValue) => newValue && setTenureType(newValue)}
-                            className="w-full grid grid-cols-2 gap-2 sm:flex sm:gap-1"
+                            className="w-full "
                         >
                             <StyledToggleButton value="months" className="flex-1 font-medium bg-gray-200 hover:bg-gray-300">
                                 Months
