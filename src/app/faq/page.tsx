@@ -1,13 +1,13 @@
 "use client"
-import React, {useState} from "react";
+import React from "react";
 import SidebarLayout from "@/components/layout/sidebarLayout";
-import {ExpandLess, ExpandMore} from "@mui/icons-material";
+import {Accordion} from "@/components/Accordion";
 
 
 const faqs = [
     {
-        question: "What is an EMI?",
-        answer: (
+        header: "What is an EMI?",
+        children: (
             <>
                 EMI (Equated Monthly Installment) is a fixed monthly payment a borrower makes to repay a loan. It
                 includes both principal and interest components.
@@ -15,8 +15,8 @@ const faqs = [
         ),
     },
     {
-        question: "How is EMI calculated?",
-        answer: (
+        header: "How is EMI calculated?",
+        children: (
             <>
                 The EMI calculation formula is:
                 <br/>
@@ -34,8 +34,8 @@ const faqs = [
         ),
     },
     {
-        question: "What factors affect my loan EMI?",
-        answer: (
+        header: "What factors affect my loan EMI?",
+        children: (
             <>
                 Several factors influence your EMI:
                 <ul className="list-disc list-inside">
@@ -54,8 +54,8 @@ const faqs = [
         ),
     },
     {
-        question: "Why should I use an EMI Calculator?",
-        answer: (
+        header: "Why should I use an EMI Calculator?",
+        children: (
             <>
                 An EMI Calculator helps in quick and accurate loan calculations. It allows you to compare different loan
                 options, plan finances, and avoid surprises. You can calculate Home Loan EMI, Personal Loan EMI, Car
@@ -64,8 +64,8 @@ const faqs = [
         ),
     },
     {
-        question: "What types of loans can I calculate EMI for?",
-        answer: (
+        header: "What types of loans can I calculate EMI for?",
+        children: (
             <>
                 You can calculate EMI for various loan types, including:
                 <ul className="list-disc list-inside">
@@ -80,8 +80,8 @@ const faqs = [
         ),
     },
     {
-        question: "How can I reduce my EMI amount?",
-        answer: (
+        header: "How can I reduce my EMI amount?",
+        children: (
             <>
                 Yes! You can lower your EMI by:
                 <ul className="list-disc list-inside">
@@ -100,8 +100,8 @@ const faqs = [
         ),
     },
     {
-        question: "What is the impact of interest rates on EMI?",
-        answer: (
+        header: "What is the impact of interest rates on EMI?",
+        children: (
             <>
                 Higher interest rates increase EMI payments, while lower interest rates reduce them. It&rsquo;s
                 essential to compare interest rates from different banks before choosing a loan.
@@ -109,8 +109,8 @@ const faqs = [
         ),
     },
     {
-        question: "Does my CIBIL score affect my EMI?",
-        answer: (
+        header: "Does my CIBIL score affect my EMI?",
+        children: (
             <>
                 Yes, a higher <span className="font-bold">CIBIL score (750+)</span> can help you get a <span
                 className="font-bold">lower interest rate</span>, reducing your EMI. A lower score may result in <span
@@ -119,8 +119,8 @@ const faqs = [
         ),
     },
     {
-        question: "Can I prepay my loan to reduce EMI?",
-        answer: (
+        header: "Can I prepay my loan to reduce EMI?",
+        children: (
             <>
                 Yes, you can prepay part of your loan to reduce EMI. Many banks allow <span className="font-bold">prepayment without extra charges</span>,
                 but some may have a <span className="font-bold">prepayment penalty</span>.
@@ -128,8 +128,8 @@ const faqs = [
         ),
     },
     {
-        question: "What is a fixed vs floating interest rate for EMI?",
-        answer: (
+        header: "What is a fixed vs floating interest rate for EMI?",
+        children: (
             <>
                 <span className="font-bold">Fixed Interest Rate</span> – EMI remains constant throughout the tenure.
                 <br/>
@@ -140,8 +140,8 @@ const faqs = [
         ),
     },
     {
-        question: "How does loan tenure affect EMI?",
-        answer: (
+        header: "How does loan tenure affect EMI?",
+        children: (
             <>
                 <span className="font-bold">Shorter tenure</span> – Higher EMI but lower total interest paid.
                 <br/>
@@ -151,8 +151,8 @@ const faqs = [
         ),
     },
     {
-        question: "Are processing fees included in EMI calculation?",
-        answer: (
+        header: "Are processing fees included in EMI calculation?",
+        children: (
             <>
                 Processing fees are usually <span className="font-bold">not included</span> in EMI but are charged
                 separately by banks. Some banks may deduct processing fees before disbursing the loan.
@@ -160,8 +160,8 @@ const faqs = [
         ),
     },
     {
-        question: "Can I change my EMI amount after taking a loan?",
-        answer: (
+        header: "Can I change my EMI amount after taking a loan?",
+        children: (
             <>
                 In most cases, EMI remains fixed. However, you can <span
                 className="font-bold">refinance your loan</span> or <span
@@ -170,8 +170,8 @@ const faqs = [
         ),
     },
     {
-        question: "What happens if I miss an EMI payment?",
-        answer: (
+        header: "What happens if I miss an EMI payment?",
+        children: (
             <>
                 Missing EMI payments can <span className="font-bold">hurt your CIBIL score</span>, incur <span
                 className="font-bold">late fees</span>, and lead to <span className="font-bold">loan default risk</span>.
@@ -180,8 +180,8 @@ const faqs = [
         ),
     },
     {
-        question: "Can I use an EMI Calculator for multiple loan comparisons?",
-        answer: (
+        header: "Can I use an EMI Calculator for multiple loan comparisons?",
+        children: (
             <>
                 Yes! An EMI Calculator helps you compare <span
                 className="font-bold">different banks&rsquo; loan offers</span>
@@ -190,8 +190,8 @@ const faqs = [
         ),
     },
     {
-        question: "Is EMI calculation different for Home Loan and Car Loan?",
-        answer: (
+        header: "Is EMI calculation different for Home Loan and Car Loan?",
+        children: (
             <>
                 The EMI formula is the same, but <span className="font-bold">interest rates & tenure differ</span>. Home
                 loans have longer tenure (20-30 years) and lower interest rates, while car loans have shorter tenure
@@ -200,8 +200,8 @@ const faqs = [
         ),
     },
     {
-        question: "How much EMI can I afford?",
-        answer: (
+        header: "How much EMI can I afford?",
+        children: (
             <>
                 Your <span className="font-bold">monthly EMI should not exceed 40% of your monthly income</span>. Use an
                 EMI Calculator to check affordability before taking a loan.
@@ -209,8 +209,8 @@ const faqs = [
         ),
     },
     {
-        question: "Is EMI the same every month?",
-        answer: (
+        header: "Is EMI the same every month?",
+        children: (
             <>
                 Yes, EMI remains constant in a <span className="font-bold">fixed-rate loan</span>. However, in <span
                 className="font-bold">floating-rate loans</span>, EMI may change based on interest rate fluctuations.
@@ -221,13 +221,6 @@ const faqs = [
 
 
 export default function FAQ() {
-    const [openIndex, setOpenIndex] = useState<number | null>(null);
-
-    const toggleAccordion = (index: number) => {
-        setOpenIndex(openIndex === index ? null : index);
-    };
-
-
     return (
         <>
             <SidebarLayout>
@@ -236,30 +229,13 @@ export default function FAQ() {
                         Frequently Asked Questions (FAQs)
                     </h1>
 
-                    <div className="space-y-4">
-                        {faqs.map((faq, index) => (
-                            <div key={index} className="border border-gray-300 dark:border-gray-700 rounded-lg shadow-md">
-                                <button
-                                    className="w-full text-left p-4 text-lg font-semibold flex justify-between items-center text-blue-800 dark:text-blue-200 hover:bg-blue-50 dark:hover:bg-blue-900 transition-all duration-200"
-                                    onClick={() => toggleAccordion(index)}
-                                >
-                                    {faq.question}
-                                    {openIndex === index ? (
-                                        <ExpandLess fontSize="large" />
-                                    ) : (
-                                        <ExpandMore fontSize="large" />
-                                    )}
-                                </button>
-                                <div
-                                    className={`overflow-hidden transition-all duration-300 ${
-                                        openIndex === index ? "p-4" : "max-h-0 p-0"
-                                    } text-gray-700 dark:text-gray-300 border-t border-gray-300 dark:border-gray-700`}
-                                >
-                                    {faq.answer}
-                                </div>
-                            </div>
-                        ))}
-                    </div>
+                    <Accordion
+                        items={faqs}
+                        variant="modern"
+                        iconPosition="right"
+                        className="mt-4"
+                        maxWidth="full"
+                    />
                 </div>
             </SidebarLayout>
         </>
