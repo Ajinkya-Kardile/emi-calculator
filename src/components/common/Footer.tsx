@@ -21,6 +21,7 @@ const footerData = {
         {name: "Car Loan EMI Calculator", url: "/emi-calculator/car-loan"},
         {name: "Credit Card EMI Calculator", url: "/emi-calculator/credit-card"},
         {name: "Fixed Deposit Calculator", url: "/financial/fd-calculator"},
+        {name: "RD Calculator", url: "/financial/rd-calculator"},
     ],
     legal: [
         {name: "Privacy Policy", url: "/privacy-policy"},
@@ -68,11 +69,11 @@ const Footer: React.FC = () => {
 
 const FooterSection: React.FC<{ title: string; links: { name: string; url: string }[] }> = ({title, links}) => (
     <div>
-        <h2 className="mb-6 text-sm font-semibold text-yellow-400 uppercase dark:text-white">{title}</h2>
+        <h2 className="mb-3 text-sm font-semibold text-yellow-400 uppercase dark:text-white">{title}</h2>
         <ul className="text-white dark:text-gray-400 font-medium">
 
             {links.map((link, index) => (
-                <li key={index} className="mb-4">
+                <li key={index} className="mb-3">
                     <Link href={link.url} className="hover:underline">{link.name}</Link>
                 </li>
             ))}

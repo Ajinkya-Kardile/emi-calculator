@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         { url: `${baseUrl}/emi-calculator/car-loan`, priority: 0.9, changeFrequency: "monthly" },
         { url: `${baseUrl}/emi-calculator/credit-card`, priority: 0.9, changeFrequency: "monthly" },
         { url: `${baseUrl}/financial/fd-calculator`, priority: 0.9, changeFrequency: "monthly" },
+        { url: `${baseUrl}/financial/rd-calculator`, priority: 0.9, changeFrequency: "monthly" },
         { url: `${baseUrl}/about`, priority: 0.3, changeFrequency: "monthly" },
         { url: `${baseUrl}/faq`, priority: 0.2, changeFrequency: "monthly" },
         { url: `${baseUrl}/privacy-policy`, priority: 0.1, changeFrequency: "yearly" }

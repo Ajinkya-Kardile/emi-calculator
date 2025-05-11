@@ -114,7 +114,7 @@ const Navbar: React.FC = () => {
                                                                  className="text-gray-700 dark:text-gray-300"/>
                                     },
                                     {
-                                        name: "Credit Card Payment EMI",
+                                        name: "Credit Card EMI",
                                         href: "/emi-calculator/credit-card",
                                         icon: <CreditCardIcon fontSize="small"
                                                               className="text-gray-700 dark:text-gray-300"/>
@@ -122,6 +122,12 @@ const Navbar: React.FC = () => {
                                     {
                                         name: "FD Calculator",
                                         href: "/financial/fd-calculator",
+                                        icon: <SavingsIcon fontSize="small"
+                                                           className="text-gray-700 dark:text-gray-300"/>
+                                    },
+                                    {
+                                        name: "RD Calculator",
+                                        href: "/financial/rd-calculator",
                                         icon: <SavingsIcon fontSize="small"
                                                            className="text-gray-700 dark:text-gray-300"/>
                                     },

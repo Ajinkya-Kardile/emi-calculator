@@ -20,11 +20,13 @@
     "fontkit": "^2.0.4",
     "framer-motion": "^12.5.0",
     "lucide-react": "^0.483.0",
-    "next": "15.2.1",
+    "next": "15.2.4",
     "pdf-lib": "^1.17.1",
     "rc-slider": "^11.1.8",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-icons": "^5.5.0",
+    "tailwind-merge": "^3.2.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

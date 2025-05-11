@@ -24,10 +24,15 @@ const RightSidebar: React.FC = () => {
                         {name: "Personal Loan Calculator", href: "/emi-calculator/personal-loan", icon: PersonIcon},
                         {name: "Car Loan Calculator", href: "/emi-calculator/car-loan", icon: DirectionsCarIcon},
                         {name: "Credit Card EMI Calculator", href: "/emi-calculator/credit-card", icon: CreditCardIcon},
-                        {name: "Fixed Deposit Calculator", href: "/financial/fd-calculator", icon: SavingsIcon},
+                        {name: "Fixed Deposit (FD) Calculator", href: "/financial/fd-calculator", icon: SavingsIcon},
+                        {
+                            name: "Recurring Deposit (RD) Calculator",
+                            href: "/financial/rd-calculator",
+                            icon: SavingsIcon
+                        },
                     ].map((item, index) => (
-                        <li key={index} className="flex items-center gap-2">
-                            <item.icon fontSize="small" className="text-gray-600 dark:text-gray-300 flex-shrink-0"/>
+                        <li key={index} className="flex items-center gap-2 ">
+                            <item.icon fontSize="small" className="text-gray-600 dark:text-gray-300 flex-shrink-0 "/>
                             <Link href={item.href}
                                   className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors duration-200">
                                 {item.name}
