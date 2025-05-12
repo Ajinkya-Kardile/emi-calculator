@@ -17,7 +17,8 @@ export const metadata: Metadata = {
         "Credit Card Repayment Calculator",
         "No Cost EMI Calculator",
         "Credit Card Balance Transfer EMI",
-        "EMI vs Revolve Credit Card"
+        "EMI vs Revolve Credit Card",
+        "emi calculator"
     ],
     openGraph: {
         title: "Credit Card EMI Calculator - Convert Purchases to Installments",

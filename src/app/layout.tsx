@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "EMI Calculator - Calculate Home, Car & Personal Loan EMIs",
     description: "Free EMI Calculator for Home, Car & Personal Loans. Get instant EMI breakdowns with interest rates and amortization schedules. Calculate loan payments easily.",
     keywords: [
-        "EMI Calculator", "EMI Calculator Tool", "Loan Calculator", "Loan Calculator Tool",
+        "emi calculator", "EMI Calculator Tool", "Loan Calculator", "Loan Calculator Tool",
         "Home Loan EMI", "Home Loan EMI Calculator", "Personal Loan EMI", "Car Loan EMI",
         "Interest Rate Calculator", "Loan Repayment", "Loan EMI Calculator", "Education Loan EMI",
         "Business Loan EMI", "Bike Loan EMI", "Home Loan Interest Calculator", "Mortgage EMI Calculator",
@@ -53,15 +53,26 @@ export const metadata: Metadata = {
     },
     icons: {
         icon: [
-            { url: "/favicon.ico" },
-            { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-            { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+            {url: "/favicon.ico", type: "image/x-icon"},
+            {url: "/favicon.svg", type: "image/svg+xml"},
+            {url: "/favicon-16x16.png", sizes: "16x16", type: "image/png"},
+            {url: "/favicon-32x32.png", sizes: "32x32", type: "image/png"},
+            {url: "/favicon-96x96.png", sizes: "96x96", type: "image/png"},
+            {url: "/web-app-manifest-192x192.png", sizes: "192x192", type: "image/png"},
+            {url: "/web-app-manifest-512x512.png", sizes: "512x512", type: "image/png"},
+            {url: "/android-chrome-192x192.png", sizes: "192x192", type: "image/png"},
+            {url: "/android-chrome-512x512.png", sizes: "512x512", type: "image/png"},
         ],
+        // shortcut: [
+        //     {url: "/favicon.ico", type: "image/x-icon"},
+        //     {url: "/favicon.svg", type: "image/svg+xml"},
+        // ],
         apple: [
-            { url: "/apple-touch-icon.png", sizes: "180x180" }
+            {url: "/apple-touch-icon.png", sizes: "180x180"}
         ]
     },
-    manifest: "/site.webmanifest"
+    manifest: "/site.webmanifest",
+
 };
 
 export default function RootLayout({children}: { children: React.ReactNode }) {

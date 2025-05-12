@@ -16,7 +16,7 @@ export const metadata: Metadata = {
         "Online EMI Calculator",
         "Loan Repayment Calculator",
         "Loan Amortization Schedule",
-        "Instant EMI Calculation",
+        "emi calculator",
         "Financial Planning Tool"
     ]
 };

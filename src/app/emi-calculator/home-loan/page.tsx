@@ -17,7 +17,8 @@ export const metadata: Metadata = {
         "Home Loan Repayment",
         "Loan Amortization Schedule",
         "Monthly Mortgage Calculator",
-        "Home Finance Planning"
+        "Home Finance Planning",
+        "emi calculator"
     ],
     openGraph: {
         title: "Home Loan EMI Calculator - Plan Your Mortgage Payments",

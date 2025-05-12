@@ -14,7 +14,8 @@ export const metadata: Metadata = {
         "FD maturity calculator",
         "bank FD calculator",
         "FD returns calculator",
-        "FD investment calculator"
+        "FD investment calculator",
+        "emi calculator"
     ],
     openGraph: {
         title: "Fixed Deposit (FD) Calculator | Calculate Maturity Amount & Interest",

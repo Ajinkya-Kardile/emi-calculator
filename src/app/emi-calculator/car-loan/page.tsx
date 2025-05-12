@@ -17,7 +17,8 @@ export const metadata: Metadata = {
         "Best Car Loan EMI",
         "Loan Against Car",
         "Used Car Loan EMI",
-        "Affordable Car Financing"
+        "Affordable Car Financing",
+        "emi calculator"
     ],
     openGraph: {
         title: "Car Loan EMI Calculator - Find Your Best Auto Loan Option",
