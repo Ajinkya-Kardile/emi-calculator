@@ -9,10 +9,44 @@ import HelpIcon from "@mui/icons-material/Help";
 import InfoIcon from "@mui/icons-material/Info";
 import DescriptionIcon from "@mui/icons-material/Description";
 import SavingsIcon from "@mui/icons-material/Savings";
+import ArticleIcon from "@mui/icons-material/Article";
+import fs from 'fs';
+import path from 'path';
+import matter from 'gray-matter';
+import {BlogPost} from "@/types/blog";
 
-const RightSidebar: React.FC = () => {
+async function getLatestPosts(): Promise<BlogPost[]> {
+    const postsDirectory = path.join(process.cwd(), 'src/posts');
+    if (!fs.existsSync(postsDirectory)) return [];
+
+    const filenames = fs.readdirSync(postsDirectory);
+
+    const posts = filenames.map((filename) => {
+        const filePath = path.join(postsDirectory, filename);
+        const fileContents = fs.readFileSync(filePath, 'utf8');
+        const {data, content} = matter(fileContents);
+
+        return {
+            slug: filename.replace('.md', ''),
+            title: data.title,
+            date: data.date,
+            excerpt: data.excerpt || '',
+            content,
+        };
+    });
+
+    // Sort by date (newest first) and take latest 5
+    return posts
+        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+        .slice(0, 5);
+}
+
+const RightSidebar: React.FC = async () => {
+    const latestPosts = await getLatestPosts();
+
     return (
         <aside className="block w-full h-full md:w-auto bg-gray-50 dark:bg-gray-900 rounded-md p-4">
+
             {/* Loan EMI Calculator Tools Section */}
             <div className="mb-8">
                 <h2 className="text-lg font-bold text-blue-950 dark:text-blue-400 mb-2 flex items-center gap-2">
@@ -31,8 +65,8 @@ const RightSidebar: React.FC = () => {
                             icon: SavingsIcon
                         },
                     ].map((item, index) => (
-                        <li key={index} className="flex items-center gap-2 ">
-                            <item.icon fontSize="small" className="text-gray-600 dark:text-gray-300 flex-shrink-0 "/>
+                        <li key={index} className="flex items-center gap-2">
+                            <item.icon fontSize="small" className="text-gray-600 dark:text-gray-300 flex-shrink-0"/>
                             <Link href={item.href}
                                   className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors duration-200">
                                 {item.name}
@@ -51,6 +85,7 @@ const RightSidebar: React.FC = () => {
                     {[
                         {name: "Home", href: "/", icon: HomeIcon},
                         {name: "FAQs", href: "/faq", icon: HelpIcon},
+                        {name: "Blog", href: "/blog", icon: ArticleIcon},
                         {name: "About Us", href: "/about", icon: InfoIcon},
                     ].map((item, index) => (
                         <li key={index} className="flex items-center gap-2">
@@ -63,6 +98,29 @@ const RightSidebar: React.FC = () => {
                     ))}
                 </ul>
             </nav>
+
+            {/* Latest Blog Posts Section */}
+            <div className="mb-8">
+                <h2 className="text-lg font-bold text-blue-950 dark:text-blue-400 mb-2 flex items-center gap-2">
+                    <ArticleIcon fontSize="small"/> Latest Blog Posts
+                </h2>
+                <ul className="space-y-2">
+                    {latestPosts.map((post) => (
+                        <li key={post.slug} className="flex items-center gap-2">
+                            <ArticleIcon fontSize="small"
+                                         className="text-gray-600 dark:text-gray-300 flex-shrink-0"/>
+                            <Link
+                                href={`/blog/${post.slug}`}
+                                className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors duration-200 line-clamp-2"
+                                title={post.title}
+                            >
+                                {post.title}
+                            </Link>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+
 
             {/* Important Guidelines Section */}
             <div className="mb-6">

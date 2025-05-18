@@ -1,6 +1,6 @@
 ---
 title: "Understanding Prepayment vs Foreclosure in Loans"
-date: "2025-05-18"
+date: "2025-05-13"
 excerpt: "Confused between prepayment and foreclosure in loans? This comprehensive guide will help you understand the key differences, benefits, drawbacks, and how to decide which strategy suits your financial goals."
 image: "/images/blog/prepayment-vs-foreclosure.png"
 author: "Financial Expert: Kardile Ajinkya"

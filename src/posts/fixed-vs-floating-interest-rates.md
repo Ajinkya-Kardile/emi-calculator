@@ -1,6 +1,6 @@
 ---
 title: "Fixed vs Floating Interest Rates: Which Is Better for Home Loans?"
-date: "2025-05-18"
+date: "2025-05-10"
 excerpt: "Confused between fixed and floating interest rates for your home loan? This detailed guide compares both options to help you make the best financial decision."
 image: "/images/blog/fixed-vs-floating.png"
 author: "Financial Expert: Kardile Ajinkya"

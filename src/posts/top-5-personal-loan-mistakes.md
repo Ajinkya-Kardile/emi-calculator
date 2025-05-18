@@ -1,6 +1,6 @@
 ---
 title: "Top 5 Mistakes to Avoid When Taking a Personal Loan"
-date: "2025-05-18"
+date: "2025-05-17"
 excerpt: "Avoid these top 5 personal loan mistakes to save money, reduce stress, and make smarter borrowing decisions. Learn how to navigate loan offers like a pro."
 image: "/images/blog/personal-loan-mistakes.png"
 author: "Financial Expert: Kardile Ajinkya"

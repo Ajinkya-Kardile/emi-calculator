@@ -1,6 +1,6 @@
 ---
 title: "The Complete Guide to EMI Calculations"
-date: "2023-10-25"
+date: "2025-05-07"
 excerpt: "Master the art of EMI calculations with our comprehensive guide covering all aspects from basic formulas to advanced scenarios."
 image: "/images/blog/emi-guide.jpg"
 author: "Financial Expert: Kardile Ajinkya"

@@ -12,6 +12,7 @@ const footerData = {
     quickLinks: [
         {name: "Home", url: "/"},
         {name: "FAQs", url: "/faq"},
+        {name: "Blogs", url: "/blog"},
         {name: "about Us", url: "/about"},
         {name: "Contact Us", url: "mailto:emicalculatortool@gmail.com"},
     ],

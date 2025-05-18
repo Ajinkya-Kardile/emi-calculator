@@ -1,6 +1,6 @@
 ---
 title: "How to Choose the Right Loan for Your Needs"
-date: "2025-05-18"
+date: "2025-04-28"
 excerpt: "Learn how to choose the perfect loan for your financial situation. We break down types of loans, key considerations, and tips to help you make the smartest borrowing decision."
 image: "/images/blog/loan-explain.jpg"
 author: "Financial Expert: Kardile Ajinkya"
