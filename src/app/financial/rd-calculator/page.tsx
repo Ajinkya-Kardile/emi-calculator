@@ -24,7 +24,7 @@ export const metadata: Metadata = {
         type: "website",
         images: [
             {
-                url: "https://emicalculatortool.in/images/og-image-rd-calculator.png",
+                url: "https://emicalculatortool.in/images/og/og-image-rd-calculator.png",
                 width: 1200,
                 height: 630,
                 alt: "RD Calculator Preview",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
         card: "summary_large_image",
         title: "Recurring Deposit (RD) Calculator | Calculate Maturity Amount & Interest",
         description: "Free online RD calculator to estimate your recurring deposit returns with different compounding options.",
-        images: ["https://emicalculatortool.in/images/og-image-rd-calculator.png"],
+        images: ["https://emicalculatortool.in/images/og/og-image-rd-calculator.png"],
     },
 };
 

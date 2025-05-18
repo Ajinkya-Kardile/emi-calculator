@@ -1,4 +1,5 @@
 import "@/styles/globals.css";
+import "@/styles/blog.css";
 import Navbar from "@/components/common/Navbar";
 import Footer from "@/components/common/Footer";
 import {Metadata, Viewport} from "next";

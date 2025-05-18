@@ -164,6 +164,17 @@ const Navbar: React.FC = () => {
                                 About
                             </Link>
                         </li>
+
+                        {/* Blogs */}
+                        <li>
+                            <Link
+                                href="/blog"
+                                className="block py-2 px-3 md:p-0 text-white hover:text-blue-300 dark:text-gray-200 dark:hover:text-blue-400 rounded md:hover:bg-transparent"
+                                onClick={closeMenus}
+                            >
+                                Blogs
+                            </Link>
+                        </li>
                     </ul>
                 </div>
             </div>

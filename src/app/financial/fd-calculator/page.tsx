@@ -24,7 +24,7 @@ export const metadata: Metadata = {
         type: "website",
         images: [
             {
-                url: "https://emicalculatortool.in/images/og-image-fd-calculator.png",
+                url: "https://emicalculatortool.in/images/og/og-image-fd-calculator.png",
                 width: 1200,
                 height: 630,
                 alt: "FD Calculator Preview",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
         card: "summary_large_image",
         title: "Fixed Deposit (FD) Calculator | Calculate Maturity Amount & Interest",
         description: "Free online FD calculator to estimate your fixed deposit returns with different interest payout options.",
-        images: ["https://emicalculatortool.in/images/og-image-fd-calculator.png"],
+        images: ["https://emicalculatortool.in/images/og/og-image-fd-calculator.png"],
     },
 };
 export default function FdCalculatorPage() {
