@@ -15,10 +15,9 @@ export default function TableOfContents({ content }: { content: string }) {
             const text = heading.textContent?.trim() || '';
             const level = parseInt(heading.tagName.substring(1));
 
-            // Fallback if no id
             if (!id) {
                 id = `heading-${level}-${index}`;
-                heading.id = id; // optional: updates the actual DOM element if needed later
+                heading.id = id;
             }
 
             return { id, text, level };
@@ -29,13 +28,15 @@ export default function TableOfContents({ content }: { content: string }) {
 
     return (
         <div className="sticky top-24">
-            <h3 className="text-lg font-medium mb-4">Table of Contents</h3>
+            <h3 className="text-lg font-medium mb-4 text-gray-900 dark:text-gray-100">
+                Table of Contents
+            </h3>
             <nav className="space-y-2">
                 {headings.map((heading) => (
                     <a
                         key={heading.id}
                         href={`#${heading.id}`}
-                        className={`block text-sm hover:text-blue-600 transition-colors ${heading.level === 3 ? 'pl-4' : ''}`}
+                        className={`block text-sm text-gray-800 dark:text-gray-300 hover:text-blue-600 transition-colors ${heading.level === 3 ? 'pl-4' : ''}`}
                     >
                         {heading.text}
                     </a>

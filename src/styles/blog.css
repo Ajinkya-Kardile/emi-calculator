@@ -1,6 +1,17 @@
+/* Base styles with CSS variables for theming */
 .prose {
-    color: #374151;
+    --text-color: #374151;
+    --heading-color: #111827;
+    --link-color: #2563eb;
+    --border-color: #e5e7eb;
+    --table-header-bg: #f9fafb;
+    --code-bg: #f3f4f6;
+    --pre-bg: #f3f4f6;
+    --image-border-radius: 0.5rem;
+
+    color: var(--text-color);
     max-width: 100%;
+    transition: color 0.3s ease, background-color 0.3s ease;
 }
 
 .prose h2 {
@@ -8,7 +19,7 @@
     font-weight: 600;
     margin-top: 2.5rem;
     margin-bottom: 1rem;
-    color: #111827;
+    color: var(--heading-color);
 }
 
 .prose h3 {
@@ -16,7 +27,7 @@
     font-weight: 600;
     margin-top: 2rem;
     margin-bottom: 0.75rem;
-    color: #111827;
+    color: var(--heading-color);
 }
 
 .prose p {
@@ -26,15 +37,21 @@
 }
 
 .prose a {
-    color: #2563eb;
+    color: var(--link-color);
     text-decoration: underline;
     font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.prose a:hover {
+    text-decoration: none;
 }
 
 .prose img {
-    border-radius: 0.5rem;
+    border-radius: var(--image-border-radius);
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
 .prose ul, .prose ol {
@@ -57,16 +74,16 @@
 
 .prose th, .prose td {
     padding: 0.75rem 1rem;
-    border: 1px solid #e5e7eb;
+    border: 1px solid var(--border-color);
 }
 
 .prose th {
-    background-color: #f9fafb;
+    background-color: var(--table-header-bg);
     text-align: left;
 }
 
 .prose pre {
-    background-color: #f3f4f6;
+    background-color: var(--pre-bg);
     border-radius: 0.5rem;
     padding: 1rem;
     overflow-x: auto;
@@ -75,8 +92,58 @@
 }
 
 .prose code {
-    background-color: #f3f4f6;
+    background-color: var(--code-bg);
     padding: 0.2rem 0.4rem;
     border-radius: 0.25rem;
     font-family: monospace;
+}
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+    .prose {
+        --text-color: #e5e7eb;
+        --heading-color: #f9fafb;
+        --link-color: #3b82f6;
+        --border-color: #374151;
+        --table-header-bg: #1f2937;
+        --code-bg: #1f2937;
+        --pre-bg: #1f2937;
+    }
+
+    .prose img {
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+        opacity: 0.9;
+    }
+
+    .prose pre {
+        border: 1px solid #374151;
+    }
+
+    .prose code:not(pre code) {
+        border: 1px solid #374151;
+    }
+}
+
+/* For class-based dark mode (if using Next.js theme provider) */
+.dark .prose {
+    --text-color: #e5e7eb;
+    --heading-color: #f9fafb;
+    --link-color: #3b82f6;
+    --border-color: #374151;
+    --table-header-bg: #1f2937;
+    --code-bg: #1f2937;
+    --pre-bg: #1f2937;
+}
+
+.dark .prose img {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+    opacity: 0.9;
+}
+
+.dark .prose pre {
+    border: 1px solid #374151;
+}
+
+.dark .prose code:not(pre code) {
+    border: 1px solid #374151;
 }

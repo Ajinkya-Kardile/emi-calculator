@@ -65,93 +65,88 @@ export default async function BlogPostPage({params}: { params: { slug: string } 
     const contentHtml = processedContent.toString();
 
     return (
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <article className="relative">
-                {/* Featured Image */}
-                {data.image && (
-                    <div className="relative w-full h-64 md:h-96 rounded-xl overflow-hidden mb-8">
-                        <Image
-                            src={data.image}
-                            alt={data.title}
-                            fill
-                            className="object-cover"
-                            priority
-                        />
-                    </div>
-                )}
+        <div className=" p-1 md:p-2 bg-white dark:bg-gray-900 rounded-sm">
 
-                {/* Article Header */}
-                <header className="mb-12">
-                    <div className="flex items-center text-sm text-gray-500 mb-4">
-                        <span>{new Date(data.date).toLocaleDateString('en-US', {dateStyle: 'long'})}</span>
-                        <span className="mx-2">•</span>
-                        <span>{stats.text}</span>
-                    </div>
-                    <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6">{data.title}</h1>
-                    {data.subtitle && <p className="text-xl text-gray-600 mb-6">{data.subtitle}</p>}
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                <article className="relative">
 
-                    <div className="flex items-center gap-4">
-                        {data.authorImage && (
-                            <div className="relative w-12 h-12 rounded-full overflow-hidden">
-                                <Image
-                                    src={data.authorImage}
-                                    alt={data.author || 'Author'}
-                                    fill
-                                    className="object-cover"
-                                />
+                    {/* Article Header */}
+                    <header className="mb-12">
+                        <div className="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-4">
+                            <span>{new Date(data.date).toLocaleDateString('en-US', {dateStyle: 'long'})}</span>
+                            <span className="mx-2">•</span>
+                            <span>{stats.text}</span>
+                        </div>
+                        <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6 text-gray-900 dark:text-white">{data.title}</h1>
+                        {data.subtitle &&
+                            <p className="text-xl text-gray-600 dark:text-gray-300 mb-6">{data.subtitle}</p>}
+
+                        <div className="flex items-center gap-4">
+                            {data.authorImage && (
+                                <div className="relative w-12 h-12 rounded-full overflow-hidden">
+                                    <Image
+                                        src={data.authorImage}
+                                        alt={data.author || 'Author'}
+                                        fill
+                                        className="object-cover"
+                                    />
+                                </div>
+                            )}
+                            <div>
+                                {data.author &&
+                                    <p className="font-medium text-gray-900 dark:text-white">{data.author}</p>}
+                                {data.authorTitle &&
+                                    <p className="text-sm text-gray-500 dark:text-gray-400">{data.authorTitle}</p>}
                             </div>
-                        )}
-                        <div>
-                            {data.author && <p className="font-medium">{data.author}</p>}
-                            {data.authorTitle && <p className="text-sm text-gray-500">{data.authorTitle}</p>}
+                        </div>
+                    </header>
+
+                    {/* Article Content */}
+                    <div className="flex flex-col lg:flex-row gap-12">
+                        <div className="hidden lg:block lg:w-64 shrink-0">
+                            <TableOfContents content={contentHtml}/>
+                        </div>
+
+                        <div className="flex-1">
+                            <div
+                                className="prose prose-lg max-w-none dark:prose-invert"
+                                dangerouslySetInnerHTML={{__html: contentHtml}}
+                            />
+
+                            {/* Tags */}
+                            {data.tags && (
+                                <div className="mt-12 pt-6 border-t border-gray-200 dark:border-gray-700">
+                                    <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-3">TAGS</h3>
+                                    <div className="flex flex-wrap gap-2">
+                                        {data.tags.map((tag: string) => (
+                                            <div
+                                                key={tag}
+                                                className="px-3 py-1 text-sm bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 rounded-full transition-colors text-gray-800 dark:text-gray-200"
+                                            >
+                                                {tag}
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
                         </div>
                     </div>
-                </header>
+                </article>
 
-                {/* Article Content */}
-                <div className="flex flex-col lg:flex-row gap-12">
-                    <div className="hidden lg:block lg:w-64 shrink-0">
-                        <TableOfContents content={contentHtml}/>
-                    </div>
+                {/* Author Bio */}
+                {data.author && (
+                    <AuthorBio
+                        name={data.author}
+                        image={data.authorImage}
+                        bio={data.authorBio}
+                        socialLinks={data.socialLinks}
+                    />
+                )}
 
-                    <div className="flex-1">
-                        <div
-                            className="prose prose-lg max-w-none"
-                            dangerouslySetInnerHTML={{__html: contentHtml}}
-                        />
-
-                        {/* Tags */}
-                        {data.tags && (
-                            <div className="mt-12 pt-6 border-t border-gray-200">
-                                <h3 className="text-sm font-medium text-gray-500 mb-3">TAGS</h3>
-                                <div className="flex flex-wrap gap-2">
-                                    {data.tags.map((tag: string) => (
-                                        <div
-                                            key={tag}
-                                            className="px-3 py-1 text-sm bg-gray-100 hover:bg-gray-200 rounded-full transition-colors"
-                                        >
-                                            {tag}
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        )}
-                    </div>
-                </div>
-            </article>
-
-            {/* Author Bio */}
-            {data.author && (
-                <AuthorBio
-                    name={data.author}
-                    image={data.authorImage}
-                    bio={data.authorBio}
-                    socialLinks={data.socialLinks}
-                />
-            )}
-
-            {/* Related Posts */}
-            {/*<RelatedPosts currentSlug={params.slug} tags={data.tags} />*/}
+                {/* Related Posts */}
+                {/*<RelatedPosts currentSlug={params.slug} tags={data.tags} />*/}
+            </div>
         </div>
+
     );
 }

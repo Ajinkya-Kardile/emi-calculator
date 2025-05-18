@@ -5,13 +5,13 @@ excerpt: "Master the art of EMI calculations with our comprehensive guide coveri
 image: "/images/blog/emi-guide.jpg"
 author: "Financial Expert: Kardile Ajinkya"
 authorImage: "/images/blog/author-1.png"
-authorBio: "With over 10 years of experience in financial planning, our expert has helped thousands navigate complex loan scenarios."
+authorBio: "With over 7 years of experience in financial planning, our expert has helped thousands navigate complex loan scenarios."
 tags: ["finance", "loans", "calculators"]
 ---
 
 ## Introduction to EMI
 
-![EMI Concept](/images/blog/emi-concept.jpg)
+![EMI Concept](/images/blog/emi-guide.jpg)
 
 Equated Monthly Installment (EMI) is a fixed payment made by a borrower to a lender on a specified date each month. EMIs cover both the interest and principal, allowing the loan to be paid off completely over a fixed period.
 
