@@ -6,13 +6,14 @@ export default function BlogCard({ post }: { post: BlogPost }) {
     return (
         <article className="group relative flex flex-col md:flex-row gap-6 p-6 rounded-xl bg-white dark:bg-gray-800 shadow-sm hover:shadow-md dark:hover:shadow-lg transition-all duration-300 border border-gray-100 dark:border-gray-700">
             {post.image && (
-                <div className="relative w-full md:w-64 h-48 md:h-auto shrink-0 overflow-hidden rounded-lg">
+                <div className="relative w-full aspect-[16/9] md:w-64 md:aspect-[4/3] shrink-0 overflow-hidden rounded-lg">
                     <Image
                         src={post.image}
                         alt={post.title}
                         fill
                         className="object-cover group-hover:scale-105 transition-transform duration-500"
-                        sizes="(max-width: 768px) 100vw, 256px"
+                        sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 256px"
+                        priority={false}
                     />
                 </div>
             )}
@@ -45,6 +46,7 @@ export default function BlogCard({ post }: { post: BlogPost }) {
                 <Link
                     href={`/blog/${post.slug}`}
                     className="inline-flex items-center text-blue-600 dark:text-blue-400 font-medium hover:text-blue-800 dark:hover:text-blue-300 group-hover:underline transition-colors"
+                    aria-label={`Read more about ${post.title}`}
                 >
                     Read more
                     <svg
