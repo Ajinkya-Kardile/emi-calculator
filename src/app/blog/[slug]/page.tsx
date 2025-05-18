@@ -6,12 +6,11 @@ import remarkRehype from 'remark-rehype';
 import rehypeStringify from 'rehype-stringify';
 import rehypeSlug from 'rehype-slug';
 import readingTime from 'reading-time';
+import remarkGfm from 'remark-gfm';
 import {Metadata} from 'next';
 import Image from 'next/image';
 import TableOfContents from '@/components/blog/TableOfContents';
 import AuthorBio from '@/components/blog/AuthorBio';
-
-// import RelatedPosts from '@/components/blog/RelatedPosts';
 
 export async function generateStaticParams() {
     const postsDirectory = path.join(process.cwd(), 'src/posts');
@@ -60,6 +59,7 @@ export default async function BlogPostPage({params}: { params: { slug: string } 
     const processedContent = await remark()
         .use(remarkRehype)
         .use(rehypeSlug)
+        .use(remarkGfm)
         .use(rehypeStringify)
         .process(content);
     const contentHtml = processedContent.toString();
