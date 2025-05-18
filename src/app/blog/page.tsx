@@ -14,7 +14,6 @@ export const metadata = {
 function getAllPosts(): BlogPost[] {
     const postsDirectory = path.join(process.cwd(), 'src/posts');
 
-    // Handle case where directory doesn't exist
     if (!fs.existsSync(postsDirectory)) {
         console.warn('Posts directory not found at:', postsDirectory);
         return [];
@@ -51,15 +50,17 @@ export default async function BlogPage() {
     const posts = getAllPosts();
 
     return (
-        <div className="container mx-auto px-4 py-12 max-w-4xl">
+        <div className="container mx-auto px-4 py-12">
             <h1 className="text-4xl font-bold mb-8 text-center text-gray-900 dark:text-white">
                 Blog
             </h1>
 
             {posts.length > 0 ? (
-                <div className="space-y-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {posts.map((post) => (
-                        <BlogCard key={post.slug} post={post}/>
+                        <div key={post.slug} className="h-full">
+                            <BlogCard post={post}/>
+                        </div>
                     ))}
                 </div>
             ) : (
