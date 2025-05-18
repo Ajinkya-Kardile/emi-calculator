@@ -33,7 +33,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({params}: { params: { slug: string } }): Promise<Metadata> {
-    const filePath = path.join(process.cwd(), 'src/posts', `${params.slug}.md`);
+    const {slug} = await params;
+    const filePath = path.join(process.cwd(), 'src/posts', `${slug}.md`);
     const fileContents = fs.readFileSync(filePath, 'utf8');
     const {data} = matter(fileContents);
 
@@ -51,7 +52,8 @@ export async function generateMetadata({params}: { params: { slug: string } }): 
 }
 
 export default async function BlogPostPage({params}: { params: { slug: string } }) {
-    const filePath = path.join(process.cwd(), 'src/posts', `${params.slug}.md`);
+    const {slug} = await params;
+    const filePath = path.join(process.cwd(), 'src/posts', `${slug}.md`);
     const fileContents = fs.readFileSync(filePath, 'utf8');
     const {data, content} = matter(fileContents);
     const stats = readingTime(content);
