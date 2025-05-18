@@ -7,10 +7,7 @@ author: "Financial Expert: Kardile Ajinkya"
 authorImage: "/images/blog/author-1.png"
 authorBio: "With over 10 years of experience in financial planning, our expert has helped thousands navigate complex loan scenarios."
 tags: ["finance", "loans", "calculators"]
-readingTime: "8 min"
 ---
-
-# The Complete Guide to EMI Calculations
 
 ## Introduction to EMI
 

@@ -33,7 +33,7 @@ const Navbar: React.FC = () => {
     };
 
     return (
-        <nav className="bg-blue-950 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
+        <nav className="bg-blue-950 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 ">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 {/* Logo */}
                 <Link href="/" className="flex items-center space-x-3">

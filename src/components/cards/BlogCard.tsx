@@ -19,7 +19,7 @@ export default function BlogCard({ post }: { post: BlogPost }) {
             <div className="flex-1">
                 <div className="flex items-center gap-2 text-sm text-gray-500 mb-3">
                     <span>{new Date(post.date).toLocaleDateString('en-US', { dateStyle: 'long' })}</span>
-                    {post.readingTime && <span>• {post.readingTime} min read</span>}
+                    {post.readingTime && <span>• {post.readingTime}</span>}
                 </div>
                 <h2 className="text-2xl font-bold mb-3 leading-tight">
                     <Link href={`/blog/${post.slug}`} className="hover:text-blue-600 transition-colors before:absolute before:inset-0">

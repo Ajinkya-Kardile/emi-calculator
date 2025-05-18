@@ -5,6 +5,8 @@ import path from 'path';
 import matter from 'gray-matter';
 import BlogCard from '@/components/cards/BlogCard';
 import {BlogPost} from '@/types/blog';
+import readingTime from 'reading-time';
+
 
 export const metadata = {
     title: 'Blog - EMI Calculator Tool',
@@ -20,6 +22,7 @@ function getAllPosts(): BlogPost[] {
             const filePath = path.join(postsDirectory, filename);
             const fileContents = fs.readFileSync(filePath, 'utf8');
             const {data, content} = matter(fileContents);
+            const stats = readingTime(content);
 
             return {
                 slug: filename.replace('.md', ''),
@@ -28,6 +31,7 @@ function getAllPosts(): BlogPost[] {
                 excerpt: data.excerpt || '',
                 content,
                 ...data,
+                readingTime: stats.text || '',
             } as BlogPost;
         })
         .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());

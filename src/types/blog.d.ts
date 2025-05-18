@@ -5,7 +5,7 @@ export interface BlogPost {
     excerpt: string;
     content: string;
     image?: string;           // Used in <Image />
-    readingTime?: number;     // Used for display
+    readingTime?: string;     // Used for display
     tags?: string[];          // Rendered as tag badges
     [key: string]: any;       // Allows additional frontmatter fields
 }

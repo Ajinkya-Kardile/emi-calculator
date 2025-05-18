@@ -2,7 +2,9 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import {remark} from 'remark';
-import html from 'remark-html';
+import remarkRehype from 'remark-rehype';
+import rehypeStringify from 'rehype-stringify';
+import rehypeSlug from 'rehype-slug';
 import readingTime from 'reading-time';
 import {Metadata} from 'next';
 import Image from 'next/image';
@@ -56,7 +58,9 @@ export default async function BlogPostPage({params}: { params: { slug: string } 
     const stats = readingTime(content);
 
     const processedContent = await remark()
-        .use(html)
+        .use(remarkRehype)
+        .use(rehypeSlug)
+        .use(rehypeStringify)
         .process(content);
     const contentHtml = processedContent.toString();
 
