@@ -95,7 +95,7 @@ A floating interest rate is a better choice if:
 * **Negotiate With Your Lender**: Better credit scores often unlock better rates.
 * **Monitor the Market**: Keep an eye on interest rate trends.
 * **Evaluate Switching**: Balance transfers to another lender could save you money.
-* **Use Online Calculators**: Compare EMI impacts across rate types. Try our [Home Loan EMI Calculator](/tools/emi-calculator) to estimate your monthly payments quickly and accurately.
+* **Use Online Calculators**: Compare EMI impacts across rate types. Try our [Home Loan EMI Calculator](/emi-calculator/home-loan) to estimate your monthly payments quickly and accurately.
 
 ## Final Thoughts
 

@@ -1,5 +1,4 @@
 ---
-
 title: "Credit Score Explained: How It Affects Your Loan Eligibility"
 date: "2025-05-18"
 excerpt: "Understand the importance of your credit score and how it plays a vital role in determining your loan eligibility, interest rates, and approval chances."
@@ -8,7 +7,6 @@ author: "Financial Expert: Kardile Ajinkya"
 authorImage: "/images/blog/author-1.png"
 authorBio: "With over 10 years of experience in financial planning, our expert has helped thousands navigate complex loan scenarios."
 tags: ["finance", "credit score", "loan eligibility", "personal finance"]
-readingTime: "9 min"
 ---
 
 ## Introduction
