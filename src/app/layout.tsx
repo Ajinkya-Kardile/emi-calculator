@@ -5,6 +5,7 @@ import Footer from "@/components/common/Footer";
 import {Metadata, Viewport} from "next";
 import React from "react";
 import {GoogleTagManager} from "@next/third-parties/google";
+import {EmotionProvider} from "./emotion-provider";
 
 
 export const viewport: Viewport = {
@@ -77,9 +78,12 @@ export default function RootLayout({children}: { children: React.ReactNode }) {
         <html lang="en">
         <GoogleTagManager gtmId="GTM-KCH58NMT"/>
         <body className="bg-gray-200 dark:bg-gray-700">
-        <Navbar/>
-        <main className="mx-auto py-1 md:p-2">{children}</main>
-        <Footer/>
+        <EmotionProvider>
+            <Navbar/>
+            <main className="mx-auto py-1 md:p-2">{children}</main>
+            <Footer/>
+        </EmotionProvider>
+
         </body>
         </html>
     );
