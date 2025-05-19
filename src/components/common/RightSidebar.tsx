@@ -11,36 +11,8 @@ import InfoIcon from "@mui/icons-material/Info";
 import DescriptionIcon from "@mui/icons-material/Description";
 import SavingsIcon from "@mui/icons-material/Savings";
 import ArticleIcon from "@mui/icons-material/Article";
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
-import {BlogPost} from "@/types/blog";
+import {getLatestPosts} from "../../lib/getLatestPosts";
 
-async function getLatestPosts(): Promise<BlogPost[]> {
-    const postsDirectory = path.join(process.cwd(), 'src/posts');
-    if (!fs.existsSync(postsDirectory)) return [];
-
-    const filenames = fs.readdirSync(postsDirectory);
-
-    const posts = filenames.map((filename) => {
-        const filePath = path.join(postsDirectory, filename);
-        const fileContents = fs.readFileSync(filePath, 'utf8');
-        const {data, content} = matter(fileContents);
-
-        return {
-            slug: filename.replace('.md', ''),
-            title: data.title,
-            date: data.date,
-            excerpt: data.excerpt || '',
-            content,
-        };
-    });
-
-    // Sort by date (newest first) and take latest 5
-    return posts
-        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-        .slice(0, 5);
-}
 
 const RightSidebar: React.FC = async () => {
     const latestPosts = await getLatestPosts();
