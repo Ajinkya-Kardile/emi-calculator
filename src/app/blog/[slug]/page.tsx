@@ -12,10 +12,13 @@ import Image from 'next/image';
 import TableOfContents from '@/components/blog/TableOfContents';
 import AuthorBio from '@/components/blog/AuthorBio';
 
-export async function generateStaticParams() {
+type Params = {
+    slug: string;
+};
+
+export async function generateStaticParams(): Promise<Params[]> {
     const postsDirectory = path.join(process.cwd(), 'src/posts');
 
-    // Handle case where directory doesn't exist
     if (!fs.existsSync(postsDirectory)) {
         console.warn('Posts directory not found at:', postsDirectory);
         return [];
@@ -32,11 +35,11 @@ export async function generateStaticParams() {
     }
 }
 
-export async function generateMetadata({params}: { params: { slug: string } }): Promise<Metadata> {
-    const {slug} = await params;
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+    const { slug } = await params;
     const filePath = path.join(process.cwd(), 'src/posts', `${slug}.md`);
     const fileContents = fs.readFileSync(filePath, 'utf8');
-    const {data} = matter(fileContents);
+    const { data } = matter(fileContents);
 
     return {
         title: `${data.title} | EMI Calculator Blog`,
@@ -44,18 +47,19 @@ export async function generateMetadata({params}: { params: { slug: string } }): 
         openGraph: {
             title: data.title,
             description: data.excerpt || '',
-            images: data.image ? [{url: data.image}] : [],
+            images: data.image ? [{ url: data.image }] : [],
             type: 'article',
             publishedTime: data.date,
         },
     };
 }
 
-export default async function BlogPostPage({params}: { params: { slug: string } }) {
-    const {slug} = await params;
+
+export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
+    const { slug } = await params;
     const filePath = path.join(process.cwd(), 'src/posts', `${slug}.md`);
     const fileContents = fs.readFileSync(filePath, 'utf8');
-    const {data, content} = matter(fileContents);
+    const { data, content } = matter(fileContents);
     const stats = readingTime(content);
 
     const processedContent = await remark()

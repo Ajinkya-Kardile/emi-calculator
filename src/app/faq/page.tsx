@@ -1,4 +1,3 @@
-"use client"
 import React from "react";
 import SidebarLayout from "@/components/layout/sidebarLayout";
 import {Accordion} from "@/components/Accordion";
